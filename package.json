@@ -1,0 +1,46 @@
+{
+	"name": "sixa-snippets",
+	"title": "Sixa Snippets",
+	"version": "1.0.0",
+	"homepage": "https://www.sixa.ch",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sixach/sixa-wp-snippets.git"
+	},
+	"author": "sixa AG",
+	"author_uri": "https://www.sixa.ch",
+	"license": "GPL-3.0",
+	"copyright": "© sixa AG. All Rights Reserved.",
+	"scripts": {
+		"build": "wp-scripts build",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"dev": "wp-scripts start",
+		"lint:wpcs": "composer lint:wpcs",
+		"lint:wpcs-fix": "composer lint:wpcbf",
+		"lint:php": "composer lint:php",
+		"makepot": "composer make-pot"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^13.0.3",
+		"husky": "^4.3.8",
+		"lint-staged": "^10.5.1"
+	},
+	"engines": {
+		"node": "12.19.1",
+		"npm": "6.14.8"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.php": [
+			"npm run lint:wpcs-fix"
+		]
+	}
+}

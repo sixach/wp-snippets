@@ -1,0 +1,72 @@
+# Copyright (C) 2021 sixa AG
+# This file is distributed under the GPL-3.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sixa Snippets 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sixa-wp-snippets\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-03-11T23:35:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: @@textdomain\n"
+
+#. Plugin Name of the plugin
+msgid "Sixa Snippets"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://sixa.ch"
+msgstr ""
+
+#. Description of the plugin
+msgid "A plugin containing factory classes or methods for the Sixa projects."
+msgstr ""
+
+#. Author of the plugin
+msgid "sixa AG"
+msgstr ""
+
+#: includes/class-breadcrumb.php:162
+msgctxt "breadcrumb"
+msgid "Error 404"
+msgstr ""
+
+#. translators: %s: product tag
+#: includes/class-breadcrumb.php:293
+msgctxt "breadcrumb"
+msgid "Products tagged &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %s: tag name
+#: includes/class-breadcrumb.php:357
+msgctxt "breadcrumb"
+msgid "Posts tagged &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %s: author name
+#: includes/class-breadcrumb.php:409
+msgctxt "breadcrumb"
+msgid "Author: %s"
+msgstr ""
+
+#. translators: %s: search term
+#: includes/class-breadcrumb.php:458
+msgctxt "breadcrumb"
+msgid "Search results for &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %d: page number
+#: includes/class-breadcrumb.php:476
+msgctxt "breadcrumb"
+msgid "Page %d"
+msgstr ""
+
+#: includes/class-breadcrumb.php:495
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""

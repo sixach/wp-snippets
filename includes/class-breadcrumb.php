@@ -488,10 +488,10 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 				'sixa_breadcrumb_args',
 				array(
 					'delimiter'   => '&nbsp;&#47;&nbsp;',
-					'wrap_before' => '<nav class="sixa-breadcrumb">',
-					'wrap_after'  => '</nav>',
-					'before'      => '<span>',
-					'after'       => '</span>',
+					'wrap_before' => '<ol class="sixa-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">',
+					'wrap_after'  => '</ol>',
+					'before'      => '<li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">',
+					'after'       => '</li>',
 					'home'        => _x( 'Home', 'breadcrumb', '@@textdomain' ),
 				)
 			);
@@ -520,18 +520,19 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 				$return .= $args['wrap_before'];
 
 				foreach ( $breadcrumbs as $key => $crumb ) {
+					$position = $key + 1;
+					$return  .= $args['before'];
 
-					$return .= $args['before'];
-
-					if ( ! empty( $crumb[1] ) && count( $breadcrumbs ) !== $key + 1 ) {
-						$return .= sprintf( '<a href="%s">%s</a>', esc_url( $crumb[1] ), esc_html( $crumb[0] ) );
+					if ( ! empty( $crumb[1] ) && count( $breadcrumbs ) !== $position ) {
+						$return .= sprintf( '<a href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>', esc_url( $crumb[1] ), esc_html( $crumb[0] ) );
 					} else {
-						$return .= esc_html( $crumb[0] );
+						$return .= sprintf( '<span itemprop="name">%s</span>', esc_html( $crumb[0] ) );
 					}
 
+					$return .= sprintf( '<meta itemprop="position" content="%d" />', absint( $position ) );
 					$return .= $args['after'];
 
-					if ( count( $breadcrumbs ) !== $key + 1 ) {
+					if ( count( $breadcrumbs ) !== $position ) {
 						$return .= $args['delimiter'];
 					}
 				}

@@ -57,7 +57,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * @access   private
 		 * @var      array $dropdowns     List of pages to register a dropdown option for it.
 		 */
-		public static $dropdowns = array();
+		private static $dropdowns = array();
 
 		/**
 		 * Name of the option.
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		}
 
 		/**
-		 * Registers a top or submenu level menu page.
+		 * Registers static page dropdown menus.
 		 *
 		 * @since    1.0.0
 		 * @return   void

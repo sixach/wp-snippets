@@ -185,7 +185,7 @@ if ( ! class_exists( 'Options' ) ) :
 			register_setting(
 				'sixa_settings_fields',
 				self::$key,
-				array( $this, 'sanitize' )
+				array( __CLASS__, 'sanitize' )
 			);
 
 			add_settings_section(
@@ -205,7 +205,7 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @param    array $fieldset     Plugin setting options.
 		 * @return   array
 		 */
-		protected function sanitize( $fieldset ) {
+		public static function sanitize( $fieldset ) {
 			return array_map( 'sanitize_text_field', $fieldset );
 		}
 
@@ -216,15 +216,22 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @param    string   $id           Slug-name to identify the field.
 		 * @param    string   $title        Formatted title of the field.
 		 * @param    callable $callback     Function that fills the field with the desired form inputs.
+		 * @param    string   $page         Optional. The slug-name of the settings page on which to show the section.
+		 * @param    string   $section      Optional. The slug-name of the section of the settings page in which to show the box.
 		 * @return   void
 		 */
-		public static function add_field( $id, $title, $callback ) {
+		public static function add_field( $id = null, $title = null, $callback = null, $page = null, $section = null ) {
 			// Bail early, in case all required arguments are not being provided.
 			if ( ! isset( $id, $title, $callback ) ) {
 				return;
 			}
 
-			add_settings_field( $id, $title, $callback, self::$slug, self::$slug );
+			if ( ! isset( $page, $section ) ) {
+				$page    = self::$slug;
+				$section = self::$slug;
+			}
+
+			add_settings_field( $id, $title, $callback, $page, $section );
 		}
 
 		/**
@@ -388,10 +395,16 @@ if ( ! class_exists( 'Options' ) ) :
 			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
 			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
+			$field['show_option_none']  = isset( $field['show_option_none'] ) ? true : false;
 			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
 			$return                    .= sprintf( '<p class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<label for="%s">%s</label>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
 			$return                    .= sprintf( '<select class="%s" style="%s" name="%s" id="%s" %s>', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
+
+			if ( ! ! $field['show_option_none'] ) {
+				/* translators: 1: Open option tag, 2: Close option tag. */
+				$return .= sprintf( _x( '%1$s&mdash; Select &mdash;%2$s', 'showing no pages', '@@textdomain' ), '<option value="">', '</option>' );
+			}
 
 			foreach ( $field['options'] as $key => $value ) {
 				$return .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( esc_attr( $key ), esc_attr( $field['value'] ), false ), esc_html( $value ) );

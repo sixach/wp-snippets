@@ -20,7 +20,7 @@ use SixaSnippets\Includes\Options;
  *
  * 1. Update the namespace(s) used in this file.
  * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register a series of post-types when needed:
+ * 3. Initialize the class to register a series of dropdown menus when needed:
  *
  * add_action(
  *  'admin_menu',

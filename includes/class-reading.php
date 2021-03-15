@@ -77,7 +77,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 */
 		public function __construct( $list = array() ) {
 			// Bail early, in case there no option provided to register.
-			if ( empty( $list ) ) {
+			if ( ! is_array( $list ) || empty( $list ) ) {
 				return;
 			}
 

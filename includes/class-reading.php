@@ -1,7 +1,7 @@
 <?php
 /**
  * The file registers static page dropdown field(s)
- * to the `Dashboard` → `Reading` settings/page.
+ * to the `Settings` → `Reading` settings/page.
  *
  * @link       https://sixa.ch
  * @author     Mahdi Yazdani

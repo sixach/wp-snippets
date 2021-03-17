@@ -84,7 +84,7 @@ if ( ! class_exists( 'Post_Type' ) ) :
 				return;
 			}
 
-			$this->can_tax = ! ! class_exists( 'SixaSnippets\Dashboard\Taxonomy' );
+			$this->can_tax = ! ! class_exists( sprintf( '%s\Taxonomy', __NAMESPACE__ ) );
 			$this->run( $post_types );
 		}
 

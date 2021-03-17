@@ -93,7 +93,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * @return   void
 		 */
 		public function register() {
-			register_setting( 'reading', self::$key, array( 'SixaSnippets\Dashboard\Options', 'sanitize' ) );
+			register_setting( 'reading', self::$key, array( sprintf( '%s\Options', __NAMESPACE__ ), 'sanitize' ) );
 			add_settings_section( self::$key, _x( 'Additional Settings', 'reading', '@@textdomain' ), '', 'reading' );
 			$options = get_option( self::$key, array() );
 

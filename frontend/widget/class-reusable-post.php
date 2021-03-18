@@ -64,7 +64,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 		 *
 		 * @since    1.0.0
 		 * @param    array $args         Display arguments including 'before_title', 'after_title'.
-		 * @param    array $instance     Settings for the current Recent Posts widget instance.
+		 * @param    array $instance     Settings for the current widget instance.
 		 * @return   void
 		 */
 		public function widget( $args, $instance ) {

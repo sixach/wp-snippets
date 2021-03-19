@@ -79,7 +79,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 			}
 
 			// Proceed, if the post object is of the `WP_Post` class.
-			if ( $post instanceof WP_Post ) {
+			if ( $post instanceof \WP_Post ) {
                 // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				$html['post'] = sprintf( '<div class="%s">%s</div>', implode( ' ', get_post_class( '', $post_id ) ), apply_filters( 'the_content', $post->post_content ) );
 			}

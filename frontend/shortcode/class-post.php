@@ -23,6 +23,7 @@ namespace SixaSnippets\Frontend\Shortcode;
  * } );
  *
  * Note: Do not initialize this class before the `init` hook.
+ * Usage: [sixa_post id="1788" class="class-name"]
  */
 
 // Exit if accessed directly.

@@ -79,7 +79,7 @@ namespace SixaSnippets\Dashboard\WooCommerce;
  *      );
  *
  *      // Save and sanitize the submitted data.
- *      add_action( 'woocommerce_admin_process_product_object', array( 'SixaSnippets\Dashboard\Product_Data', 'save' ) );
+ *      add_action( 'woocommerce_admin_process_product_object', array( 'SixaSnippets\Dashboard\WooCommerce\Product_Data', 'save' ) );
  *  }
  * );
  *

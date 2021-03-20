@@ -85,7 +85,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 			$show_thumb   = isset( $instance['show_thumb'] ) ? $instance['show_thumb'] : false;
 			$recent_posts = wp_get_recent_posts(
 				apply_filters(
-					'sixa_recent_posts_query_args',
+					'sixa_recent_posts_widget_args',
 					array(
 						'numberposts'      => $number,
 						'post_status'      => 'publish',
@@ -113,15 +113,15 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 					$aria_current = ' aria-current="page"';
 				}
 
-				$html[ sprintf( 'li_open_%d', $post_id ) ] = sprintf( '<li class="%s"%s>', implode( ' ', get_post_class( '', $post_id ) ), $aria_current );
+				$html[ sprintf( 'li_open_%d', $post_id ) ] = sprintf( '<li class="%s"%s>', implode( ' ', get_post_class( '', $post ) ), $aria_current );
 
 				// Thumbnail.
-				if ( ! ! $show_thumb && has_post_thumbnail( $post_id ) ) {
-					$html[ sprintf( 'thumbnail_%d', $post_id ) ] = sprintf( '<figure class="entry-thumbnail">%s</figure>', get_the_post_thumbnail( $post_id ) );
+				if ( ! ! $show_thumb && has_post_thumbnail( $post ) ) {
+					$html[ sprintf( 'thumbnail_%d', $post_id ) ] = sprintf( '<figure class="entry-thumbnail"><a href="%s">%s</a></figure>', esc_url( get_permalink( $post ) ), get_the_post_thumbnail( $post ) );
 				}
 
 				// Title.
-				$html[ sprintf( 'title_%d', $post_id ) ] = sprintf( '<a href="%s" class="entry-title" rel="bookmark">%s</a>', esc_url( get_permalink( $post_id ) ), wp_kses_post( $post['post_title'] ) );
+				$html[ sprintf( 'title_%d', $post_id ) ] = sprintf( '<a href="%s" class="entry-title" rel="bookmark">%s</a>', esc_url( get_permalink( $post ) ), wp_kses_post( $post['post_title'] ) );
 
 				// Author.
 				if ( ! ! $show_author ) {
@@ -131,7 +131,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 
 				// Date.
 				if ( ! ! $show_date ) {
-					$html[ sprintf( 'time_%d', $post_id ) ] = sprintf( '<a href="%s" rel="bookmark"><time class="entry-date published" datetime="%s">%s</time></a>', esc_url( get_permalink( $post_id ) ), esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
+					$html[ sprintf( 'time_%d', $post_id ) ] = sprintf( '<a href="%s" rel="bookmark"><time class="entry-date published" datetime="%s">%s</time></a>', esc_url( get_permalink( $post ) ), esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
 				}
 
 				$html[ sprintf( 'li_close_%d', $post_id ) ] = '</li>';

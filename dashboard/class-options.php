@@ -436,17 +436,17 @@ if ( ! class_exists( 'Options' ) ) :
 		public static function radio_field( $field, $echo = true ) {
 			$return                     = '';
 			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'select short';
+			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'radio';
 			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
 			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
 			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
 			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
 			$return                    .= sprintf( '<fieldset class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
-			$return                    .= sprintf( '<legend for="%s">%s</legend><ul>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
+			$return                    .= sprintf( '<legend>%s</legend><ul id="%s" %s>', wp_kses_post( $field['label'] ), esc_attr( $field['id'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
 
-			foreach ( $field['options'] as $key => $value ) {
-				$return .= sprintf( '<li><label><input type="radio" class="%s" style="%s" name="%s" id="%s" value="%s" %s %s />%s</label></li>', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $key ), checked( esc_attr( $key ), esc_attr( $field['value'] ), false ), self::implode_html_attributes( $field['custom_attributes'] ), esc_html( $value ) );
+			foreach ( $field['choices'] as $key => $value ) {
+				$return .= sprintf( '<li><label><input type="radio" class="%s" style="%s" name="%s" value="%s" %s />%s</label></li>', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $key ), checked( esc_attr( $key ), esc_attr( $field['value'] ), false ), esc_html( $value ) );
 			}
 
 			$return .= '</ul>';

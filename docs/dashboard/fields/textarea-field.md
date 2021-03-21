@@ -6,7 +6,7 @@ SixaSnippets\Dashboard\Options::textarea_field( array $args = array(), bool $ech
 
 ## Description
 
-Output a textarea input box.
+This method outputs a `<textarea />` tag that defines a multi-line text input control. The element is often used in a form, to collect user inputs like comments or reviews. The size of this element can be specified by the `<cols>` and `<rows>` attributes.
 
 ## Import
 

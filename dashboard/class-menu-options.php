@@ -12,45 +12,6 @@
 
 namespace SixaSnippets\Dashboard;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register additional menu-item input fields when needed:
- *
- * add_action(
- *  'admin_init',
- *  function() {
- *      new Menu_Options(
- *          array(
- *              array(
- *                  'default'     => 'no',
- *                  'type'        => 'checkbox',                                        // Required: Type of the field.
- *                  'name'        => 'checkbox-choice',                                 // Required: Attribute used to reference the element.
- *                  'label'       => __( 'Do a thing?', '@@textdomain' ),
- *                  'description' => __( 'Enable to do something', '@@textdomain' ),
- *              ),
- *              array(
- *                  'show_option_none' => true,
- *                  'type'             => 'select',
- *                  'name'             => 'select-choice',
- *                  'label'            => __( 'Select an option?', '@@textdomain' ),
- *                  'options'          => array(
- *                      'option1' => __( 'Option 1', '@@textdomain' ),
- *                      'option2' => __( 'Option 2', '@@textdomain' ),
- *                      'option3' => __( 'Option 3', '@@textdomain' ),
- *                  ),
- *              ),
- *          )
- *      );
- *  }
- * );
- *
- * Note: Do not initialize this class before the `admin_menu` hook.
- * Note 2: This file requires the `Options` class to be imported and present in the project.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

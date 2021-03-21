@@ -15,29 +15,6 @@ namespace SixaSnippets\Dashboard;
 
 use SixaSnippets\Dashboard\Options;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register a series of dropdown menus when needed:
- *
- * add_action(
- *  'admin_menu',
- *  function() {
- *      new Reading(
- *          array(
- *              'testimonial' => __( 'Testimonial', '@@textdomain' ),
- *              'notfound'    => __( '404 Notfound', '@@textdomain' ),
- *          )
- *      );
- *  }
- * );
- *
- * Note: Do not initialize this class before the `admin_menu` hook.
- * Note 2: This file requires the `Options` class to be imported and present in the project.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

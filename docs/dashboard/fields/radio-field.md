@@ -23,8 +23,8 @@ use SixaSnippets\Dashboard\Options;
 - **$args**
     - **id**:
         - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
-    - **options**:
-        - *(array) (Required)* List of options for the radio group control, where values are the keys, and labels are the values.
+    - **choices**:
+        - *(array) (Required)* List of choices for the radio group control, where values are the keys, and labels are the values.
         - *Default value: empty array*
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
@@ -35,7 +35,7 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Optional)* A help text will be shown below the input field.
     - **class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
-        - *Default value: `select short`*
+        - *Default value: `radio`*
     - **wrapper_class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field wrapper paragraph tag.
     - **style**:

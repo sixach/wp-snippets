@@ -40,6 +40,7 @@ Options::hidden_field(
 		'class'     => 'class-name',
 		'value'     => 'hidden value',
 		'id'        => 'sixa_options_hidden',
+		'name'      => 'hidden-input',
 	)
 );
 ```

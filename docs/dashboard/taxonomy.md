@@ -14,7 +14,7 @@ A simple wrapper function for creating a taxonomy object based on the parameters
 use SixaSnippets\Dashboard\Taxonomy;
 ```
 
-!> **Note:** Do not initialize this class before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.
+!> **Note:** Should not be hooked before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.
 
 ## Parameters
 
@@ -30,8 +30,8 @@ use SixaSnippets\Dashboard\Taxonomy;
 	- **plural_name**:
         - *(string) (Optional)* General name for the taxonomy, usually plural.
         - *Default value: `Categories`*
-	- **…params**:
-		- *(string|bool|array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_taxonomy/) from the original registration method could be overwritten as needed.
+	- **args**:
+		- *(array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_taxonomy/) from the original registration method could be overwritten as needed.
 
 ## Example
 
@@ -52,6 +52,9 @@ add_action(
 					'post_type'     => array( 'post', 'page' ),
 					'singular_name' => __( 'Log', '@@textdomain' ),
 					'plural_name'   => __( 'Logs', '@@textdomain' ),
+					'args'          => array(
+						'publicly_queryable' => false,
+					),
 				),
 			)
 		);

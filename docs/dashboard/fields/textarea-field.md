@@ -64,8 +64,9 @@ Options::textarea_field(
 		'wrapper_class'     => 'wrapper-class-name',
 		'value'             => 'textarea value',
 		'id'                => 'sixa_options_textarea',
-        'rows'              => 2,
-        'cols'              => 20,
+		'name'              => 'textarea-input',
+		'rows'              => 2,
+		'cols'              => 20,
 		'custom_attributes' => array(
 			'data-attr' => 'attr-value',
 		),

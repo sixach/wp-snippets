@@ -15,9 +15,18 @@
 - Frontend
 
   - [Breadcrumb](frontend/breadcrumb.md "Generate a list of breadcrumb trails")
-  - **Widget**
+  - **Shortcode**
       - [Post](frontend/shortcode/post.md "A single post based on given/selected post-id")
       - [Recent Posts](frontend/shortcode/recent-posts.md "A list of recent posts generated via custom shortcode attributes")
   - **Widget**
       - [Recent Posts](frontend/widget/recent-posts.md "Output a list of most recent published posts")
       - [Reusable Post](frontend/widget/reusable-post.md "Output a selected reusable-post content on the page")
+
+- Fields
+
+  - [Text](dashboard/fields/text-field.md "Register text-field")
+  - [Textarea](dashboard/fields/textarea-field.md "Register textarea-field")
+  - [Hidden](dashboard/fields/hidden-field.md "Register hidden-field")
+  - [Select](dashboard/fields/select-field.md "Register select-field")
+  - [Checkbox](dashboard/fields/checkbox-field.md "Register checkbox-field")
+  - [Radio](dashboard/fields/radio-field.md "Register radio-fields")

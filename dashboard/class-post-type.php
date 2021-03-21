@@ -12,44 +12,7 @@
 
 namespace SixaSnippets\Dashboard;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register a series of post-types when needed:
- *
- * new Post_Type(
- *      array(
- *          array(
- *              'key'           => 'docs',              // Required. Post type key. Must not exceed 20 characters.
- *              'plural_name'   => 'Documents',         // Optional. Plural name for the post-type.
- *              'singular_name' => 'Document',          // Optional. Singular name for the post-type.
- *              'args'          => array(               // Optional. Array of arguments for registering a post type.
- *                  'publicly_queryable' => false,
- *                  'menu_icon'          => 'dashicons-book',
- *              ),
- *              'taxonomies'    => array(               // Note: This would require including `Taxonomy` class in the project as well.
- *                  array(
- *                      'key' => 'cat',                 // Required. Taxonomy key, must not exceed 32 characters.
- *                  ),
- *                  array(
- *                      'key'           => 'type',      // Required. Taxonomy key, must not exceed 32 characters.
- *                      'plural_name'   => 'Types',     // Optional. Plural name for the taxonomy.
- *                      'singular_name' => 'Type',      // Optional. Singular name for the taxonomy.
- *                  ),
- *              ),
- *          ),
- *          array(
- *              'key'           => 'logs',              // Required. Post type key. Must not exceed 20 characters.
- *              'plural_name'   => 'Logs',              // Optional. Plural name for the post-type.
- *              'singular_name' => 'Log',               // Optional. Singular name for the post-type.
- *          ),
- *      )
- *  );
- *
- * Note: Do not initialize this class before the `init` hook.
- */
+use SixaSnippets\Dashboard\Taxonomy;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -64,14 +27,6 @@ if ( ! class_exists( 'Post_Type' ) ) :
 	class Post_Type {
 
 		/**
-		 * Taxonomy register class.
-		 *
-		 * @access   protected
-		 * @var      boolean    $can_tax    Whether the taxonomy factory class is present.
-		 */
-		protected $can_tax = false;
-
-		/**
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
@@ -84,7 +39,6 @@ if ( ! class_exists( 'Post_Type' ) ) :
 				return;
 			}
 
-			$this->can_tax = ! ! class_exists( sprintf( '%s\Taxonomy', __NAMESPACE__ ) );
 			$this->run( $post_types );
 		}
 
@@ -146,7 +100,7 @@ if ( ! class_exists( 'Post_Type' ) ) :
 				$args = wp_parse_args( $args, $defaults );
 				register_post_type( $key, $args );
 
-				if ( $this->can_tax ) {
+				if ( ! empty( $taxonomies ) ) {
 					new Taxonomy( $this->attach_taxonomy( $key, $taxonomies ) );
 				}
 			}

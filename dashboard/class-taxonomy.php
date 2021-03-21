@@ -12,30 +12,6 @@
 
 namespace SixaSnippets\Dashboard;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace used above.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register a series of taxonomies when needed:
- *
- * new Taxonomy(
- *      array(
- *          array(
- *              'key'           => 'brand',     // Required. Taxonomy key, must not exceed 32 characters.
- *              'post_type'     => 'product',   // Optional. Post type or array of post types. E.g. [ 'post', 'page' ].
- *              'plural_name'   => 'Brands',    // Optional. Plural name for the taxonomy.
- *              'singular_name' => 'Brand',     // Optional. Singular name for the taxonomy.
- *          ),
- *          array(
- *              'key' => 'type',
- *          ),
- *      )
- *  );
- *
- * Note: Do not initialize this class before the `init` hook.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -80,7 +56,7 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 					return;
 				}
 
-				$args          = isset( $post_type['args'] ) ? $post_type['args'] : array();
+				$args          = isset( $taxonomy['args'] ) ? $taxonomy['args'] : array();
 				$post_type     = isset( $taxonomy['post_type'] ) ? $taxonomy['post_type'] : 'post';
 				$singular_name = isset( $taxonomy['singular_name'] ) ? $taxonomy['singular_name'] : _x( 'Category', 'taxonomy', '@@textdomain' );
 				$plural_name   = isset( $taxonomy['plural_name'] ) ? $taxonomy['plural_name'] : _x( 'Categories', 'taxonomy', '@@textdomain' );

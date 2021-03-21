@@ -10,7 +10,7 @@ This method outputs an `<input type="checkbox" />` tag that defines a checkbox. 
 
 Checkboxes are often used to let a user select one or more options of a limited number of choices.
 
-?> **Tip**: For best accessibility practices it is recommended to add the `<label>` tag.
+!> Always add the `<label />` tag for best accessibility practices!
 
 ## Import
 
@@ -32,21 +32,21 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Optional)* A help text will be shown below the input field.
     - **class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
-        - *Default value: checkbox*
+        - *Default value: `checkbox`*
     - **wrapper_class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field wrapper paragraph tag.
     - **style**:
         - *(string) (Optional)* Inline style may be used to apply a unique style to the input field.
     - **value**:
         - *(string) (Optional)* The current value of the input field. Could be either `yes` or `no`.
-        - *Default value: no*
+        - *Default value: `no`*
     - **custom_attributes**:
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.
 - **$echo**
     - *(bool) (Optional)* Whether to echo or just return the output.
-    - *Default value: true*
+    - *Default value: `true`*
 
 ## Example
 

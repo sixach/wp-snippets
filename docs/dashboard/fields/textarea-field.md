@@ -21,7 +21,7 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
-        - *Default value: $id*
+        - *Default value: `$id`*
     - **label**:
         - *(string) (Optional)* Formatted title of the field.
     - **description**:
@@ -30,7 +30,7 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Optional)* A string that provides a brief hint to the user.
     - **class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
-        - *Default value: short*
+        - *Default value: `short`*
     - **wrapper_class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field wrapper paragraph tag.
     - **style**:
@@ -39,17 +39,17 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Optional)* The current value of the input field.
     - **rows**:
         - *(integer) (Optional)* The visible number of lines.
-        - *Default value: 2*
+        - *Default value: `2`*
     - **cols**:
         - *(integer) (Optional)* The visible width of the textarea.
-        - *Default value: 20*
+        - *Default value: `20`*
     - **custom_attributes**:
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.
 - **$echo**
     - *(bool) (Optional)* Whether to echo or just return the output.
-    - *Default value: true*
+    - *Default value: `true`*
 
 ## Example
 

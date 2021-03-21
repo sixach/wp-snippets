@@ -28,7 +28,7 @@ use SixaSnippets\Dashboard\Options;
         - *Default value: empty array*
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
-        - *Default value: $id*
+        - *Default value: `$id`*
     - **label**:
         - *(string) (Optional)* Formatted title of the field.
     - **description**:
@@ -41,18 +41,17 @@ use SixaSnippets\Dashboard\Options;
     - **style**:
         - *(string) (Optional)* Inline style may be used to apply a unique style to the input field.
     - **value**:
-        - *(string) (Optional)* The current value of the input field. Could be either `yes` or `no`.
-        - *Default value: `no`*
+        - *(string) (Optional)* The current value of the input field.
     - **show_option_none**:
         - *(bool) (Optional)* A placeholder option to display for showing no option is selected.
-        - *Default value: false*
+        - *Default value: `false`*
     - **custom_attributes**:
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.
 - **$echo**
     - *(bool) (Optional)* Whether to echo or just return the output.
-    - *Default value: true*
+    - *Default value: `true`*
 
 ## Example
 

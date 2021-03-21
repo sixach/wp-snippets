@@ -23,14 +23,14 @@ use SixaSnippets\Dashboard\Options;
         - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
-        - *Default value: $id*
+        - *Default value: `$id`*
     - **class**:
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
     - **value**:
         - *(string) (Optional)* The current value of the input field.
 - **$echo**
     - *(bool) (Optional)* Whether to echo or just return the output.
-    - *Default value: true*
+    - *Default value: `true`*
 
 ## Example
 

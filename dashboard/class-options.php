@@ -260,10 +260,10 @@ if ( ! class_exists( 'Options' ) ) :
 		 */
 		public static function hidden_field( $field, $echo = true ) {
 			$return         = '';
+			$field['name']  = isset( $field['name'] ) ? $field['name'] : $field['id'];
 			$field['class'] = isset( $field['class'] ) ? $field['class'] : '';
 			$field['value'] = isset( $field['value'] ) ? $field['value'] : '';
 			$return        .= sprintf( '<input type="hidden" class="%s" name="%s" id="%s" value="%s" />', esc_attr( $field['class'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $field['value'] ) );
-			$return        .= '</p>';
 
 			if ( ! $echo ) {
 				return $return;

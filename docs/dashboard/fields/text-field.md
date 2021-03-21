@@ -54,16 +54,16 @@ use SixaSnippets\Dashboard\Options;
 Options::text_field(
 	array(
 		'label'                         => __( 'Text field', '@@textdomain' ),
-		'description'           => __( 'More information about this field.', '@@textdomain' ),
-		'placeholder'           => __( 'Write text…', '@textdomain' ),
+		'description'                   => __( 'More information about this field.', '@@textdomain' ),
+		'placeholder'                   => __( 'Write text…', '@textdomain' ),
 		'class'                         => 'short',
 		'style'                         => 'color:#A8A8A8;',
-		'wrapper_class'         => 'wrapper-class-name',
+		'wrapper_class'                 => 'wrapper-class-name',
 		'value'                         => 'text value',
 		'type'                          => 'text',
-		'id'                                => 'sixa_options_text',
+		'id'                            => 'sixa_options_text',
 		'name'                          => 'text-input',
-		'custom_attributes' => array(
+		'custom_attributes'             => array(
 			'data-attr' => 'attr-value',
 		),
 	)

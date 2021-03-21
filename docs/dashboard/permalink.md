@@ -14,7 +14,7 @@ Adds additional input controls to the `Settings` → `Permalinks` settings page.
 use SixaSnippets\Dashboard\Permalink;
 ```
 
-!> **Note:** Do not initialize this class before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.
+!> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.
 
 ## Parameters
 

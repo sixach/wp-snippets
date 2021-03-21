@@ -14,7 +14,7 @@ Adds additional input controls before the move buttons of a nav menu item in the
 use SixaSnippets\Dashboard\Menu_Options;
 ```
 
-!> **Note:** Do not initialize this class before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.
+!> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.
 
 ## Parameters
 

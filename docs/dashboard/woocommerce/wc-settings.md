@@ -15,7 +15,7 @@ use SixaSnippets\Dashboard\WooCommerce\WC_Settings;
 
 ## Retrieve
 
-Retrieve the stored additional WooCommerce Settings option values.
+Retrieve the stored additional option values.
 
 ```php
 $options = get_option( WC_Settings::$key, array() );

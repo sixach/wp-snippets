@@ -16,6 +16,14 @@ use SixaSnippets\Dashboard\Reading;
 
 !> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.
 
+## Retrieve
+
+Retrieve the stored additional option values.
+
+```php
+$options = get_option( Reading::$key, array() );
+```
+
 ## Parameters
 
 - **$args**

@@ -18,7 +18,7 @@ use SixaSnippets\Dashboard\Options;
 
 ## Retrieve
 
-Retrieve the stored plugin option values.
+Retrieve the stored additional option values.
 
 ```php
 $options = get_option( Options::$key, array() );

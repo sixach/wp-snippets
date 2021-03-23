@@ -12,81 +12,6 @@
 
 namespace SixaSnippets\Dashboard\WooCommerce;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register custom product data controls when needed:
- *
- * add_action(
- *  'woocommerce_init',
- *  function() {
- *      add_action(
- *          'add_meta_boxes_product',
- *          function() {
- *              global $post;
- *
- *              $options = (array) get_post_meta( $post->ID, Product_Data::$key, true );
- *              new Product_Data(
- *                  array(
- *                      // New tab.
- *                      'data' => array(
- *                          'label'  => __( 'Custom Panel', '@@textdomain' ),        // Optional: Formatted title of the panel.
- *                          'class'  => 'show_if_simple',                            // Optional: CSS class names, conditional class names such as show_if_simple, hide_if_variable could be passed.
- *                          'fields' => array(                                       // Required: Fieldset.
- *                              // Text.
- *                              Options::text_field(
- *                                  array(
- *                                      'id'    => 'sixa_product_data_text',
- *                                      'label' => __( 'Text field', '@@textdomain' ),
- *                                      'name'  => sprintf( '%s[text-input]', Product_Data::$key ),
- *                                      'value' => isset( $options['text-input'] ) ? $options['text-input'] : '',
- *                                  ),
- *                                  false                                            // Required: Avoid echoing the generated markup.
- *                              ),
- *                              // Checkbox.
- *                              Options::checkbox_field(
- *                                  array(
- *                                      'id'          => 'sixa_product_data_checkbox',
- *                                      'label'       => __( 'Checkbox', '@@textdomain' ),
- *                                      'name'        => sprintf( '%s[checkbox-choice]', Product_Data::$key ),
- *                                      'value'       => isset( $options['checkbox-choice'] ) ? 'yes' : 'no',
- *                                      'description' => __( 'Check me out', '@@textdomain' ),
- *                                  ),
- *                                  false
- *                              ),
- *                          ),
- *                      ),
- *                      // Another tab.
- *                      'extras' => array(
- *                          'fields' => array(
- *                              // Textarea.
- *                              Options::textarea_field(
- *                                  array(
- *                                      'id'    => 'sixa_product_data_textarea',
- *                                      'label' => __( 'Textarea field', '@@textdomain' ),
- *                                      'name'  => sprintf( '%s[textarea-input]', Product_Data::$key ),
- *                                      'value' => isset( $options['textarea-input'] ) ? $options['textarea-input'] : '',
- *                                  ),
- *                                  false
- *                              ),
- *                          ),
- *                      ),
- *                  ),
- *              );
- *          }
- *      );
- *
- *      // Save and sanitize the submitted data.
- *      add_action( 'woocommerce_admin_process_product_object', array( 'SixaSnippets\Dashboard\WooCommerce\Product_Data', 'save' ) );
- *  }
- * );
- *
- * Note: Do not initialize this class before the `woocommerce_init` hook.
- * Note 2: This file requires the `Options` class to be imported and present in the project.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -133,6 +58,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 			self::$controls = $list;
 			add_action( 'woocommerce_product_data_tabs', array( $this, 'tabs' ) );
 			add_action( 'woocommerce_product_data_panels', array( $this, 'panels' ) );
+			add_action( 'woocommerce_admin_process_product_object', array( $this, 'save' ) );
 		}
 
 		/**
@@ -162,7 +88,10 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * @return   void
 		 */
 		public function panels() {
-			$return = '';
+			global $post;
+
+			$return  = '';
+			$options = (array) get_post_meta( $post->ID, self::$key, true );
 
 			foreach ( self::$controls as $key => $args ) {
 				$fields  = isset( $args['fields'] ) ? $args['fields'] : array();
@@ -170,7 +99,21 @@ if ( ! class_exists( 'Product_Data' ) ) :
 
 				if ( ! empty( $fields ) ) {
 					foreach ( $fields as $field ) {
-						$return .= $field;
+						$field['name'] = isset( $field['name'] ) ? $field['name'] : $field['id'];
+						$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
+
+						$return .= call_user_func(
+							array( 'SixaSnippets\Dashboard\Options', sprintf( '%s_field', esc_attr( $field['type'] ) ) ),
+							array_merge(
+								$field,
+								array(
+									'value'             => isset( $options[ $field['name'] ] ) ? esc_attr( $options[ $field['name'] ] ) : '',
+									'id'                => sprintf( 'product-data-item-%d-%s', intval( $post->ID ), esc_attr( $field['name'] ) ),
+									'name'              => sprintf( '%s[%s]', esc_attr( self::$key ), esc_attr( $field['name'] ) ),
+								)
+							),
+							false
+						);
 					}
 				}
 
@@ -187,7 +130,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * @param    WC_Product $product    Product object.
 		 * @return   void
 		 */
-		public static function save( $product ) {
+		public function save( $product ) {
 			$product->update_meta_data( self::$key, filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY ) );
 		}
 

@@ -13,79 +13,6 @@
 
 namespace SixaSnippets\Dashboard\WooCommerce;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace used above.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register WooCommerce settings tab when needed:
- *
- * add_filter(
- *  'woocommerce_get_settings_pages',
- *  function( $settings ) {
- *      $settings[] = new WC_Settings(
- *          array(
- *              'sections' => array(
- *                  array(
- *                      'id'     => '',
- *                      'label'  => __( 'Section 1', '@@textdomain' ),
- *                      'fields' => array(
- *                          array(
- *                              'type' => 'title',
- *                              'id'   => 'sixa_wc_settings_group1_title',
- *                              'name' => __( 'Group 1', '@@textdomain' ),
- *                          ),
- *                          array(
- *                              'default'  => 'no',
- *                              'type'     => 'checkbox',
- *                              'id'       => sprintf( '%s[checkbox-choice]', WC_Settings::$key ),
- *                              'name'     => __( 'Do a thing?', '@@textdomain' ),
- *                              'desc'     => __( 'Enable to do something', '@@textdomain' ),
- *                          ),
- *                          array(
- *                              'type' => 'sectionend',
- *                              'id'   => 'sixa_wc_settings_group1_sectionend',
- *                          ),
- *                      ),
- *                  ),
- *                  array(
- *                      'id'     => 'second_section',
- *                      'label'  => __( 'Section 2', '@@textdomain' ),
- *                      'fields' => array(
- *                          array(
- *                              'type' => 'title',
- *                              'id'   => 'sixa_wc_settings_important_options',
- *                              'name' => __( 'Important Stuff', '@@textdomain' ),
- *                          ),
- *                          array(
- *                              'type'     => 'select',
- *                              'id'       => sprintf( '%s[select-choice]', WC_Settings::$key ),
- *                              'name'     => __( 'Choose your favorite', '@@textdomain' ),
- *                              'options'  => array(
- *                                  'vanilla'        => __( 'Vanilla', '@@textdomain' ),
- *                                  'chocolate'      => __( 'Chocolate', '@@textdomain' ),
- *                                  'strawberry'     => __( 'Strawberry', '@@textdomain' ),
- *                              ),
- *                              'class'    => 'wc-enhanced-select',
- *                              'desc_tip' => __( 'Be honest!', '@@textdomain' ),
- *                              'default'  => 'vanilla',
- *                          ),
- *                          array(
- *                              'type' => 'sectionend',
- *                              'id'   => 'sixa_wc_settings_important_options',
- *                          ),
- *                      ),
- *                  ),
- *              ),
- *          )
- *      );
- *
- *      return $settings;
- *  },
- *  15
- * );
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -253,7 +180,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		 * @return   void
 		 */
 		public function output() {
-			\WC_Admin_Settings::output_fields( $this->get_settings() );
+			$settings = $this->get_settings();
+			\WC_Admin_Settings::output_fields( $settings );
 		}
 
 		/**

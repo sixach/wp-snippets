@@ -20,7 +20,7 @@ use SixaSnippets\Dashboard\Options;
 
 - **$args**
     - **id**:
-        - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
+        - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
         - *Default value: `$id`*

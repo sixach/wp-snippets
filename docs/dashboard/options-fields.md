@@ -27,7 +27,7 @@ $options = get_option( Options::$key, array() );
 ## Parameters
 
 - **id**
-    - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
+    - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
 - **title**
     - *(string) (Required)* Formatted title of the field. Shown as the label for the field during output.
 - **callback**

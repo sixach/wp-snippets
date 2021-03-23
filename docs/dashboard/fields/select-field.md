@@ -22,7 +22,7 @@ use SixaSnippets\Dashboard\Options;
 
 - **$args**
     - **id**:
-        - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
+        - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
     - **options**:
         - *(array) (Required)* List of options for the dropdown menu control, where values are the keys, and labels are the values.
         - *Default value: empty array*

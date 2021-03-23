@@ -22,7 +22,7 @@ use SixaSnippets\Dashboard\Options;
 
 - **$args**
     - **id**:
-        - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
+        - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
     - **choices**:
         - *(array) (Required)* List of choices for the radio group control, where values are the keys, and labels are the values.
         - *Default value: empty array*

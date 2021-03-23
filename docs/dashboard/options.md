@@ -20,7 +20,7 @@ use SixaSnippets\Dashboard\Options;
 
 - **$args**
 	- **labels**:
-	- *(array) (Optional)* An array of labels for the plugin option’s page.
+	- *(array) (Optional)* An array of labels for the plugin options page.
 	- *Default value: empty array*
 		- **page_title**:
 			- *(string) (Optional)* The text to be displayed in the title tags of the page when the menu is selected.

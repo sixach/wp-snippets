@@ -23,7 +23,7 @@ use SixaSnippets\Dashboard\Menu_Options;
         - *(string) (Required)* Input field type.
         - *See available field types: [text](dashboard/fields/text-field.md), [textarea](dashboard/fields/textarea-field.md), [hidden](dashboard/fields/hidden-field.md), [select](dashboard/fields/select-field.md), [checkbox](dashboard/fields/checkbox-field.md), [radio](dashboard/fields/radio-field.md).*
     - **id**:
-        - *(string) (Required)* Slug-name to identify the field. Used in the 'id' attribute of tags.
+        - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
     - **name**:
         - *(string) (Optional)* Can be used to reference the element in other places.
         - *Default value: `$id`*

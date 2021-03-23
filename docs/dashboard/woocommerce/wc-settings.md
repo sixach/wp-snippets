@@ -5,7 +5,7 @@ SixaSnippets\Dashboard\WooCommerce\WC_Settings( array $args = array() );
 ```
 ## Description
 
-Registers additional input controls divided into different sections to the `WooCommerce` → `Settings` settings page.
+Registers additional input controls divided into different sections to the `WooCommerce` → `Settings` page.
 
 ## Import
 

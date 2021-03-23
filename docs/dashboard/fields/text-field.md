@@ -17,30 +17,30 @@ use SixaSnippets\Dashboard\Options;
 ## Parameters
 
 - **$args**
-    - **id**:
+    - **id**
         - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
-    - **name**:
+    - **name**
         - *(string) (Optional)* Can be used to reference the element in other places.
         - *Default value: `$id`*
-    - **label**:
+    - **label**
         - *(string) (Optional)* Formatted title of the field.
-    - **description**:
+    - **description**
         - *(string) (Optional)* A help text will be shown below the input field.
-    - **placeholder**:
+    - **placeholder**
         - *(string) (Optional)* A string that provides a brief hint to the user.
-    - **class**:
+    - **class**
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
         - *Default value: `short`*
-    - **wrapper_class**:
+    - **wrapper_class**
         - *(string) (Optional)* Custom CSS class names to be added to the input field wrapper paragraph tag.
-    - **style**:
+    - **style**
         - *(string) (Optional)* Inline style may be used to apply a unique style to the input field.
-    - **value**:
+    - **value**
         - *(string) (Optional)* The current value of the input field.
-    - **type**:
+    - **type**
         - *(string) (Optional)* Input field type. E.g. `email`, `week`, `date`, etc.
         - *Default value: `text`*
-    - **custom_attributes**:
+    - **custom_attributes**
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.

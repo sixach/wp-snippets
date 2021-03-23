@@ -23,29 +23,29 @@ use SixaSnippets\Dashboard\Options;
 - **$args**
     - **id**:
         - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
-    - **options**:
+    - **options**
         - *(array) (Required)* List of options for the dropdown menu control, where values are the keys, and labels are the values.
         - *Default value: empty array*
-    - **name**:
+    - **name**
         - *(string) (Optional)* Can be used to reference the element in other places.
         - *Default value: `$id`*
-    - **label**:
+    - **label**
         - *(string) (Optional)* Formatted title of the field.
-    - **description**:
+    - **description**
         - *(string) (Optional)* A help text will be shown below the input field.
-    - **class**:
+    - **class**
         - *(string) (Optional)* Custom CSS class names to be added to the input field.
         - *Default value: `select short`*
-    - **wrapper_class**:
+    - **wrapper_class**
         - *(string) (Optional)* Custom CSS class names to be added to the input field wrapper paragraph tag.
-    - **style**:
+    - **style**
         - *(string) (Optional)* Inline style may be used to apply a unique style to the input field.
-    - **value**:
+    - **value**
         - *(string) (Optional)* The current value of the input field.
-    - **show_option_none**:
+    - **show_option_none**
         - *(bool) (Optional)* A placeholder option to display for showing no option is selected.
         - *Default value: `false`*
-    - **custom_attributes**:
+    - **custom_attributes**
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.

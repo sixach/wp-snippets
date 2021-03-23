@@ -21,16 +21,16 @@ use SixaSnippets\Dashboard\Taxonomy;
 - **$args**
 	- **key**:
         - *(string) (Required)* Taxonomy key, must not exceed 32 characters.
-	- **post_type**:
+	- **post_type**
         - *(string|array) (Optional)* Post type or array of post types with which the taxonomy should be associated.
         - *Default value: `post`*
-	- **singular_name**:
+	- **singular_name**
         - *(string) (Optional)* Name for one term of this taxonomy.
         - *Default value: `Category`*
-	- **plural_name**:
+	- **plural_name**
         - *(string) (Optional)* General name for the taxonomy, usually plural.
         - *Default value: `Categories`*
-	- **args**:
+	- **args**
 		- *(array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_taxonomy/) from the original registration method could be overwritten as needed.
 
 ## Example

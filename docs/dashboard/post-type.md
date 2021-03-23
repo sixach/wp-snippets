@@ -21,15 +21,15 @@ use SixaSnippets\Dashboard\Post_Type;
 - **$args**
 	- **key**:
         - *(string) (Required)* Post type key. Must not exceed 20 characters and may only contain lowercase alphanumeric characters, dashes, and underscores.
-	- **singular_name**:
+	- **singular_name**
         - *(string) (Optional)* Name for one post of this post type.
         - *Default value: `Post`*
-	- **plural_name**:
+	- **plural_name**
         - *(string) (Optional)* General name for the post type, usually plural.
         - *Default value: `Posts`*
-	- **args**:
+	- **args**
 		- *(array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_post_type/) from the original registration method could be overwritten as needed.
-	- **taxonomies**:
+	- **taxonomies**
 		- *(array) (Optional)* Attaching additional [taxonomy](dashboard/taxonomy.md) objects to this post type.
 
 ## Example

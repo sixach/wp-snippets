@@ -19,16 +19,16 @@ use SixaSnippets\Dashboard\Options;
 ## Parameters
 
 - **$args**
-	- **labels**:
+	- **labels**
 	- *(array) (Optional)* An array of labels for the plugin options page.
 	- *Default value: empty array*
-		- **page_title**:
+		- **page_title**
 			- *(string) (Optional)* The text to be displayed in the title tags of the page when the menu is selected.
 			- *Default value: `Plugin Options`*
-		- **menu_title**:
+		- **menu_title**
 			- *(string) (Optional)* The text to be used for the menu.
 			- *Default value: `Sixa Options`*
-	- **parent_slug**:
+	- **parent_slug**
 		- *(string) (Optional)* The file name of a standard WordPress admin page. E.g. `options-general.php`, `themes.php`, etc.
 		- *Default value: empty string*
 

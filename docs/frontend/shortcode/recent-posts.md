@@ -18,12 +18,12 @@ use SixaSnippets\Frontend\Shortcode\Recent_Posts;
 
 ## Parameters
 
-- **categories**
-    - *(array) (Required)* Comma-separated list of category ids.
-    - *Default value: empty array*
 - **number**
     - *(integer) (Required)* Total number of posts to retrieve and display.
     - *Default value: `4`*
+- **categories**
+    - *(array) (Optional)* Comma-separated list of category ids.
+    - *Default value: empty array*
 - **show_date**
     - *(bool) (Optional)* Whether to display post published date.
     - *Default value: `0 (false)`*

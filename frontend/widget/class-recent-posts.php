@@ -12,20 +12,6 @@
 
 namespace SixaSnippets\Frontend\Widget;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace used above.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to register the widget when needed:
- *
- * add_action( 'widgets_init', function() {
- *     register_widget( Recent_Posts::class );
- * } );
- *
- * Note: Do not initialize this class before the `widgets_init` hook.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,24 +28,29 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
+		 * @param    array $args     Widget setting arguments.
 		 * @return   void
 		 */
-		public function __construct() {
-			$widget_key = 'sixa-recent-posts';
-			$widget_ops = array(
+		public function __construct( $args = array() ) {
+			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
+			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Recent Posts', 'widget name', '@@textdomain' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s recent blog posts.', 'widget description', '@@textdomain' );
+			$widget_key          = 'sixa-recent-posts';
+			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),
-				'description'                 => esc_html_x( 'Your site&#8217;s recent blog posts.', 'widget description', '@@textdomain' ),
+				'description'                 => esc_html( $args['description'] ),
 				'customize_selective_refresh' => true,
 			);
-			parent::__construct( $widget_key, esc_html_x( 'Recent Posts', 'widget name', '@@textdomain' ), $widget_ops );
-			$this->alt_option_name = 'sixa_recent_posts';
-			$this->defaults        = array(
+			$widget_defaults     = array(
 				'title'       => __( 'Recent Posts', '@@textdomain' ),
 				'number'      => 4,
 				'show_date'   => 0,
 				'show_author' => 0,
 				'show_thumb'  => 0,
 			);
+			parent::__construct( $widget_key, esc_html( $args['label'] ), $widget_ops );
+			$this->alt_option_name = 'sixa_recent_posts';
+			$this->defaults        = wp_parse_args( $args['defaults'], $widget_defaults );
 		}
 
 		/**

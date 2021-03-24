@@ -34,7 +34,7 @@ use SixaSnippets\Dashboard\Options;
 
 > Not passing a valid `parent_slug` argument while initializing the class object, will register the menu as a top-level page instead.
 
-## Example
+## Usage
 
 ```php
 add_action(

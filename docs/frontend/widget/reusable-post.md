@@ -34,7 +34,7 @@ use SixaSnippets\Frontend\Widget\Reusable_Post;
 			- *(integer) (Required)* Reusable post ID.
 			- *Default value: empty string*
 
-## Example
+## Usage
 
 ```php
 add_action(

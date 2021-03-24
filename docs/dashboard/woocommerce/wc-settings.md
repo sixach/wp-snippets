@@ -45,7 +45,7 @@ $options = get_option( WC_Settings::$key, array() );
 				- *(array) (Required)* List of the section specific fields.
 				- *Default value: empty array*
 
-## Example
+## Usage
 
 ```php
 add_filter(

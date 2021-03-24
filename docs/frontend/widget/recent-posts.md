@@ -43,7 +43,7 @@ use SixaSnippets\Frontend\Widget\Recent_Posts;
 			- *(bool) (Optional)* Whether to display post featured image.
 			- *Default value: `0 (false)`*
 
-## Example
+## Usage
 
 ```php
 add_action(

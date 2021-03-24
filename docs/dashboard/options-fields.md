@@ -33,7 +33,7 @@ $options = get_option( Options::$key, array() );
 - **callback**
     - *(callable) (Required)* Function that fills the field with the desired form inputs. The function should echo its output.
 
-## Example
+## Usage
 
 ```php
 add_action(

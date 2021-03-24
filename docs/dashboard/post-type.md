@@ -32,7 +32,7 @@ use SixaSnippets\Dashboard\Post_Type;
 	- **taxonomies**
 		- *(array) (Optional)* Attaching additional [taxonomy](dashboard/taxonomy.md) objects to this post type.
 
-## Example
+## Usage
 
 ```php
 add_action(

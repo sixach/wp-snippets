@@ -33,7 +33,7 @@ use SixaSnippets\Dashboard\Taxonomy;
 	- **args**
 		- *(array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_taxonomy/) from the original registration method could be overwritten as needed.
 
-## Example
+## Usage
 
 ```php
 add_action(

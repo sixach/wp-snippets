@@ -30,7 +30,7 @@ $options = get_option( Permalink::$key, array() );
 	- *(array) (Required)* List of controls for generating permalink base controls, where keys will be used in populating both input field `id` and `name` attributes, and values are the field labels.
 	- *Default value: empty array*
 
-## Example
+## Usage
 
 ```php
 add_action(

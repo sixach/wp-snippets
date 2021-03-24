@@ -30,7 +30,7 @@ $options = get_option( Reading::$key, array() );
 	- *(array) (Required)* List of controls for generating dropdown page controls, where keys will be used in populating both input field `id` and `name` attributes, and values are the field labels.
 	- *Default value: empty array*
 
-## Example
+## Usage
 
 ```php
 add_action(

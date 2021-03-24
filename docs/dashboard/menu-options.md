@@ -34,7 +34,7 @@ use SixaSnippets\Dashboard\Menu_Options;
     - **default**
         - *(string) (Optional)* The default value of the input field.
 
-## Example
+## Usage
 
 ```php
 add_action(

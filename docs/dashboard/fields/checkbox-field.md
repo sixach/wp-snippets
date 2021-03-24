@@ -48,7 +48,7 @@ use SixaSnippets\Dashboard\Options;
     - *(bool) (Optional)* Whether to echo or just return the output.
     - *Default value: `true`*
 
-## Example
+## Usage
 
 ```php
 Options::checkbox_field(

@@ -41,7 +41,7 @@ $meta = (array) $product->get_meta( Product_Data::$key, true );
 			- *Default value: empty array*
 			- *See available field types: [text](dashboard/fields/text-field.md), [textarea](dashboard/fields/textarea-field.md), [hidden](dashboard/fields/hidden-field.md), [select](dashboard/fields/select-field.md), [checkbox](dashboard/fields/checkbox-field.md), [radio](dashboard/fields/radio-field.md).*
 
-## Example
+## Usage
 
 ```php
 add_action(

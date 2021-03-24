@@ -29,7 +29,7 @@ use SixaSnippets\Frontend\Shortcode\Post;
 
 ```php
 add_action( 'init', function() {
-    add_shortcode( 'sixa_post', array( 'SixaSnippets\Frontend\Shortcode\Post', 'Run' ) );
+    add_shortcode( 'sixa_post', array( 'SixaSnippets\Frontend\Shortcode\Post', 'run' ) );
 } );
 ```
 

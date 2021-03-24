@@ -16,29 +16,39 @@
 		<div id="app"></div>
 		<script>
 			window.$docsify = {
-			  name: 'Sixa WP Snippets',
-			  auto2top: true,
-			  coverpage: false,
-			  loadSidebar: true,
-			  maxLevel: 4,
-			  subMaxLevel: 2,
-			  darklightTheme: {
-			        bodyFontSize : '17px',
-			        dark: {
-			            accent: '#FFB900',
-			            textColor: '#A0A5AA',
-			            blockQuoteColour : '#858585',
-			            highlightColor : '#DC3232',
-			            sidebarSublink : '#A0A5AA',
-			        },
-			        light: {
-			            accent: '#0073AA',
-			            blockQuoteColor : '#858585',
-			            highlightColor : '#DC3232',
-			            sidebarSublink : '#A0A5AA',
-			        }
-			    }
+			name: 'Sixa WP Snippets',
+			auto2top: true,
+			coverpage: false,
+			loadSidebar: true,
+			maxLevel: 4,
+			subMaxLevel: 2,
+			formatUpdated: function( time ) {
+				return time;
+			},
+			plugins: [
+				function( hook ) {
+					hook.beforeEach( function( html ) {
+						return html + '\n\n----\n' + 'Last updated:  ' + '{docsify-updated}'
+					} )
+				}
+			],
+			darklightTheme: {
+				bodyFontSize: '17px',
+				dark: {
+					accent: '#FFB900',
+					textColor: '#A0A5AA',
+					blockQuoteColour: '#858585',
+					highlightColor: '#DC3232',
+					sidebarSublink: '#A0A5AA',
+				},
+				light: {
+					accent: '#0073AA',
+					blockQuoteColor: '#858585',
+					highlightColor: '#DC3232',
+					sidebarSublink: '#A0A5AA',
+				}
 			}
+		}
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
 		<script src="https://unpkg.com/docsify-copy-code@2"></script>

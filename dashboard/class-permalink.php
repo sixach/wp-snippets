@@ -49,16 +49,16 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $list     Permalink base list.
+		 * @param    array $args     Permalink base list.
 		 * @return   void
 		 */
-		public function __construct( $list = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
-			if ( ! is_array( $list ) || empty( $list ) ) {
+			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
 			}
 
-			self::$bases = $list;
+			self::$bases = $args;
 			$this->register();
 			$this->save();
 		}

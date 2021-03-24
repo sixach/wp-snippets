@@ -30,16 +30,16 @@ if ( ! class_exists( 'Post_Type' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $post_types     List of post type post-types to register.
+		 * @param    array $args     List of post type post-types to register.
 		 * @return   void
 		 */
-		public function __construct( $post_types = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, if there is no argument passed to register.
-			if ( empty( $post_types ) ) {
+			if ( empty( $args ) ) {
 				return;
 			}
 
-			$this->run( $post_types );
+			$this->run( $args );
 		}
 
 		/**

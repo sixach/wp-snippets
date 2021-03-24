@@ -28,16 +28,16 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $taxonomies     List of post type taxonomies to register.
+		 * @param    array $args     List of post type taxonomies to register.
 		 * @return   void
 		 */
-		public function __construct( $taxonomies = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, if there is no argument passed to register.
-			if ( empty( $taxonomies ) ) {
+			if ( empty( $args ) ) {
 				return;
 			}
 
-			$this->run( $taxonomies );
+			$this->run( $args );
 		}
 
 		/**

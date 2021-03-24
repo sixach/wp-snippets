@@ -46,16 +46,16 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $fieldset     Fieldset.
+		 * @param    array $args     Fieldset.
 		 * @return   void
 		 */
-		public function __construct( $fieldset = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
-			if ( ! is_array( $fieldset ) || empty( $fieldset ) ) {
+			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
 			}
 
-			self::$fields = $fieldset;
+			self::$fields = $args;
 			add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'register' ) );
 			add_action( 'save_post_nav_menu_item', array( $this, 'save' ) );
 		}

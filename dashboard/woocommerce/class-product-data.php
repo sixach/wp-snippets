@@ -46,16 +46,16 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $list     Product data setting arguments.
+		 * @param    array $args     Product data setting arguments.
 		 * @return   void
 		 */
-		public function __construct( $list = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
-			if ( ! is_array( $list ) || empty( $list ) ) {
+			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
 			}
 
-			self::$controls = $list;
+			self::$controls = $args;
 			add_action( 'woocommerce_product_data_tabs', array( $this, 'tabs' ) );
 			add_action( 'woocommerce_product_data_panels', array( $this, 'panels' ) );
 			add_action( 'woocommerce_admin_process_product_object', array( $this, 'save' ) );

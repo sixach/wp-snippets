@@ -49,16 +49,16 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $list     Dropdown list.
+		 * @param    array $args     Dropdown list.
 		 * @return   void
 		 */
-		public function __construct( $list = array() ) {
+		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
-			if ( ! is_array( $list ) || empty( $list ) ) {
+			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
 			}
 
-			self::$dropdowns = $list;
+			self::$dropdowns = $args;
 			$this->register();
 			add_filter( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 		}

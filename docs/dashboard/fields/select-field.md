@@ -49,7 +49,7 @@ use SixaSnippets\Dashboard\Options;
         - *(array) (Optional)* Attributes consist of two parts:
             - The attribute name should not contain any uppercase letters, and must be at least one character long after the prefix.
             - The attribute value can be any thing.
-- **$echo**
+- **echo**
     - *(bool) (Optional)* Whether to echo or just return the output.
     - *Default value: `true`*
 

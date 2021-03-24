@@ -7,7 +7,6 @@ SixaSnippets\Frontend\Widget\Recent_Posts( array $args = array() );
 ## Description
 
 This widget displays your most recent posts in the sidebar, making it easy for the readers to see what’s new on published on the blog.
-...
 
 ## Import
 
@@ -21,7 +20,7 @@ use SixaSnippets\Frontend\Widget\Recent_Posts;
 
 - **args**
     - **label**
-        - *(string) (Optional)* Formatted title of the field.
+        - *(string) (Optional)* Formatted label of the widget component.
 		- *Default value: `Recent Posts`*
 	- **description**
         - *(string) (Optional)* A help text will be shown below the widget title.
@@ -29,7 +28,7 @@ use SixaSnippets\Frontend\Widget\Recent_Posts;
 	- **defaults**
 		- *(array) (Optional)* Default values for the widget properties.
 		- **title**
-			- *(string) (Optional)* Formatted title of the widget.
+			- *(string) (Optional)* Widget title.
 			- *Default value: `Recent Posts`*
 		- **number**
 			- *(integer) (Required)* Total number of posts to retrieve and display.

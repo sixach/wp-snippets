@@ -12,20 +12,6 @@
 
 namespace SixaSnippets\Frontend\Shortcode;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Initialize the class to register the shortcode when needed:
- *
- * add_action( 'init', function() {
- *     add_shortcode( 'sixa_recent_posts', array( 'SixaSnippets\Frontend\Shortcode\Recent_Posts', 'Run' ) );
- * } );
- *
- * Note: Do not initialize this class before the `init` hook.
- * Usage: [sixa_recent_posts categories="31,32,40" number="4" show_date="1" show_author="1" show_thumb="1"]
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

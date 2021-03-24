@@ -10,6 +10,6 @@ This repository allows us to reuse initial functions and classes to make sure al
 
 ## Notes
 
-**Note 1**: Much of the functionality in this repository is intended to be optional depending on the needs of the project. E.g. `Breadcrumb` class.
+**Note 1**: Much of the functionality in this repository is intended to be optional depending on the needs of the project. E.g. [Breadcrumb](frontend/breadcrumb.md) class.
 
 **Note 2**: Presentation should be kept in the theme. Separating functionality from aesthetics makes long-term development, maintenance, and extensibility much easier.

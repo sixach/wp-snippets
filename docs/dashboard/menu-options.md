@@ -18,7 +18,7 @@ use SixaSnippets\Dashboard\Menu_Options;
 
 ## Parameters
 
-- **$args**
+- **args**
     - **type**
         - *(string) (Required)* Input field type.
         - *See available field types: [text](dashboard/fields/text-field.md), [textarea](dashboard/fields/textarea-field.md), [hidden](dashboard/fields/hidden-field.md), [select](dashboard/fields/select-field.md), [checkbox](dashboard/fields/checkbox-field.md), [radio](dashboard/fields/radio-field.md).*

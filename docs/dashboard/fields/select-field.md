@@ -20,7 +20,7 @@ use SixaSnippets\Dashboard\Options;
 
 ## Parameters
 
-- **$args**
+- **args**
     - **id**:
         - *(string) (Required)* Slug-name to identify the field. Used in the `id` attribute of tags.
     - **options**

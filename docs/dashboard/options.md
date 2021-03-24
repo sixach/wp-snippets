@@ -18,7 +18,7 @@ use SixaSnippets\Dashboard\Options;
 
 ## Parameters
 
-- **$args**
+- **args**
 	- **labels**
 	- *(array) (Optional)* An array of labels for the plugin options page.
 	- *Default value: empty array*

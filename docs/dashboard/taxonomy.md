@@ -18,7 +18,7 @@ use SixaSnippets\Dashboard\Taxonomy;
 
 ## Parameters
 
-- **$args**
+- **args**
 	- **key**:
         - *(string) (Required)* Taxonomy key, must not exceed 32 characters.
 	- **post_type**

@@ -18,7 +18,7 @@ use SixaSnippets\Dashboard\Post_Type;
 
 ## Parameters
 
-- **$args**
+- **args**
 	- **key**:
         - *(string) (Required)* Post type key. Must not exceed 20 characters and may only contain lowercase alphanumeric characters, dashes, and underscores.
 	- **singular_name**

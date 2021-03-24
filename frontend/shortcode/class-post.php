@@ -12,20 +12,6 @@
 
 namespace SixaSnippets\Frontend\Shortcode;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace(s) used in this file.
- * 2. Initialize the class to register the shortcode when needed:
- *
- * add_action( 'init', function() {
- *     add_shortcode( 'sixa_post', array( 'SixaSnippets\Frontend\Shortcode\Post', 'Run' ) );
- * } );
- *
- * Note: Do not initialize this class before the `init` hook.
- * Usage: [sixa_post id="1788" class="class-name"]
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

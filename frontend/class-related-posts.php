@@ -75,7 +75,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						}
 
 						// Title.
-						$return .= sprintf( '<a href="%s" class="%s__title" rel="bookmark">%s</a>', sanitize_html_class( self::$class ), esc_url( get_permalink( $post ) ), wp_kses_post( get_the_title( $post ) ) );
+						$return .= sprintf( '<a href="%s" class="%s__title" rel="bookmark">%s</a>', esc_url( get_permalink( $post ) ), sanitize_html_class( self::$class ), wp_kses_post( get_the_title( $post ) ) );
 
 						// Author.
 						if ( ! ! $show_author ) {

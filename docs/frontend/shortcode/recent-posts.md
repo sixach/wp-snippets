@@ -50,7 +50,7 @@ use SixaSnippets\Frontend\Shortcode\Recent_Posts;
         - `modified` — Order by last modified date.
         - `parent` — Order by post/page parent id.
         - `rand` — Random order.
-        - `comment_count` — Order by number of comments
+        - `comment_count` — Order by number of comments.
 
 ## Register
 

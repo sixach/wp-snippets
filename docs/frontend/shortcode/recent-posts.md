@@ -25,13 +25,13 @@ use SixaSnippets\Frontend\Shortcode\Recent_Posts;
     - *(array) (Optional)* Comma-separated list of category ids.
     - *Default value: empty array*
 - **show_date**
-    - *(bool) (Optional)* Whether to display post published date.
+    - *(integer|bool) (Optional)* Whether to display post published date.
     - *Default value: `0 (false)`*
 - **show_author**
-    - *(bool) (Optional)* Whether to display post author name.
+    - *(integer|bool) (Optional)* Whether to display post author name.
     - *Default value: `0 (false)`*
 - **show_thumb**
-    - *(bool) (Optional)* Whether to display post featured image.
+    - *(integer|bool) (Optional)* Whether to display post featured image.
     - *Default value: `0 (false)`*
 - **order**
     - *(string) (Optional)* States whether the product order is ascending `ASC` *(lowest to highest)* or descending `DESC` *(highest to lowest)*.

@@ -17,6 +17,7 @@
 - Frontend
 
   - [Breadcrumb](frontend/breadcrumb.md "Generate a list of breadcrumb trails")
+  - [Related Posts](frontend/related-posts.md "Generate a list of related posts")
   - **Shortcode**
       - [Post](frontend/shortcode/post.md "A single post based on given/selected post-id")
       - [Recent Posts](frontend/shortcode/recent-posts.md "A list of recent posts generated via custom shortcode attributes")

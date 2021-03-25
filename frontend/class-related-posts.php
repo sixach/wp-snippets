@@ -38,7 +38,19 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 
 			// Bail early, in case the query is NOT for an existing single post of any post type.
 			if ( is_singular() ) {
-				$get_posts = self::generate( $args );
+				$args = wp_parse_args(
+					$args,
+					array(
+						'show_date'   => 1,
+						'show_author' => 1,
+						'show_thumb'  => 1,
+					)
+				);
+
+				$show_date   = ( 1 === intval( $args['show_date'] ) || 'true' === $args['show_date'] ) ? true : false;
+				$show_author = ( 1 === intval( $args['show_author'] ) || 'true' === $args['show_author'] ) ? true : false;
+				$show_thumb  = ( 1 === intval( $args['show_thumb'] ) || 'true' === $args['show_thumb'] ) ? true : false;
+				$get_posts   = self::generate( $args );
 
 				// Bail early, if the query has no posts to loop over.
 				if ( is_array( $get_posts ) && ! empty( $get_posts ) ) {
@@ -48,7 +60,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						$return .= sprintf( '<li class="%s">', implode( ' ', get_post_class( '', $post ) ) );
 
 						// Thumbnail.
-						if ( has_post_thumbnail( $post ) ) {
+						if ( ! ! $show_thumb && has_post_thumbnail( $post ) ) {
 							$return .= sprintf( '<figure class="entry-thumbnail"><a href="%s">%s</a></figure>', esc_url( get_permalink( $post ) ), get_the_post_thumbnail( $post ) );
 						}
 
@@ -56,11 +68,15 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						$return .= sprintf( '<a href="%s" class="entry-title" rel="bookmark">%s</a>', esc_url( get_permalink( $post ) ), wp_kses_post( get_the_title( $post ) ) );
 
 						// Author.
-						/* translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag. */
-						$return .= sprintf( _x( '%1$sby %2$s%3$s', 'related posts', '@@textdomain' ), '<span class="post-author">', sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ), get_the_author_meta( 'display_name', $post->post_author ) ), '</span>' );
+						if ( ! ! $show_author ) {
+							/* translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag. */
+							$return .= sprintf( _x( '%1$sby %2$s%3$s', 'related posts', '@@textdomain' ), '<span class="post-author">', sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ), get_the_author_meta( 'display_name', $post->post_author ) ), '</span>' );
+						}
 
 						// Date.
-						$return .= sprintf( '<a href="%s" rel="bookmark"><time class="entry-date published" datetime="%s">%s</time></a>', esc_url( get_permalink( $post ) ), esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
+						if ( ! ! $show_date ) {
+							$return .= sprintf( '<a href="%s" rel="bookmark"><time class="entry-date published" datetime="%s">%s</time></a>', esc_url( get_permalink( $post ) ), esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
+						}
 
 						$return .= '</li>';
 					}

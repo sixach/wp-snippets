@@ -12,20 +12,6 @@
 
 namespace SixaSnippets\Frontend;
 
-/**
- * INSTRUCTIONS:
- *
- * 1. Update the namespace used above.
- * 2. Search and replace text-domains `@@textdomain`.
- * 3. Initialize the class to output the generated trails when needed:
- *
- * $breadcrumb = new Breadcrumb();
- * $breadcrumb->run();
- *
- * Note: This class could generate WooCommerce specific trails as well.
- * Note 2: Best place to initialize this class is inside a template hook.
- */
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

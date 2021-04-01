@@ -9,6 +9,7 @@
  *
  * @package    sixa-snippets
  * @subpackage sixa-snippets/dashboard
+ * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
 namespace SixaSnippets\Dashboard\WooCommerce;

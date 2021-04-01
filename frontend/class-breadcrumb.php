@@ -8,6 +8,7 @@
  *
  * @package    sixa-snippets
  * @subpackage sixa-snippets/frontend
+ * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
 namespace SixaSnippets\Frontend;

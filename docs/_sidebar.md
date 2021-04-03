@@ -23,7 +23,8 @@
       - [Recent Posts](frontend/shortcode/recent-posts.md "A list of recent posts generated via custom shortcode attributes")
   - **Widget**
       - [Recent Posts](frontend/widget/recent-posts.md "Output a list of most recent published posts")
-      - [Reusable Post](frontend/widget/reusable-post.md "Output a selected reusable-post content on the page")
+      - [Reusable Post](frontend/widget/reusable-post.md "Output a selected reusable-post content on the sidebar")
+      - [Social Network](frontend/widget/social-network.md "Output a list of social network icons on the sidebar")
 
 - Fields
 

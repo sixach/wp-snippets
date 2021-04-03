@@ -35,7 +35,7 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
 			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Social Network', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a simple social media icons in your sidebars.', 'widget description', '@@textdomain' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a list of social media link icons in your sidebar.', 'widget description', '@@textdomain' );
 			$widget_key          = 'sixa-social-network';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),

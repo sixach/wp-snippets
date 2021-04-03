@@ -32,7 +32,7 @@ use SixaSnippets\Frontend\Widget\Social_Network;
 			- *Default value: empty string*
 		- **target**
 			- *(integer) (Optional)* Whether to open linked address(es) in a new window/tab.
-			- *Default value: `0`*
+			- *Default value: `0 (false)`*
 
 ## Usage
 

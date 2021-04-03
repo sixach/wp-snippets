@@ -22,6 +22,7 @@
       - [Post](frontend/shortcode/post.md "A single post based on given/selected post-id")
       - [Recent Posts](frontend/shortcode/recent-posts.md "A list of recent posts generated via custom shortcode attributes")
   - **Widget**
+      - [Contact Info](frontend/widget/contact-info.md "Output a link to your location, and contact information")
       - [Recent Posts](frontend/widget/recent-posts.md "Output a list of most recent published posts")
       - [Reusable Post](frontend/widget/reusable-post.md "Output a selected reusable-post content on the sidebar")
       - [Social Network](frontend/widget/social-network.md "Output a list of social network icons on the sidebar")

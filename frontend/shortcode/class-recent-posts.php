@@ -162,7 +162,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 							$trimmed_excerpt = get_the_excerpt( $post );
 							$readmore        = '';
 
-							if ( has_excerpt( $post ) ) {
+							if ( $atts['excerpt_length'] < count( explode( ' ', get_the_content( '', '', $post ) ) ) ) {
 								/* translators: 1: Open anchor link, 2: Close anchor tag.  */
 								$readmore = sprintf( esc_html__( '%1$sRead more%2$s', '@@textdomain' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
 							}

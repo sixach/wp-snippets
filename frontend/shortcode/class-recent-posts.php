@@ -36,7 +36,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 			$atts = shortcode_atts(
 				array(
 					'class'                      => '',
-					'categories'                 => '',
+					'categories'                 => array(),
 					'selected_author'            => '',
 					'number'                     => 5,
 					'display_post_content'       => 0,
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 			);
 
 			if ( ! empty( $atts['categories'] ) ) {
-				$query_args['category__in'] = array_column( $atts['categories'], 'id' );
+				$query_args['category__in'] = explode( ',', $atts['categories'] );
 			}
 			if ( ! empty( $atts['selected_author'] ) ) {
 				$query_args['author'] = $atts['selected_author'];
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 
 						if ( ! empty( $author_display_name ) ) {
 							$return .= sprintf(
-								'<div class="%s">%1$s</div>',
+								'<div class="%1$s">%2$s</div>',
 								sprintf( '%s__post-author', sanitize_html_class( $class ) ),
 								esc_html( $byline )
 							);
@@ -171,7 +171,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 								'<div class="%1$s">%2$s%3$s</div>',
 								sprintf( '%s__post-excerpt', sanitize_html_class( $class ) ),
 								get_the_excerpt( $post ),
-								$readmore,
+								$readmore
 							);
 						} else {
 							$return .= sprintf(

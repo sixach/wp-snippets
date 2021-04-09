@@ -69,7 +69,7 @@ if ( ! class_exists( 'FAQ' ) ) :
 			}
 
 			$return    = '';
-			$class     = empty( $atts['class'] ) ? sprintf( 'wp-block-sixa-faq' ) : '';
+			$class     = empty( $atts['class'] ) ? 'wp-block-sixa-faq' : '';
 			$get_posts = get_posts( $query_args );
 			// Bail early, if the query has no posts to loop over.
 			if ( is_array( $get_posts ) && ! empty( $get_posts ) ) {

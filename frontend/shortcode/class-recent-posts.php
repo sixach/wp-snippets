@@ -44,6 +44,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 					'excerpt_length'             => 55,
 					'display_author'             => 0,
 					'display_post_date'          => 0,
+					'display_categories'         => 1,
 					'columns'                    => 3,
 					'order'                      => 'desc',
 					'order_by'                   => 'date',
@@ -92,7 +93,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 				$return = '';
 
 				foreach ( $get_posts as $post ) {
-					$return .= sprintf( '<div class="%s">', implode( ' ', get_post_class( '', $post ) ) );
+					$return .= sprintf( '<div class="%s__post %s">', sanitize_html_class( $class ), implode( ' ', get_post_class( '', $post ) ) );
 
 					// Thumbnail.
 					if ( $atts['display_featured_image'] && has_post_thumbnail( $post ) ) {
@@ -148,7 +149,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 					// Date.
 					if ( isset( $atts['display_post_date'] ) && $atts['display_post_date'] ) {
 						$return .= sprintf(
-							'<time datetime="%1$s" class="%2$s">%3$s</time>',
+							'<time class="%1$s" datetime="%2$s">%3$s</time>',
 							sprintf( '%s__post-date', sanitize_html_class( $class ) ),
 							esc_attr( get_the_date( 'c', $post ) ),
 							esc_html( get_the_date( '', $post ) )
@@ -180,6 +181,14 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 								wp_kses_post( html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
 							);
 						}
+					}
+
+					if ( isset( $atts['display_featured_image'] ) && $atts['display_featured_image'] ) {
+						$return .= sprintf(
+							'<div class="%s__post-categories">%s</div>',
+							sanitize_html_class( $class ),
+							get_the_category_list( ' ', '', $post->ID )
+						);
 					}
 
 					$return .= '</div>';

@@ -183,7 +183,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 						}
 					}
 
-					if ( isset( $atts['display_featured_image'] ) && $atts['display_featured_image'] ) {
+					if ( $atts['display_featured_image'] ) {
 						$return .= sprintf(
 							'<div class="%s__post-categories">%s</div>',
 							sanitize_html_class( $class ),

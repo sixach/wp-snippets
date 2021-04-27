@@ -54,6 +54,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						'show_author'     => 1,
 						'show_thumb'      => 1,
 						'show_categories' => 1,
+						'show_excerpt'    => 1,
 					)
 				);
 
@@ -61,6 +62,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 				$show_author     = ( 1 === intval( $args['show_author'] ) || 'true' === $args['show_author'] ) ? true : false;
 				$show_thumb      = ( 1 === intval( $args['show_thumb'] ) || 'true' === $args['show_thumb'] ) ? true : false;
 				$show_categories = ( 1 === intval( $args['show_categories'] ) || 'true' === $args['show_categories'] ) ? true : false;
+				$show_excerpt    = ( 1 === intval( $args['show_excerpt'] ) || 'true' === $args['show_excerpt'] ) ? true : false;
 				$get_posts       = self::generate( $args );
 
 				// Bail early, if the query has no posts to loop over.
@@ -92,6 +94,11 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						// Categories.
 						if ( ! ! $show_categories && is_single() ) {
 							$return .= sprintf( '<div class="%s__categories">%s</div>', sanitize_html_class( self::$class ), get_the_category_list() );
+						}
+
+						// Excerpt.
+						if ( ! ! $show_excerpt ) {
+							$return .= sprintf( '<div class="%s__excerpt">%s</div>', sanitize_html_class( self::$class ), wpautop( get_the_excerpt( $post ) ) );
 						}
 
 						$return .= '</li>';

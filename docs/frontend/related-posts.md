@@ -36,6 +36,9 @@ use SixaSnippets\Frontend\Related_Posts;
 - **show_categories**
     - *(integer|bool) (Optional)* Whether to display blog post category list.
     - *Default value: `1 (true)`*
+- **show_excerpt**
+    - *(integer|bool) (Optional)* Whether to display blog post excerpt.
+    - *Default value: `1 (true)`*
 - **order**
     - *(string) (Optional)* States whether the product order is ascending `ASC` *(lowest to highest)* or descending `DESC` *(highest to lowest)*.
     - *Default value: `desc`*

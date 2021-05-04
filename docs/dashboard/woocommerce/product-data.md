@@ -39,7 +39,7 @@ $meta = (array) $product->get_meta( Product_Data::$key, true );
 		- **fields**:
 			- *(array) (Required)* Panel tab fields.
 			- *Default value: empty array*
-			- *See available field types: [text](../../../src/Dashboard/fields/text-field.md), [textarea](../../../src/Dashboard/fields/textarea-field.md), [hidden](../../../src/Dashboard/fields/hidden-field.md), [select](../../../src/Dashboard/fields/select-field.md), [checkbox](../../../src/Dashboard/fields/checkbox-field.md), [radio](../../../src/Dashboard/fields/radio-field.md).*
+			- *See available field types: [text](fields/text-field.md), [textarea](ields/textarea-field.md), [hidden](fields/hidden-field.md), [select](fields/select-field.md), [checkbox](fields/checkbox-field.md), [radio](fields/radio-field.md).*
 
 ## Usage
 

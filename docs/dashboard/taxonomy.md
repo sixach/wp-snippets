@@ -6,7 +6,7 @@ SixaSnippets\Dashboard\Taxonomy( array $args = array() );
 
 ## Description
 
-A simple wrapper function for creating a taxonomy object based on the parameters given, and attaching it to a list of [post types](../../src/Dashboard/post-type.md).
+A simple wrapper function for creating a taxonomy object based on the parameters given, and attaching it to a list of [post types](dashboard/post-type.md).
 
 ## Import
 

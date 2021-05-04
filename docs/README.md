@@ -29,8 +29,9 @@ package from GitHub.
 }
 ```
 
-The repository can be installed from *tagged* as well as *untagged* branches. A tagged
-branch is typically a release branch, e.g. `1.0.0`, `1.0.0-beta`, and so on.
+The repository can be installed from [*tagged*](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+as well as *untagged* branches. A tagged branch is typically a release branch, 
+e.g. `1.0.0`, `1.0.0-beta`, and so on.
 An untagged branch uses the name of the branch prefixed with `dev-` as its version.
 For instance, to use the `main` branch, you need to use version `dev-main` in your
 dependency in your `composer.json` (see example above).

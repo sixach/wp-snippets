@@ -35,7 +35,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
 			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Reusable Post', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s recent blog posts.', 'widget description', '@@textdomain' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s reusable blocks post.', 'widget description', '@@textdomain' );
 			$widget_key          = 'sixa-reusable-post';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),

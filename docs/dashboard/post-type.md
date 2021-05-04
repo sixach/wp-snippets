@@ -6,7 +6,7 @@ SixaSnippets\Dashboard\Post_Type( array $args = array() );
 
 ## Description
 
-A simple wrapper function for registering a custom post type object based on the parameters given. Also, any taxonomy connections should be registered via the [taxonomies](dashboard/taxonomy.md) argument to ensure consistency when hooks such as `parse_query` or `pre_get_posts` are used.
+A simple wrapper function for registering a custom post type object based on the parameters given. Also, any taxonomy connections should be registered via the [taxonomies](../../src/Dashboard/taxonomy.md) argument to ensure consistency when hooks such as `parse_query` or `pre_get_posts` are used.
 
 ## Import
 
@@ -30,7 +30,7 @@ use SixaSnippets\Dashboard\Post_Type;
 	- **args**
 		- *(array) (Optional)* [All the parameters](http://developer.wordpress.org/reference/functions/register_post_type/) from the original registration method could be overwritten as needed.
 	- **taxonomies**
-		- *(array) (Optional)* Attaching additional [taxonomy](dashboard/taxonomy.md) objects to this post type.
+		- *(array) (Optional)* Attaching additional [taxonomy](../../src/Dashboard/taxonomy.md) objects to this post type.
 
 ## Usage
 

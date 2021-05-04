@@ -36,6 +36,22 @@ An untagged branch uses the name of the branch prefixed with `dev-` as its versi
 For instance, to use the `main` branch, you need to use version `dev-main` in your
 dependency in your `composer.json` (see example above).
 
+## Installation in production
+
+If this package is used, it will also be required in production. 
+For installation in production, use
+
+```
+composer install --no-dev -o
+```
+
+The ``--no-dev`` flag will make sure we are only installing packages that are
+required in production.
+
+The `-o` flag will optimize PSR-4 autoloading with a classmap.
+
+See the [official Composer documentation](https://getcomposer.org/doc/03-cli.md#install-i) for details.
+
 ## Notes
 
 **Note 1**: Much of the functionality in this repository is intended to be optional depending on the needs of the project. E.g. [Breadcrumb](frontend/breadcrumb.md) class.

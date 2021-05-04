@@ -44,7 +44,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 			);
 			$widget_defaults     = array(
 				'title'     => '',
-				'post_id'   => '',
+				'post_id'   => 'no', // The falsy string value added to avoid `get_post` method pulling the global post object instead.
 			);
 			parent::__construct( $widget_key, esc_html( $args['label'] ), $widget_ops );
 			$this->alt_option_name = 'sixa_reusable_post';
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 		public function update( $new_instance, $old_instance ) {
 			$instance            = $old_instance;
 			$instance['title']   = sanitize_text_field( $new_instance['title'] );
-			$instance['post_id'] = intval( $new_instance['post_id'] );
+			$instance['post_id'] = sanitize_text_field( $new_instance['post_id'] );
 			return $instance;
 		}
 
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 		public function form( $instance ) {
 			$instance = wp_parse_args( $instance, $this->defaults );
 			$title    = isset( $instance['title'] ) ? $instance['title'] : '';
-			$post_id  = isset( $instance['post_id'] ) ? intval( $instance['post_id'] ) : 0;
+			$post_id  = isset( $instance['post_id'] ) ? $instance['post_id'] : $this->defaults['post_id'];
 			$posts    = wp_list_pluck(
 				get_posts(
 					apply_filters(
@@ -134,7 +134,7 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 					<?php echo esc_html_x( 'Post:', 'widget form', '@@textdomain' ); ?>
 				</label>
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_id' ) ); ?>">
-					<option value="">
+					<option value="<?php echo esc_attr( $this->defaults['post_id'] ); ?>">
 							<?php echo esc_html_x( '&mdash; Select &mdash;', 'placeholder', '@@textdomain' ); ?>
 					</option>
 					<?php foreach ( $posts as $key => $value ) : ?>

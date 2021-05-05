@@ -1,5 +1,5 @@
 {
-	"name": "sixa/sixa-snippets",
+	"name": "sixa/wp-snippets",
 	"type": "wordpress-plugin",
 	"description": "A plugin containing factory classes or methods for the Sixa projects.",
 	"keywords": [
@@ -32,5 +32,10 @@
 		"lint:wpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
 		"lint:php": "@php ./vendor/bin/parallel-lint --exclude .git --exclude vendor --exclude node_modules .",
 		"make-pot": "wp i18n make-pot . languages/@@textdomain.pot --exclude=build"
+	},
+	"autoload": {
+		"psr-4": {
+			"SixaSnippets\\": "src/"
+		}
 	}
 }

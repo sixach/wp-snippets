@@ -1,5 +1,23 @@
 {
-  "extends": [
-    "config:base"
-  ]
+	"extends": [ "config:base" ],
+	"lockFileMaintenance": { "enabled": true },
+	"ignoreDeps": [ "husky" ],
+	"schedule": [ "before 3am on wednesday" ],
+	"composer": {
+		"enabled": false
+	},
+	"labels": [ "type: dependencies", "skip-changelog" ],
+	"packageRules": [
+		{
+			"updateTypes": ["minor", "patch", "pin", "digest"],
+			"automerge": true,
+			"requiredStatusChecks": null
+		},
+		{
+			"updateTypes": [ "major", "minor", "patch", "pin", "digest" ],
+			"depTypeList": [ "devDependencies" ],
+			"automerge": true
+		}
+	],
+	"rebaseWhen": "conflicted"
 }

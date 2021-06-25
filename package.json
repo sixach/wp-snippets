@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "A plugin containing factory classes or methods for the Sixa projects.",
 	"keywords": [
-		"photo",
+		"factory",
 		"php",
 		"snippet",
 		"utils"

@@ -4,7 +4,7 @@
  *
  * @link       https://sixa.ch
  * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @since      1.1.0
  *
  * @package    sixa-snippets
  * @subpackage sixa-snippets/frontend
@@ -28,18 +28,21 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 		/**
 		 * CSS class name.
 		 *
-		 * @access   private
-		 * @var      string    $class    CSS class name used for this component.
+		 * @access    private
+		 * @var       string $class    CSS class name used for this component.
 		 */
 		private static $class = 'sixa-related-posts';
 
 		/**
 		 * Run this class and output generated posts on the page.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $args     Post query arguments.
-		 * @param    boolean $echo     Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @since     1.1.0
+		 *            Added `sixa_related_posts_before_post` and `sixa_related_posts_before_post` actions
+		 *            Added `show_readmore` to display readmore button
+		 * @param     array   $args    Post query arguments.
+		 * @param     boolean $echo    Optional. Echo the output or return it.
+		 * @return    string
 		 */
 		public static function run( $args = array(), $echo = true ) {
 			/* translators: 1: Open `div` tag, 2: Close H3 tag. */
@@ -55,6 +58,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						'show_thumb'      => 1,
 						'show_categories' => 1,
 						'show_excerpt'    => 1,
+						'show_readmore'   => 0,
 					)
 				);
 
@@ -72,8 +76,10 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 					foreach ( $get_posts as $post ) {
 						$return .= sprintf( '<li class="%s">', implode( ' ', get_post_class( '', $post ) ) );
 
+						do_action( 'sixa_related_posts_before_post', $post );
+
 						// Thumbnail.
-						if ( ! ! $show_thumb && has_post_thumbnail( $post ) ) {
+						if ( $show_thumb && has_post_thumbnail( $post ) ) {
 							$return .= sprintf( '<figure class="%s__thumbnail"><a href="%s">%s</a></figure>', sanitize_html_class( self::$class ), esc_url( get_permalink( $post ) ), get_the_post_thumbnail( $post ) );
 						}
 
@@ -81,25 +87,33 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						$return .= sprintf( '<a href="%s" class="%s__title" rel="bookmark">%s</a>', esc_url( get_permalink( $post ) ), sanitize_html_class( self::$class ), wp_kses_post( get_the_title( $post ) ) );
 
 						// Author.
-						if ( ! ! $show_author ) {
+						if ( $show_author ) {
 							/* translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag. */
 							$return .= sprintf( _x( '%1$sby %2$s%3$s', 'related posts', '@@textdomain' ), sprintf( '<span class="%s__author">', sanitize_html_class( self::$class ) ), sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ), get_the_author_meta( 'display_name', $post->post_author ) ), '</span>' );
 						}
 
 						// Date.
-						if ( ! ! $show_date ) {
+						if ( $show_date ) {
 							$return .= sprintf( '<time class="%s__date published" datetime="%s">%s</time>', sanitize_html_class( self::$class ), esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() ) );
 						}
 
 						// Categories.
-						if ( ! ! $show_categories && is_single() ) {
+						if ( $show_categories && is_single() ) {
 							$return .= sprintf( '<div class="%s__categories">%s</div>', sanitize_html_class( self::$class ), get_the_category_list() );
 						}
 
 						// Excerpt.
-						if ( ! ! $show_excerpt ) {
+						if ( $show_excerpt ) {
 							$return .= sprintf( '<div class="%s__excerpt">%s</div>', sanitize_html_class( self::$class ), wpautop( get_the_excerpt( $post ) ) );
 						}
+
+						// Read more.
+						if ( $show_readmore ) {
+							/* translators: 1: Open anchor link, 2: Close anchor tag.  */
+							$return .= sprintf( esc_html__( '%1$sRead more%2$s', '@@textdomain' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
+						}
+
+						do_action( 'sixa_related_posts_after_post', $post );
 
 						$return .= '</li>';
 					}
@@ -120,9 +134,9 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 		/**
 		 * Generate posts query.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Post query arguments.
-		 * @return   bool|WP_Post
+		 * @since     1.0.0
+		 * @param     array $args    Post query arguments.
+		 * @return    bool|WP_Post
          * @phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		 */
 		public static function generate( $args = array() ) {
@@ -133,12 +147,12 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 				apply_filters(
 					'sixa_related_posts_query_args',
 					array(
-						'number'        => 3,
-						'orderby'       => 'date',
-						'order'         => 'desc',
-						'taxonomy'      => 'category',
-						'post_id'       => ! empty( $post ) ? $post->ID : '',
-						'post_type'     => ! empty( $post ) ? $post->post_type : 'post',
+						'number'    => 3,
+						'orderby'   => 'date',
+						'order'     => 'desc',
+						'taxonomy'  => 'category',
+						'post_id'   => ! empty( $post ) ? $post->ID : '',
+						'post_type' => ! empty( $post ) ? $post->post_type : 'post',
 					)
 				)
 			);
@@ -158,16 +172,16 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 				apply_filters(
 					'sixa_related_posts_query_args',
 					array(
-						'post__not_in'      => array( $args['post_id'] ),
-						'post_type'         => $args['post_type'],
-						'posts_per_page'    => $args['number'],
-						'orderby'           => $args['orderby'],
-						'order'             => $args['order'],
-						'tax_query'         => array(
+						'post__not_in'   => array( $args['post_id'] ),
+						'post_type'      => $args['post_type'],
+						'posts_per_page' => $args['number'],
+						'orderby'        => $args['orderby'],
+						'order'          => $args['order'],
+						'tax_query'      => array(
 							array(
-								'field'     => 'term_id',
-								'terms'     => $taxonomies,
-								'taxonomy'  => $args['taxonomy'],
+								'field'    => 'term_id',
+								'terms'    => $taxonomies,
+								'taxonomy' => $args['taxonomy'],
 							),
 						),
 					)

@@ -76,8 +76,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 
 					foreach ( $get_posts as $post ) {
 						$return .= sprintf( '<li class="%s">', implode( ' ', get_post_class( '', $post ) ) );
-
-						do_action( 'sixa_related_posts_before_post', $post );
+						$return .= apply_filters( 'sixa_related_posts_before_post', __return_empty_string(), $post );
 
 						// Thumbnail.
 						if ( $show_thumb && has_post_thumbnail( $post ) ) {
@@ -114,8 +113,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 							$return .= sprintf( esc_html__( '%1$sRead more%2$s', '@@textdomain' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
 						}
 
-						do_action( 'sixa_related_posts_after_post', $post );
-
+						$return .= apply_filters( 'sixa_related_posts_after_post', __return_empty_string(), $post );
 						$return .= '</li>';
 					}
 

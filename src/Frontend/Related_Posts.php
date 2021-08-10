@@ -67,6 +67,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 				$show_thumb      = ( 1 === intval( $args['show_thumb'] ) || 'true' === $args['show_thumb'] ) ? true : false;
 				$show_categories = ( 1 === intval( $args['show_categories'] ) || 'true' === $args['show_categories'] ) ? true : false;
 				$show_excerpt    = ( 1 === intval( $args['show_excerpt'] ) || 'true' === $args['show_excerpt'] ) ? true : false;
+				$show_readmore   = ( 1 === intval( $args['show_readmore'] ) || 'true' === $args['show_readmore'] ) ? true : false;
 				$get_posts       = self::generate( $args );
 
 				// Bail early, if the query has no posts to loop over.

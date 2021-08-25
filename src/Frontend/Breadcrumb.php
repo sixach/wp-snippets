@@ -2,12 +2,12 @@
 /**
  * The file generates a list of breadcrumb trails.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,18 +28,18 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Breadcrumb trail.
 		 *
-		 * @access   protected
-		 * @var      array    $crumbs    List of breadcrumbs trail.
+		 * @access    protected
+		 * @var       array        $crumbs    List of breadcrumbs trail.
 		 */
 		protected $crumbs = array();
 
 		/**
 		 * Add a crumb so we don't get lost.
 		 *
-		 * @since    1.0.0
-		 * @param    string $name    Name.
-		 * @param    string $link    Link.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     string    $name    Name.
+		 * @param     string    $link    Link.
+		 * @return    void
 		 */
 		public function add_crumb( $name, $link = '' ) {
 			$this->crumbs[] = array(
@@ -51,8 +51,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Reset crumbs.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function reset() {
 			$this->crumbs = array();
@@ -61,8 +61,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Get the breadcrumb.
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		public function get_breadcrumb() {
 			return apply_filters( 'sixa_get_breadcrumb', $this->crumbs, $this );
@@ -71,8 +71,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Generate breadcrumb trail.
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		public function generate() {
 			$conditionals = array(
@@ -112,8 +112,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Prepend the shop page to shop breadcrumbs.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function prepend_shop_page() {
 			// Proceed if the given function has been defined.
@@ -132,8 +132,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Is home trail?
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_home() {
 			$this->add_crumb( single_post_title( '', false ) );
@@ -142,8 +142,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * 404 trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_404() {
 			$this->add_crumb( _x( 'Error 404', 'breadcrumb', '@@textdomain' ) );
@@ -152,8 +152,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Attachment trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_attachment() {
 			global $post;
@@ -165,10 +165,10 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Single post trail.
 		 *
-		 * @since    1.0.0
-		 * @param    int    $post_id         Post ID.
-		 * @param    string $permalink       Post permalink.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     int       $post_id      Post ID.
+		 * @param     string    $permalink    Post permalink.
+		 * @return    void
 		 */
 		protected function add_crumbs_single( $post_id = 0, $permalink = '' ) {
 			if ( ! $post_id ) {
@@ -224,8 +224,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Page trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_page() {
 			global $post;
@@ -254,8 +254,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Product category trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_product_category() {
 			$current_term = $GLOBALS['wp_query']->get_queried_object();
@@ -268,8 +268,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Product tag trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_product_tag() {
 			$current_term = $GLOBALS['wp_query']->get_queried_object();
@@ -283,8 +283,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Shop breadcrumb.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_shop() {
 			if ( intval( get_option( 'page_on_front' ) ) === wc_get_page_id( 'shop' ) ) {
@@ -304,8 +304,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Post type archive trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_post_type_archive() {
 			$post_type = get_post_type_object( get_post_type() );
@@ -318,8 +318,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Category trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_category() {
 			$this_category = get_category( $GLOBALS['wp_query']->get_queried_object() );
@@ -334,8 +334,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Tag trail.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_tag() {
 			$queried_object = $GLOBALS['wp_query']->get_queried_object();
@@ -347,8 +347,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add crumbs for date based archives.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_date() {
 			if ( is_year() || is_month() || is_day() ) {
@@ -365,8 +365,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add crumbs for taxonomies.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_tax() {
 			$this_term = $GLOBALS['wp_query']->get_queried_object();
@@ -384,8 +384,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add a breadcrumb for author archives.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function add_crumbs_author() {
 			global $author;
@@ -399,10 +399,10 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add crumbs for a term.
 		 *
-		 * @since    1.0.0
-		 * @param    int    $term_id     Term ID.
-		 * @param    string $taxonomy    Taxonomy.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     int       $term_id     Term ID.
+		 * @param     string    $taxonomy    Taxonomy.
+		 * @return    void
 		 */
 		protected function term_ancestors( $term_id, $taxonomy ) {
 			$ancestors = get_ancestors( $term_id, $taxonomy );
@@ -420,8 +420,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * WooCommerce my-account endpoints.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function endpoint_trail() {
 			if ( function_exists( 'is_wc_endpoint_url' ) && ! ! is_wc_endpoint_url() ) {
@@ -436,8 +436,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add a breadcrumb for search results.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function search_trail() {
 			if ( is_search() ) {
@@ -449,8 +449,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Add a breadcrumb for pagination.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function paged_trail() {
 			if ( get_query_var( 'paged' ) ) {
@@ -467,8 +467,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Breadcrumb markup arguments.
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		protected function crumb_args() {
 			$args = apply_filters(
@@ -489,9 +489,9 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Run this class and output generated crumbs on the page.
 		 *
-		 * @since    1.0.0
-		 * @param    boolean $echo    Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     boolean    $echo    Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public function run( $echo = true ) {
 			$return = '';

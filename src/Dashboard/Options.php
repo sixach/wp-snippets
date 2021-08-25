@@ -2,12 +2,12 @@
 /**
  * The file registers a plugin’s options page.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,27 +28,27 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Name of the option.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the option to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_options';
 
 		/**
 		 * The slug-name of the settings page.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $slug     The slug-name of the settings page on which to show the section.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $slug    The slug-name of the settings page on which to show the section.
 		 */
 		public static $slug = 'sixa-settings';
 
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Plugin setting arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Plugin setting arguments.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			$labels      = isset( $args['labels'] ) ? $args['labels'] : array();
@@ -61,10 +61,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Registers a top or submenu level menu page.
 		 *
-		 * @since    1.0.0
-		 * @param    array $labels          The text to be displayed in the title and menu.
-		 * @param    array $parent_slug     Optional. The slug name for the parent menu.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $labels         The text to be displayed in the title and menu.
+		 * @param     array    $parent_slug    Optional. The slug name for the parent menu.
+		 * @return    void
 		 */
 		protected function register( $labels, $parent_slug ) {
 			$method     = 'add_menu_page';
@@ -83,8 +83,8 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * The function to be called to output the content for this page.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function render() {
 			?>
@@ -109,8 +109,8 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Register plugin page setting and its data.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		protected function fieldset() {
 			register_setting(
@@ -132,9 +132,9 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Callback function that sanitizes the option's value.
 		 *
-		 * @since    1.0.0
-		 * @param    array $fieldset     Plugin setting options.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array    $fieldset    Plugin setting options.
+		 * @return    array
 		 */
 		public static function sanitize( $fieldset ) {
 			return array_map( 'sanitize_text_field', $fieldset );
@@ -143,13 +143,13 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Add a new field to a section of a settings page.
 		 *
-		 * @since    1.0.0
-		 * @param    string   $id           Slug-name to identify the field.
-		 * @param    string   $title        Formatted title of the field.
-		 * @param    callable $callback     Function that fills the field with the desired form inputs.
-		 * @param    string   $page         Optional. The slug-name of the settings page on which to show the section.
-		 * @param    string   $section      Optional. The slug-name of the section of the settings page in which to show the box.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     string      $id          Slug-name to identify the field.
+		 * @param     string      $title       Formatted title of the field.
+		 * @param     callable    $callback    Function that fills the field with the desired form inputs.
+		 * @param     string      $page        Optional. The slug-name of the settings page on which to show the section.
+		 * @param     string      $section     Optional. The slug-name of the section of the settings page in which to show the box.
+		 * @return    void
 		 */
 		public static function add_field( $id = null, $title = null, $callback = null, $page = null, $section = null ) {
 			// Bail early, in case all required arguments are not being provided.
@@ -168,9 +168,9 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Implode and escape HTML attributes for output.
 		 *
-		 * @since    1.0.0
-		 * @param    array $raw_attributes     Attribute name value pairs.
-		 * @return   string
+		 * @since     1.0.0
+		 * @param     array     $raw_attributes    Attribute name value pairs.
+		 * @return    string
 		 */
 		public static function implode_html_attributes( $raw_attributes ) {
 			$attributes = array();
@@ -184,10 +184,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output a hidden input box.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function hidden_field( $field, $echo = true ) {
 			$return         = '';
@@ -206,10 +206,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output a text input box.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function text_field( $field, $echo = true ) {
 			$return                     = '';
@@ -242,10 +242,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output a textarea input box.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function textarea_field( $field, $echo = true ) {
 			$return                     = '';
@@ -279,10 +279,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output a checkbox input.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function checkbox_field( $field, $echo = true ) {
 			$return                     = '';
@@ -313,10 +313,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output radio inputs.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function select_field( $field, $echo = true ) {
 			$return                     = '';
@@ -359,10 +359,10 @@ if ( ! class_exists( 'Options' ) ) :
 		/**
 		 * Output radio inputs.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $field     Arguments.
-		 * @param    boolean $echo      Optional. Echo the output or return it.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    mixed
 		 */
 		public static function radio_field( $field, $echo = true ) {
 			$return                     = '';

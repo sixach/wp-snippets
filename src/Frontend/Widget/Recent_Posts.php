@@ -2,12 +2,12 @@
 /**
  * The file outputs a list of most recent published posts on the sidebar.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend/widget
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend/widget
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Widget setting arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Widget setting arguments.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
@@ -57,10 +57,10 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		/**
 		 * Outputs the content for the current widget’s instance.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args         Display arguments including 'before_title', 'after_title'.
-		 * @param    array $instance     Settings for the current widget instance.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args        Display arguments including 'before_title', 'after_title'.
+		 * @param     array    $instance    Settings for the current widget instance.
+		 * @return    void
 		 */
 		public function widget( $args, $instance ) {
 			$html   = array();
@@ -139,10 +139,10 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		/**
 		 * Handles updating the settings for the current widget instance.
 		 *
-		 * @since    1.0.0
-		 * @param    array $new_instance     New settings for this instance as input entered by the user.
-		 * @param    array $old_instance     Old settings for this instance.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array    $new_instance    New settings for this instance as input entered by the user.
+		 * @param     array    $old_instance    Old settings for this instance.
+		 * @return    array
 		 */
 		public function update( $new_instance, $old_instance ) {
 			$instance                = $old_instance;
@@ -158,9 +158,9 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		/**
 		 * Outputs the settings form for the widget.
 		 *
-		 * @since    1.0.0
-		 * @param    array $instance     Current settings.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $instance    Current settings.
+		 * @return    void
 		 */
 		public function form( $instance ) {
 			$instance    = wp_parse_args( $instance, $this->defaults );

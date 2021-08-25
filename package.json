@@ -23,12 +23,8 @@
 		"lint:php": "composer lint:php",
 		"lint:wpcs": "composer lint:wpcs",
 		"lint:wpcs-fix": "composer lint:wpcbf",
-		"makepot": "composer make-pot"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
+		"makepot": "composer make-pot",
+		"prepare": "husky install"
 	},
 	"lint-staged": {
 		"*.php": [

@@ -2,12 +2,12 @@
 /**
  * The file registers custom product specific meta-data controls.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,18 +28,18 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		/**
 		 * Meta-data controls to register.
 		 *
-		 * @since    1.0.0
-		 * @access   private
-		 * @var      array $controls     List of controls to register as part of the product-data table.
+		 * @since     1.0.0
+		 * @access    private
+		 * @var       array      $controls    List of controls to register as part of the product-data table.
 		 */
 		private static $controls = array();
 
 		/**
 		 * Name of the meta-data.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the meta-data to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the meta-data to retrieve.
 		 */
 		public static $key = 'sixa_product_data';
 
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array $args     Product data setting arguments.
+		 * @param    array    $args    Product data setting arguments.
 		 * @return   void
 		 */
 		public function __construct( $args = array() ) {
@@ -65,9 +65,9 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		/**
 		 * Create/append custom tab(s) to the product data table.
 		 *
-		 * @since    1.0.0
-		 * @param    array $tabs     Existing product data meta-box tabs.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array    $tabs    Existing product data meta-box tabs.
+		 * @return    array
 		 */
 		public function tabs( $tabs ) {
 			foreach ( self::$controls as $key => $args ) {
@@ -85,8 +85,8 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		/**
 		 * Renders custom tab(s) content.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function panels() {
 			global $post;
@@ -127,9 +127,9 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		/**
 		 * Fires after a product has been updated or published.
 		 *
-		 * @since    1.0.0
-		 * @param    WC_Product $product    Product object.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     WC_Product    $product    Product object.
+		 * @return    void
 		 */
 		public function save( $product ) {
 			$product->update_meta_data( self::$key, filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY ) );

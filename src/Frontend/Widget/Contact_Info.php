@@ -2,12 +2,12 @@
 /**
  * The file outputs contact information details in your sidebars.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend/widget
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend/widget
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Widget setting arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Widget setting arguments.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
@@ -57,10 +57,10 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Outputs the content for the current widget’s instance.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args         Display arguments including 'before_title', 'after_title'.
-		 * @param    array $instance     Settings for the current widget instance.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args        Display arguments including 'before_title', 'after_title'.
+		 * @param     array    $instance    Settings for the current widget instance.
+		 * @return    void
 		 */
 		public function widget( $args, $instance ) {
 			$html    = array();
@@ -130,9 +130,9 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Outputs the settings form for the widget.
 		 *
-		 * @since    1.0.0
-		 * @param    array $instance     Current settings.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $instance    Current settings.
+		 * @return    void
 		 */
 		public function form( $instance ) {
 			$instance = wp_parse_args( $instance, $this->defaults );
@@ -153,7 +153,7 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 				<label for="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>">
 					<?php echo esc_html_x( 'Address:', 'widget form', '@@textdomain' ); ?>
 				</label>
-				<textarea rows="5" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'address' ) ); ?>"><?php echo esc_textarea( $instance['address'] ); ?></textarea>
+				<textarea rows="5" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'address' ) ); ?>"><?php echo esc_textarea( $address ); ?></textarea>
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $showmap, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'showmap' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'showmap' ) ); ?>" value="1" />
@@ -179,9 +179,9 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Generate a Google Maps link for the supplied address.
 		 *
-		 * @since    1.0.0
-		 * @param    string $address     The URL to encode.
-		 * @return   string
+		 * @since     1.0.0
+		 * @param     string    $address    The URL to encode.
+		 * @return    string
 		 */
 		public static function get_map_link( $address ) {
 			return apply_filters( 'sixa_contact_info_widget_map_link', sprintf( 'https://maps.google.com/maps?z=16&q=%s', self::do_urlencode_address( $address ) ) );
@@ -190,9 +190,9 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Builds map display HTML code from the entered address.
 		 *
-		 * @since    1.0.0
-		 * @param    string $address     The URL to encode.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     string    $address    The URL to encode.
+		 * @return    mixed
 		 */
 		public static function build_map( $address ) {
 			$src            = add_query_arg( 'output', 'embed', self::get_map_link( $address ) );
@@ -221,9 +221,9 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		/**
 		 * Encode an URL.
 		 *
-		 * @since    1.0.0
-		 * @param    string $address     The URL to encode.
-		 * @return   string
+		 * @since     1.0.0
+		 * @param     string    $address    The URL to encode.
+		 * @return    string
 		 */
 		public static function do_urlencode_address( $address ) {
 			$address = strtolower( $address );

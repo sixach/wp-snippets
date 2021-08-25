@@ -2,12 +2,12 @@
 /**
  * The file generates a list of related posts.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.1.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.1.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -29,20 +29,20 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 		 * CSS class name.
 		 *
 		 * @access    private
-		 * @var       string $class    CSS class name used for this component.
+		 * @var       string     $class    CSS class name used for this component.
 		 */
 		private static $class = 'sixa-related-posts';
 
 		/**
 		 * Run this class and output generated posts on the page.
 		 *
-		 * @since     1.0.0
-		 * @since     1.1.0
-		 *            Added `sixa_related_posts_before_post` and `sixa_related_posts_before_post` actions
-		 *            Added `show_readmore` to display readmore button
-		 * @param     array   $args    Post query arguments.
-		 * @param     boolean $echo    Optional. Echo the output or return it.
-		 * @return    string
+		 * @since    1.0.0
+		 * @since    1.1.0
+		 *           Added `sixa_related_posts_before_post` and `sixa_related_posts_before_post` actions
+		 *           Added `show_readmore` to display readmore button
+		 * @param    array   $args    Post query arguments.
+		 * @param    boolean $echo    Optional. Echo the output or return it.
+		 * @return   string
 		 */
 		public static function run( $args = array(), $echo = true ) {
 			/* translators: 1: Open `div` tag, 2: Close H3 tag. */
@@ -134,7 +134,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 		 * Generate posts query.
 		 *
 		 * @since     1.0.0
-		 * @param     array $args    Post query arguments.
+		 * @param     array           $args    Post query arguments.
 		 * @return    bool|WP_Post
          * @phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		 */

@@ -3,12 +3,12 @@
  * The file registers static page dropdown field(s)
  * to the `Settings` → `Reading` settings/page.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -31,27 +31,27 @@ if ( ! class_exists( 'Reading' ) ) :
 		/**
 		 * List of page options.
 		 *
-		 * @since    1.0.0
-		 * @access   private
-		 * @var      array $dropdowns     List of pages to register a dropdown option for it.
+		 * @since     1.0.0
+		 * @access    private
+		 * @var       array      $dropdowns    List of pages to register a dropdown option for it.
 		 */
 		private static $dropdowns = array();
 
 		/**
 		 * Name of the option.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the option to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_reading';
 
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Dropdown list.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Dropdown list.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
@@ -67,8 +67,8 @@ if ( ! class_exists( 'Reading' ) ) :
 		/**
 		 * Registers static page dropdown menus.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function register() {
 			register_setting( 'reading', self::$key, array( sprintf( '%s\Options', __NAMESPACE__ ), 'sanitize' ) );
@@ -100,10 +100,10 @@ if ( ! class_exists( 'Reading' ) ) :
 		/**
 		 * Filters the default post display states used in the posts list table.
 		 *
-		 * @since    1.0.0
-		 * @param    array   $post_states    An array of post display states.
-		 * @param    WP_Post $post           The current post object.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array      $post_states    An array of post display states.
+		 * @param     WP_Post    $post           The current post object.
+		 * @return    array
 		 */
 		public function post_states( $post_states, $post ) {
 			$options = get_option( self::$key, array() );

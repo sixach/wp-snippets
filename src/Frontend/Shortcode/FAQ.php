@@ -2,12 +2,12 @@
 /**
  * A list of FAQ items generated via shortcode attributes.
  *
- * @link       https://sixa.ch
- * @author     Sajedeh Gooklani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Sajedeh Gooklani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend/shortcode
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend/shortcode
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'FAQ' ) ) :
 		/**
 		 * Outputs post content based on the given shortcode attributes.
 		 *
-		 * @since    1.0.0
-		 * @param    array $atts     Optional. Shortcode attributes.
-		 * @return   mixed
+		 * @since     1.0.0
+		 * @param     array    $atts    Optional. Shortcode attributes.
+		 * @return    mixed
 		 */
 		public static function run( $atts ) {
 			$atts = shortcode_atts(

@@ -3,12 +3,12 @@
  * The file registers custom control(s), (field(s))
  * to the `WooCommerce` → `Settings` settings/page.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -29,54 +29,54 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Name of the option.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the option to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_wc_options';
 
 		/**
 		 * Setting page id.
 		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      string $id     Settings tab id to register.
+		 * @since     1.0.0
+		 * @access    protected
+		 * @var       string    $id     Settings tab id to register.
 		 */
 		protected $id = 'sixa_wc_settings';
 
 		/**
 		 * Setting page label.
 		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      string $label     Settings tab label to register.
+		 * @since     1.0.0
+		 * @access    protected
+		 * @var       string    $label    Settings tab label to register.
 		 */
 		protected $label = '';
 
 		/**
 		 * Setting page sections.
 		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      array $fields     Settings sections to register.
+		 * @since     1.0.0
+		 * @access    protected
+		 * @var       array        $fields    Settings sections to register.
 		 */
 		protected $sections = array();
 
 		/**
 		 * Setting page fields.
 		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      array $fields     Settings fieldset to register.
+		 * @since     1.0.0
+		 * @access    protected
+		 * @var       array        $fields    Settings fieldset to register.
 		 */
 		protected $fields = array();
 
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Settings arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Settings arguments.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			$this->id       = isset( $args['id'] ) ? $args['id'] : $this->id;
@@ -93,8 +93,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Get settings page ID.
 		 *
-		 * @since    1.0.0
-		 * @return   string
+		 * @since     1.0.0
+		 * @return    string
 		 */
 		public function get_id() {
 			return $this->id;
@@ -103,8 +103,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Get settings page label.
 		 *
-		 * @since    1.0.0
-		 * @return   string
+		 * @since     1.0.0
+		 * @return    string
 		 */
 		public function get_label() {
 			return $this->label;
@@ -113,9 +113,9 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Add this page to settings.
 		 *
-		 * @since    1.0.0
-		 * @param    array $tabs     Existing settings tabs.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array    $tabs    Existing settings tabs.
+		 * @return    array
 		 */
 		public function add_settings_page( $tabs ) {
 			$tabs[ $this->id ] = $this->label;
@@ -125,8 +125,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Get settings array.
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		public function get_settings() {
 			$current_section = filter_input( INPUT_GET, 'section', FILTER_SANITIZE_STRING );
@@ -139,8 +139,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Get sections.
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		public function get_sections() {
 			return $this->sections;
@@ -149,8 +149,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Output sections.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function output_sections() {
 			global $current_section;
@@ -177,8 +177,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Output the settings.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function output() {
 			$settings = $this->get_settings();
@@ -188,8 +188,8 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		/**
 		 * Save settings.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function save() {
 			$settings = $this->get_settings();

@@ -3,12 +3,12 @@
  * The file registers input text-field(s)
  * to the `Settings` → `Permalinks` settings/page.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -31,27 +31,27 @@ if ( ! class_exists( 'Permalink' ) ) :
 		/**
 		 * List of permalink bases.
 		 *
-		 * @since    1.0.0
-		 * @access   private
-		 * @var      array $bases     List of URI bases to register a text-field control for it.
+		 * @since     1.0.0
+		 * @access    private
+		 * @var       array      $bases    List of URI bases to register a text-field control for it.
 		 */
 		private static $bases = array();
 
 		/**
 		 * Name of the option.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the option to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_permalink';
 
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Permalink base list.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Permalink base list.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
@@ -67,8 +67,8 @@ if ( ! class_exists( 'Permalink' ) ) :
 		/**
 		 * Registers permalink base input text-fields.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function register() {
 			$options = get_option( self::$key, array() );
@@ -98,8 +98,8 @@ if ( ! class_exists( 'Permalink' ) ) :
 		/**
 		 * Save settings.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 * @phpcs:disable WordPress.Security.NonceVerification.Missing
 		 */
 		public function save() {

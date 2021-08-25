@@ -2,12 +2,12 @@
 /**
  * The file registers menu specific custom input controls.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,27 +28,27 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		/**
 		 * Name of the option.
 		 *
-		 * @since    1.0.0
-		 * @access   public
-		 * @var      string $key     Name of the option to retrieve.
+		 * @since     1.0.0
+		 * @access    public
+		 * @var       string    $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_menu';
 
 		/**
 		 * Menu item fields.
 		 *
-		 * @since    1.0.0
-		 * @access   protected
-		 * @var      array $fields     Settings fieldset to register.
+		 * @since     1.0.0
+		 * @access    protected
+		 * @var       array    $fields    Settings fieldset to register.
 		 */
 		protected static $fields = array();
 
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Fieldset.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Fieldset.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			// Bail early, in case there no option provided to register.
@@ -64,9 +64,9 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		/**
 		 * Register additional input controls for the menu-items.
 		 *
-		 * @since    1.0.0
-		 * @param    int $item_id     Menu item ID.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     int      $item_id    Menu item ID.
+		 * @return    void
 		 */
 		public function register( $item_id ) {
 			$meta = (array) get_post_meta( $item_id, self::$key, true );
@@ -93,9 +93,9 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		/**
 		 * Save menu (post) meta-data.
 		 *
-		 * @since    1.0.0
-		 * @param    int $item_id     Menu item ID.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     int       $item_id    Menu item ID.
+		 * @return    void
 		 */
 		public function save( $item_id ) {
 			$data = filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );

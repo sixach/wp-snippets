@@ -2,12 +2,12 @@
 /**
  * The file outputs a list of social network links in your sidebars.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/frontend/widget
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/frontend/widget
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Widget setting arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Widget setting arguments.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
@@ -61,10 +61,10 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Outputs the content for the current widget’s instance.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args         Display arguments including 'before_title', 'after_title'.
-		 * @param    array $instance     Settings for the current widget instance.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args        Display arguments including 'before_title', 'after_title'.
+		 * @param     array    $instance    Settings for the current widget instance.
+		 * @return    void
 		 */
 		public function widget( $args, $instance ) {
 			$i        = 0;
@@ -128,10 +128,10 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Handles updating the settings for the current widget instance.
 		 *
-		 * @since    1.0.0
-		 * @param    array $new_instance     New settings for this instance as input entered by the user.
-		 * @param    array $old_instance     Old settings for this instance.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     array    $new_instance    New settings for this instance as input entered by the user.
+		 * @param     array    $old_instance    Old settings for this instance.
+		 * @return    array
 		 */
 		public function update( $new_instance, $old_instance ) {
 			$instance           = array();
@@ -154,9 +154,9 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Outputs the settings form for the widget.
 		 *
-		 * @since    1.0.0
-		 * @param    array $instance     Current settings.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $instance    Current settings.
+		 * @return    void
 		 */
 		public function form( $instance ) {
 			$instance = wp_parse_args( $instance, $this->defaults );
@@ -164,7 +164,6 @@ if ( ! class_exists( 'Social_Network' ) ) :
 			$target   = isset( $instance['target'] ) ? $instance['target'] : $this->defaults['target'];
 			$icons    = isset( $instance['icons'] ) ? $instance['icons'] : $this->defaults['icons'];
 			$icons[]  = $this->defaults['icons'];
-			$icons_id = $this->get_field_id( 'list' );
 
 			?>
 			<p>
@@ -201,8 +200,8 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Enqueue scripts and styles.
 		 *
-		 * @since    1.0.0
-		 * @return   void
+		 * @since     1.0.0
+		 * @return    void
 		 */
 		public function enqueue() {
 			// Before enqueueing, make sure the current page is displaying `widgets.php`.
@@ -215,9 +214,9 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Generates template to add icons.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     Template arguments.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    Template arguments.
+		 * @return    void
 		 */
 		public static function render_template( $args = array() ) {
 			$defaults = array(
@@ -233,7 +232,7 @@ if ( ! class_exists( 'Social_Network' ) ) :
 					<p>
 						<?php
 							printf(
-								'<input 
+								'<input
                                     id="%1$s"
                                     name="%2$s[]"
                                     placeholder="%3$s"
@@ -261,8 +260,8 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Returns a string of SVG icon.
 		 *
-		 * @since    1.0.0
-		 * @return   string
+		 * @since     1.0.0
+		 * @return    string
 		 */
 		public static function get_default_icon() {
 			return apply_filters( 'sixa_social_network_widget_default_icon', '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="18" height="18" viewBox="0 0 18 18"><path d="M6.70846497,10.3082552 C6.43780491,9.94641406 6.5117218,9.43367048 6.87356298,9.16301045 C7.23540415,8.89235035 7.74814771,8.96626726 8.01880776,9.32810842 C8.5875786,10.0884893 9.45856383,10.5643487 10.4057058,10.6321812 C11.3528479,10.7000136 12.2827563,10.3531306 12.9541853,9.68145807 L15.3987642,7.23705399 C16.6390369,5.9529049 16.6212992,3.91168563 15.3588977,2.6492841 C14.0964962,1.38688258 12.0552769,1.36914494 10.77958,2.60113525 L9.37230725,4.00022615 C9.05185726,4.31881314 8.53381538,4.31730281 8.21522839,3.99685275 C7.89664141,3.67640269 7.89815174,3.15836082 8.21860184,2.83977385 L9.63432671,1.43240056 C11.5605503,-0.42800847 14.6223793,-0.401402004 16.5159816,1.49220028 C18.4095838,3.38580256 18.4361903,6.44763148 16.5658147,8.38399647 L14.1113741,10.838437 C13.1043877,11.8457885 11.7095252,12.366113 10.2888121,12.2643643 C8.86809903,12.1626156 7.56162126,11.4488264 6.70846497,10.3082552 Z M11.291535,7.6917448 C11.5621951,8.05358597 11.4882782,8.56632952 11.126437,8.83698955 C10.7645959,9.10764965 10.2518523,9.03373274 9.98119227,8.67189158 C9.4124214,7.91151075 8.54143617,7.43565129 7.59429414,7.36781884 C6.6471521,7.29998638 5.71724372,7.64686937 5.04581464,8.31854193 L2.60123581,10.762946 C1.36096312,12.0470951 1.37870076,14.0883144 2.64110228,15.3507159 C3.90350381,16.6131174 5.94472309,16.630855 7.21873082,15.400549 L8.61782171,14.0014581 C8.93734159,13.6819382 9.45538568,13.6819382 9.77490556,14.0014581 C10.0944254,14.320978 10.0944254,14.839022 9.77490556,15.1585419 L8.36567329,16.5675994 C6.43944966,18.4280085 3.37762074,18.401402 1.48401846,16.5077998 C-0.409583822,14.6141975 -0.436190288,11.5523685 1.43418536,9.61600353 L3.88862594,7.16156298 C4.89561225,6.15421151 6.29047483,5.63388702 7.71118789,5.7356357 C9.13190097,5.83738438 10.4383788,6.55117356 11.291535,7.6917448 Z"/></svg>' );
@@ -271,8 +270,8 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		/**
 		 * Returns an array of supported social links (URL, icon, and label).
 		 *
-		 * @since    1.0.0
-		 * @return   array
+		 * @since     1.0.0
+		 * @return    array
 		 */
 		public static function get_supported_icons() {
 			return apply_filters(

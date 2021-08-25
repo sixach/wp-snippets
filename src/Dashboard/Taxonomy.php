@@ -2,12 +2,12 @@
 /**
  * The file registers a taxonomy object and attaches it to a given post type list.
  *
- * @link       https://sixa.ch
- * @author     Mahdi Yazdani
- * @since      1.0.0
+ * @link          https://sixa.ch
+ * @author        Mahdi Yazdani
+ * @since         1.0.0
  *
- * @package    sixa-snippets
- * @subpackage sixa-snippets/dashboard
+ * @package       sixa-snippets
+ * @subpackage    sixa-snippets/dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		/**
 		 * Initialize the class and set its properties.
 		 *
-		 * @since    1.0.0
-		 * @param    array $args     List of post type taxonomies to register.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $args    List of post type taxonomies to register.
+		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
 			// Bail early, if there is no argument passed to register.
@@ -44,9 +44,9 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		/**
 		 * Creates a taxonomy object.
 		 *
-		 * @since    1.0.0
-		 * @param    array $taxonomies     List of post type taxonomies to register.
-		 * @return   void
+		 * @since     1.0.0
+		 * @param     array    $taxonomies    List of post type taxonomies to register.
+		 * @return    void
 		 */
 		public function run( $taxonomies ) {
 			foreach ( $taxonomies as $taxonomy ) {
@@ -90,10 +90,10 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		/**
 		 * An array of labels for registering taxonomy.
 		 *
-		 * @since    1.0.0
-		 * @param    string $singular_name     Singular name for the taxonomy.
-		 * @param    string $plural_name       Plural name for the taxonomy.
-		 * @return   array
+		 * @since     1.0.0
+		 * @param     string    $singular_name    Singular name for the taxonomy.
+		 * @param     string    $plural_name      Plural name for the taxonomy.
+		 * @return    array
 		 */
 		protected function get_labels( $singular_name, $plural_name ) {
 			$labels = apply_filters(

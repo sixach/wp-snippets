@@ -1,7 +1,7 @@
 {
 	"name": "@sixa/wp-snippets",
-	"version": "1.0.0",
-	"description": "A plugin containing factory classes or methods for the Sixa projects.",
+	"version": "1.0.1",
+	"description": "A plugin containing factory classes and methods for sixa projects.",
 	"keywords": [
 		"factory",
 		"php",

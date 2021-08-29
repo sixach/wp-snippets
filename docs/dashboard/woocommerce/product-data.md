@@ -1,7 +1,7 @@
 # Product Data
 
 ```php
-SixaSnippets\dashboard\woocommerce\Product_Data( array $args = array() );
+Sixa_Snippets\Dashboard\WooCommerce\Product_Data( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ Registers additional input controls divided into different panels to the `Produc
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\WooCommerce\Product_Data;
+use Sixa_Snippets\Dashboard\WooCommerce\Product_Data;
 ```
 
 !> **Note:** Should not be hooked before the [woocommerce_init](http://hookr.io/actions/woocommerce_init/) action hook.

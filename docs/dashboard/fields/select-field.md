@@ -1,7 +1,7 @@
 # Select Field
 
 ```php
-SixaSnippets\dashboard\Options::select_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::select_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -15,7 +15,7 @@ This method outputs a `<select />` tag that is used to create a dropdown list. T
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

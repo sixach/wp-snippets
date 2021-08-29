@@ -1,7 +1,7 @@
 # Checkbox Field
 
 ```php
-SixaSnippets\dashboard\Options::checkbox_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::checkbox_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -15,7 +15,7 @@ Checkboxes are often used to let a user select one or more options of a limited 
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

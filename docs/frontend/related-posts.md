@@ -1,7 +1,7 @@
 # Related Posts
 
 ```php
-SixaSnippets\frontend\Related_Posts();
+Sixa_Snippets\Frontend\Related_Posts();
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This method uses a given taxonomy to automatically generate and pull relevant co
 ## Import
 
 ```php
-use SixaSnippets\frontend\Related_Posts;
+use Sixa_Snippets\Frontend\Related_Posts;
 ```
 
 !> Best place to initialize this class is inside the single post/page view template hook.

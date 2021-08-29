@@ -1,7 +1,7 @@
 # Hidden Field
 
 ```php
-SixaSnippets\dashboard\Options::hidden_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::hidden_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -13,7 +13,7 @@ This field type often stores what database record that needs to be updated when 
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

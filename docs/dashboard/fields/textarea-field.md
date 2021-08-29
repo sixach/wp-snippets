@@ -1,7 +1,7 @@
 # Textarea Field
 
 ```php
-SixaSnippets\dashboard\Options::textarea_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::textarea_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This method outputs a `<textarea />` tag that defines a multi-line text input co
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

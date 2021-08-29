@@ -1,7 +1,7 @@
 # Menu Options
 
 ```php
-SixaSnippets\dashboard\Menu_Options( array $args = array() );
+Sixa_Snippets\Dashboard\Menu_Options( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ Adds additional input controls before the move buttons of a nav menu item in the
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Menu_Options;
+use Sixa_Snippets\Dashboard\Menu_Options;
 ```
 
 !> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.

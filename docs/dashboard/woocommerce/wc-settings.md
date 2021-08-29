@@ -1,7 +1,7 @@
 # WooCommerce Settings
 
 ```php
-SixaSnippets\dashboard\woocommerce\WC_Settings( array $args = array() );
+Sixa_Snippets\Dashboard\WooCommerce\WC_Settings( array $args = array() );
 ```
 ## Description
 
@@ -10,7 +10,7 @@ Registers additional input controls divided into different sections to the `WooC
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\WooCommerce\WC_Settings;
+use Sixa_Snippets\Dashboard\WooCommerce\WC_Settings;
 ```
 
 !> **Note:** Should be hooked to the [woocommerce_get_settings_pages](http://hookr.io/filters/woocommerce_get_settings_pages/) filter hook.

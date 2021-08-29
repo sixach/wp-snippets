@@ -1,7 +1,7 @@
 # Permalink
 
 ```php
-SixaSnippets\dashboard\Permalink( array $args = array() );
+Sixa_Snippets\Dashboard\Permalink( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ Adds additional input controls to the `Settings` → `Permalinks` settings page.
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Permalink;
+use Sixa_Snippets\Dashboard\Permalink;
 ```
 
 !> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.

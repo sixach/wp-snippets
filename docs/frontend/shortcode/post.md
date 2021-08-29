@@ -1,7 +1,7 @@
 # Post Shortcode
 
 ```php
-SixaSnippets\frontend\shortcode\Post( array $atts = array() );
+Sixa_Snippets\Frontend\Shortcode\Post( array $atts = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This shortcode retrieves and displays a given post ID’s content on the page.
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Shortcode\Post;
+use Sixa_Snippets\Frontend\Shortcode\Post;
 ```
 
 !> **Note:** Should not be hooked before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.

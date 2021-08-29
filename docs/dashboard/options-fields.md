@@ -1,7 +1,7 @@
 # Options Fields
 
 ```php
-SixaSnippets\dashboard\Options::add_field( string $id = null, string $title = null, function $callback = null );
+Sixa_Snippets\Dashboard\Options::add_field( string $id = null, string $title = null, function $callback = null );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ Add a new field to a section of the plugin’s settings page.
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 !> **Note:** Should be hooked to the `sixa_options_fieldset` action hook.

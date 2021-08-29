@@ -1,7 +1,7 @@
 # Plugin Options
 
 ```php
-SixaSnippets\dashboard\Options( array $args = array() );
+Sixa_Snippets\Dashboard\Options( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This method output nonce, action, and a hook for adding additional fieldset for 
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 !> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.

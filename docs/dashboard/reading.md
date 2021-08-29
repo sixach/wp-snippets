@@ -1,7 +1,7 @@
 # Reading
 
 ```php
-SixaSnippets\dashboard\Reading( array $args = array() );
+Sixa_Snippets\Dashboard\Reading( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ Adds additional static page dropdown (select) controls to the `Settings` → `Re
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Reading;
+use Sixa_Snippets\Dashboard\Reading;
 ```
 
 !> **Note:** Should not be hooked before the [admin_menu](http://developer.wordpress.org/reference/hooks/admin_menu/) action hook.

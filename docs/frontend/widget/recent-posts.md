@@ -1,7 +1,7 @@
 # Recent Posts Widget
 
 ```php
-SixaSnippets\frontend\widget\Recent_Posts( array $args = array() );
+Sixa_Snippets\Frontend\Widget\Recent_Posts( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This widget displays your most recent posts in the sidebar, making it easy for t
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Widget\Recent_Posts;
+use Sixa_Snippets\Frontend\Widget\Recent_Posts;
 ```
 
 !> **Note:** Should be hooked to the [widgets_init](http://developer.wordpress.org/reference/hooks/widgets_init/) action hook.

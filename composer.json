@@ -1,5 +1,5 @@
 {
-	"name": "sixa/wp-snippets",
+	"name": "sixach/wp-snippets",
 	"type": "wordpress-plugin",
 	"description": "A plugin containing factory classes or methods for the Sixa projects.",
 	"keywords": [

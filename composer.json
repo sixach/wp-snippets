@@ -34,8 +34,6 @@
 		"make-pot": "wp i18n make-pot . languages/@@textdomain.pot --exclude=build"
 	},
 	"autoload": {
-		"psr-4": {
-			"SixaSnippets\\": "src/"
-		}
+		"classmap": ["src"]
 	}
 }

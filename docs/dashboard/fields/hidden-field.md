@@ -1,7 +1,7 @@
 # Hidden Field
 
 ```php
-SixaSnippets\Dashboard\Options::hidden_field( array $args = array(), bool $echo = true );
+SixaSnippets\dashboard\Options::hidden_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description

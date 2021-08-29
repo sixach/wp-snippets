@@ -1,7 +1,7 @@
 # Radio Field
 
 ```php
-SixaSnippets\Dashboard\Options::radio_field( array $args = array(), bool $echo = true );
+SixaSnippets\dashboard\Options::radio_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description

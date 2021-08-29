@@ -1,7 +1,7 @@
 # Post Shortcode
 
 ```php
-SixaSnippets\Frontend\Shortcode\Post( array $atts = array() );
+SixaSnippets\frontend\shortcode\Post( array $atts = array() );
 ```
 
 ## Description

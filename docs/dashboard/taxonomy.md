@@ -1,7 +1,7 @@
 # Taxonomy
 
 ```php
-SixaSnippets\Dashboard\Taxonomy( array $args = array() );
+SixaSnippets\dashboard\Taxonomy( array $args = array() );
 ```
 
 ## Description

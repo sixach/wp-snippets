@@ -1,7 +1,7 @@
 # Recent Posts Shortcode
 
 ```php
-SixaSnippets\Frontend\Shortcode\Recent_Posts( array $atts = array() );
+SixaSnippets\frontend\shortcode\Recent_Posts( array $atts = array() );
 ```
 
 ## Description

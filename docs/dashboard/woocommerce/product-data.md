@@ -1,7 +1,7 @@
 # Product Data
 
 ```php
-SixaSnippets\Dashboard\WooCommerce\Product_Data( array $args = array() );
+SixaSnippets\dashboard\woocommerce\Product_Data( array $args = array() );
 ```
 
 ## Description

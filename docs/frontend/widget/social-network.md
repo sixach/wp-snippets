@@ -1,7 +1,7 @@
 # Social Network Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Social_Network( array $args = array() );
+SixaSnippets\frontend\widget\Social_Network( array $args = array() );
 ```
 
 ## Description

@@ -1,7 +1,7 @@
 # WooCommerce Settings
 
 ```php
-SixaSnippets\Dashboard\WooCommerce\WC_Settings( array $args = array() );
+SixaSnippets\dashboard\woocommerce\WC_Settings( array $args = array() );
 ```
 ## Description
 

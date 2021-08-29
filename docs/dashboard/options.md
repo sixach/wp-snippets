@@ -1,7 +1,7 @@
 # Plugin Options
 
 ```php
-SixaSnippets\Dashboard\Options( array $args = array() );
+SixaSnippets\dashboard\Options( array $args = array() );
 ```
 
 ## Description

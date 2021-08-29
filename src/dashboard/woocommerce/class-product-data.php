@@ -11,7 +11,7 @@
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
-namespace SixaSnippets\Dashboard\WooCommerce;
+namespace Sixa_Snippets\Dashboard\WooCommerce;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

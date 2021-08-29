@@ -1,7 +1,7 @@
 # Contact Info Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Contact_Info( array $args = array() );
+SixaSnippets\frontend\widget\Contact_Info( array $args = array() );
 ```
 
 ## Description

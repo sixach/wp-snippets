@@ -1,7 +1,7 @@
 # Options Fields
 
 ```php
-SixaSnippets\Dashboard\Options::add_field( string $id = null, string $title = null, function $callback = null );
+SixaSnippets\dashboard\Options::add_field( string $id = null, string $title = null, function $callback = null );
 ```
 
 ## Description

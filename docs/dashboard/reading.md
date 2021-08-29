@@ -1,7 +1,7 @@
 # Reading
 
 ```php
-SixaSnippets\Dashboard\Reading( array $args = array() );
+SixaSnippets\dashboard\Reading( array $args = array() );
 ```
 
 ## Description

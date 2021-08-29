@@ -1,7 +1,7 @@
 # Permalink
 
 ```php
-SixaSnippets\Dashboard\Permalink( array $args = array() );
+SixaSnippets\dashboard\Permalink( array $args = array() );
 ```
 
 ## Description

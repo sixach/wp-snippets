@@ -1,7 +1,7 @@
 # Checkbox Field
 
 ```php
-SixaSnippets\Dashboard\Options::checkbox_field( array $args = array(), bool $echo = true );
+SixaSnippets\dashboard\Options::checkbox_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description

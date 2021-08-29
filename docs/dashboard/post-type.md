@@ -1,7 +1,7 @@
 # Post Type
 
 ```php
-SixaSnippets\Dashboard\Post_Type( array $args = array() );
+SixaSnippets\dashboard\Post_Type( array $args = array() );
 ```
 
 ## Description

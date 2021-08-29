@@ -1,7 +1,7 @@
 # Recent Posts Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Recent_Posts( array $args = array() );
+SixaSnippets\frontend\widget\Recent_Posts( array $args = array() );
 ```
 
 ## Description

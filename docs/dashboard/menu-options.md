@@ -1,7 +1,7 @@
 # Menu Options
 
 ```php
-SixaSnippets\Dashboard\Menu_Options( array $args = array() );
+SixaSnippets\dashboard\Menu_Options( array $args = array() );
 ```
 
 ## Description

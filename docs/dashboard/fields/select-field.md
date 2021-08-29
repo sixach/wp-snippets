@@ -1,7 +1,7 @@
 # Select Field
 
 ```php
-SixaSnippets\Dashboard\Options::select_field( array $args = array(), bool $echo = true );
+SixaSnippets\dashboard\Options::select_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description

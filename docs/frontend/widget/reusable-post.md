@@ -1,7 +1,7 @@
 # Reusable Post Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Reusable_Post( array $args = array() );
+SixaSnippets\frontend\widget\Reusable_Post( array $args = array() );
 ```
 
 ## Description

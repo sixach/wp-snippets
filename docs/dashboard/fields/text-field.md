@@ -1,7 +1,7 @@
 # Text Field
 
 ```php
-SixaSnippets\Dashboard\Options::text_field( array $args = array(), bool $echo = true );
+SixaSnippets\dashboard\Options::text_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description

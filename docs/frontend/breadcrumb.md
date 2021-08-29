@@ -1,7 +1,7 @@
 # Breadcrumb
 
 ```php
-SixaSnippets\Frontend\Breadcrumb();
+SixaSnippets\frontend\Breadcrumb();
 ```
 
 ## Description

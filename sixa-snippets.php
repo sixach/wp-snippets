@@ -22,12 +22,13 @@
  * Domain Path:          /languages
  */
 
-namespace SixaSnippets;
+namespace Sixa_Snippets;
 
 /**
- * Loads the PSR-4 autoloader implementation.
+ * Composer autoload is needed in this package, even if
+ * it doesn't use any libraries, to autoload the classes
+ * from this package.
  *
- * @since     1.0.0
- * @return    void
+ * @see    https://getcomposer.org/doc/01-basic-usage.md#autoloading
  */
-require_once sprintf( '%s/autoloader.php', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+require __DIR__ . '/vendor/autoload.php';

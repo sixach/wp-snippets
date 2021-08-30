@@ -1,7 +1,7 @@
 # Reusable Post Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Reusable_Post( array $args = array() );
+Sixa_Snippets\Frontend\Widget\Reusable_Post( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This widget displays a selected [Reusable Blocks](https://wordpress.org/news/202
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Widget\Reusable_Post;
+use Sixa_Snippets\Frontend\Widget\Reusable_Post;
 ```
 
 !> **Note:** Should be hooked to the [widgets_init](http://developer.wordpress.org/reference/hooks/widgets_init/) action hook.

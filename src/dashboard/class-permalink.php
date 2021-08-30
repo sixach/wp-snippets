@@ -12,9 +12,9 @@
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
-namespace SixaSnippets\Dashboard;
+namespace Sixa_Snippets\Dashboard;
 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

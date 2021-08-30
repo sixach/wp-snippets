@@ -1,7 +1,7 @@
 # Breadcrumb
 
 ```php
-SixaSnippets\Frontend\Breadcrumb();
+Sixa_Snippets\Frontend\Breadcrumb();
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This method generates secondary navigation links back to each previous page the 
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Widget\Breadcrumb;
+use Sixa_Snippets\Frontend\Widget\Breadcrumb;
 ```
 
 !> Best place to initialize this class is inside a template hook.

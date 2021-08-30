@@ -11,7 +11,7 @@
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
-namespace SixaSnippets\Frontend\Shortcode;
+namespace Sixa_Snippets\Frontend\Shortcode;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

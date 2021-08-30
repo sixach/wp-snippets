@@ -39,6 +39,7 @@
     <!-- Include the WordPress ruleset, with select exclusions. -->
     <rule ref="WordPress">
         <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
+        <exclude name="WooCommerce.Commenting.CommentTags.AuthorTag" />
         <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
         <exclude name="Core.Commenting.CommentTags.AccessTag" />
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />

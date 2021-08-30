@@ -1,7 +1,7 @@
 # Contact Info Widget
 
 ```php
-SixaSnippets\Frontend\Widget\Contact_Info( array $args = array() );
+Sixa_Snippets\Frontend\Widget\Contact_Info( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This widget allows you to display your location (address), and contact informati
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Widget\Contact_Info;
+use Sixa_Snippets\Frontend\Widget\Contact_Info;
 ```
 
 !> **Note:** Should be hooked to the [widgets_init](http://developer.wordpress.org/reference/hooks/widgets_init/) action hook.

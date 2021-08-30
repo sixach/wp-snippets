@@ -1,7 +1,7 @@
 # Recent Posts Shortcode
 
 ```php
-SixaSnippets\Frontend\Shortcode\Recent_Posts( array $atts = array() );
+Sixa_Snippets\Frontend\Shortcode\Recent_Posts( array $atts = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This shortcode displays your most recent posts in anywhere that the shortcode co
 ## Import
 
 ```php 
-use SixaSnippets\Frontend\Shortcode\Recent_Posts;
+use Sixa_Snippets\Frontend\Shortcode\Recent_Posts;
 ```
 
 !> **Note:** Should not be hooked before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.

@@ -1,7 +1,7 @@
 # Taxonomy
 
 ```php
-SixaSnippets\Dashboard\Taxonomy( array $args = array() );
+SixaSnippets\dashboard\Taxonomy( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ A simple wrapper function for creating a taxonomy object based on the parameters
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Taxonomy;
+use Sixa_Snippets\Dashboard\Taxonomy;
 ```
 
 !> **Note:** Should not be hooked before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.

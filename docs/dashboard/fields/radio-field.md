@@ -1,7 +1,7 @@
 # Radio Field
 
 ```php
-SixaSnippets\Dashboard\Options::radio_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::radio_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -15,7 +15,7 @@ This method outputs an `<input type="radio" />` tag that defines a radio button.
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

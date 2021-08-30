@@ -1,7 +1,7 @@
 # Post Type
 
 ```php
-SixaSnippets\Dashboard\Post_Type( array $args = array() );
+Sixa_Snippets\Dashboard\Post_Type( array $args = array() );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ A simple wrapper function for registering a custom post type object based on the
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Post_Type;
+use Sixa_Snippets\Dashboard\Post_Type;
 ```
 
 !> **Note:** Should not be hooked before the [init](http://developer.wordpress.org/reference/hooks/init/) action hook.

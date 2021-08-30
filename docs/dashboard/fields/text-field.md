@@ -1,7 +1,7 @@
 # Text Field
 
 ```php
-SixaSnippets\Dashboard\Options::text_field( array $args = array(), bool $echo = true );
+Sixa_Snippets\Dashboard\Options::text_field( array $args = array(), bool $echo = true );
 ```
 
 ## Description
@@ -11,7 +11,7 @@ This method outputs an `<input />` tag where the user can enter data. The elemen
 ## Import
 
 ```php 
-use SixaSnippets\Dashboard\Options;
+use Sixa_Snippets\Dashboard\Options;
 ```
 
 ## Parameters

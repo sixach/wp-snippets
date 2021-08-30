@@ -11,7 +11,7 @@
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
-namespace SixaSnippets\frontend\widget;
+namespace Sixa_Snippets\Frontend\Widget;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

@@ -103,7 +103,7 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 			if ( isset( $data[ $item_id ] ) ) {
 				update_post_meta( $item_id, self::$key, $data[ $item_id ] );
 			} else {
-				delete_post_meta( $item_id, self::$key, '' );
+				delete_post_meta( $item_id, self::$key );
 			}
 		}
 

@@ -12,7 +12,6 @@
 
 namespace Sixa_Snippets\Includes;
 
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

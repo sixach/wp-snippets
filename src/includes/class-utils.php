@@ -8,6 +8,7 @@
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Includes/Utils
+ * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 
 namespace Sixa_Snippets\Includes;

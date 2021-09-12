@@ -29,7 +29,6 @@
     <exclude-pattern>*/node_modules/*</exclude-pattern>
     <exclude-pattern>*/languages/*</exclude-pattern>
     <exclude-pattern>*/build/*</exclude-pattern>
-    <exclude-pattern>*/src/*</exclude-pattern>
     <exclude-pattern>/index\.php</exclude-pattern>
     <!--
     #############################################################################
@@ -40,9 +39,11 @@
     <rule ref="WordPress">
         <exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
         <exclude name="WooCommerce.Commenting.CommentTags.AuthorTag" />
+        <exclude name="WooCommerce.Commenting.CommentTags.AccessTag" />
         <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
         <exclude name="Core.Commenting.CommentTags.AccessTag" />
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />
+        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
     </rule>
     <rule ref="WooCommerce-Core" />
     <!-- Let's also check that everything is properly documented. -->

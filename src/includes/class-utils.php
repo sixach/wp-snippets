@@ -31,7 +31,7 @@ if ( ! class_exists( Utils::class ) ) :
 		 * @since     1.3.0
 		 * @return    bool
 		 */
-		private static function is_woocommerce_activated(): bool {
+		public static function is_woocommerce_activated(): bool {
 			// This statement prevents from producing fatal errors,
 			// in case the WooCommerce plugin is not activated on the site.
 			$woocommerce_plugin     = apply_filters( 'sixa_blocks_woocommerce_path', 'woocommerce/woocommerce.php' );

@@ -6,8 +6,8 @@
  * @author        Mahdi Yazdani
  * @since         1.0.0
  *
- * @package       sixa-snippets
- * @subpackage    sixa-snippets/dashboard
+ * @package       Sixa_Snippets
+ * @subpackage    Sixa_Snippets/Dashboard
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 

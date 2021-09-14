@@ -3,7 +3,7 @@
  * A single post based on given/selected post-id.
  *
  * @link          https://sixa.ch
- * @author        Mahdi Yazdani
+ * @author        sixa AG
  * @since         1.0.0
  *
  * @package       Sixa_Snippets

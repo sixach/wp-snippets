@@ -3,7 +3,7 @@
  * The file generates a list of related posts.
  *
  * @link          https://sixa.ch
- * @author        Mahdi Yazdani
+ * @author        sixa AG
  * @since         1.1.0
  *
  * @package       Sixa_Snippets

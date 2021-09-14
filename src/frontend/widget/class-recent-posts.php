@@ -3,7 +3,7 @@
  * The file outputs a list of most recent published posts on the sidebar.
  *
  * @link          https://sixa.ch
- * @author        Mahdi Yazdani
+ * @author        sixa AG
  * @since         1.0.0
  *
  * @package       Sixa_Snippets

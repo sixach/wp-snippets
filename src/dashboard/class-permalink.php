@@ -4,7 +4,7 @@
  * to the `Settings` → `Permalinks` settings/page.
  *
  * @link          https://sixa.ch
- * @author        Mahdi Yazdani
+ * @author        sixa AG
  * @since         1.0.0
  *
  * @package       Sixa_Snippets

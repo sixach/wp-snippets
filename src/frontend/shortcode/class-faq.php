@@ -3,7 +3,7 @@
  * A list of FAQ items generated via shortcode attributes.
  *
  * @link          https://sixa.ch
- * @author        Sajedeh Gooklani
+ * @author        sixa AG
  * @since         1.0.0
  *
  * @package       Sixa_Snippets

@@ -6,8 +6,8 @@
  * @author        Mahdi Yazdani
  * @since         1.0.0
  *
- * @package       sixa-snippets
- * @subpackage    sixa-snippets/frontend/shortcode
+ * @package       Sixa_Snippets
+ * @subpackage    Sixa_Snippets/Frontend/Shortcode
  * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
  */
 

@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.4.0
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Includes
@@ -44,6 +44,70 @@ if ( ! class_exists( Utils::class ) ) :
 			}
 
 			return true;
+		}
+
+		/**
+		 * This function normalizes HTML entities.
+		 * Perform a regular expression to convert all HTML entities to their named counterparts.
+		 *
+		 * @since     1.4.0
+		 * @param     string $input    Given input string, text or HTML markup.
+		 * @return    string
+		 */
+		public static function normalize_character_entities( string $input ): string {
+			/**
+			 * List of preg* regular expression patterns to search for,
+			 * used in conjunction with $plain_replace.
+			 *
+			 * @see    https://raw.github.com/ushahidi/wp-silcc/master/class.html2text.inc
+			 */
+			$plain_search = array(
+				"/\r/",                                                     // Non-legal carriage return.
+				'/&(nbsp|#0*160);/i',                                       // Non-breaking space.
+				'/&(quot|rdquo|ldquo|#0*8220|#0*8221|#0*147|#0*148);/i',    // Double quotes.
+				'/&(apos|rsquo|lsquo|#0*8216|#0*8217);/i',                  // Single quotes.
+				'/&gt;/i',                                                  // Greater-than.
+				'/&lt;/i',                                                  // Less-than.
+				'/&#0*38;/i',                                               // Ampersand.
+				'/&amp;/i',                                                 // Ampersand.
+				'/&(copy|#0*169);/i',                                       // Copyright.
+				'/&(trade|#0*8482|#0*153);/i',                              // Trademark.
+				'/&(reg|#0*174);/i',                                        // Registered.
+				'/&(mdash|#0*151|#0*8212);/i',                              // mdash.
+				'/&(ndash|minus|#0*8211|#0*8722);/i',                       // ndash.
+				'/&(bull|#0*149|#0*8226);/i',                               // Bullet.
+				'/&(pound|#0*163);/i',                                      // Pound sign.
+				'/&(euro|#0*8364);/i',                                      // Euro sign.
+				'/&(dollar|#0*36);/i',                                      // Dollar sign.
+				'/&[^&\s;]+;/i',                                            // Unknown/unhandled entities.
+				'/[ ]{2,}/',                                                // Runs of spaces, post-handling.
+			);
+			/**
+			 * List of pattern replacements corresponding to patterns searched.
+			 */
+			$plain_replace = array(
+				'',        // Non-legal carriage return.
+				' ',       // Non-breaking space.
+				'"',       // Double quotes.
+				"'",       // Single quotes.
+				'>',       // Greater-than.
+				'<',       // Less-than.
+				'&',       // Ampersand.
+				'&',       // Ampersand.
+				'(c)',     // Copyright.
+				'(tm)',    // Trademark.
+				'(R)',     // Registered.
+				'--',      // mdash.
+				'-',       // ndash.
+				'*',       // Bullet.
+				'£',       // Pound sign.
+				'EUR',     // Euro sign. € ?.
+				'$',       // Dollar sign.
+				'',        // Unknown/unhandled entities.
+				' ',       // Runs of spaces, post-handling.
+			);
+
+			return preg_replace( $plain_search, $plain_replace, $input );
 		}
 
 	}

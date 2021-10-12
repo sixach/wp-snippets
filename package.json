@@ -1,6 +1,6 @@
 {
 	"name": "@sixach/wp-snippets",
-	"version": "1.2.0",
+	"version": "1.4.0",
 	"description": "A plugin containing factory classes and methods for sixa projects.",
 	"keywords": [
 		"factory",
@@ -24,6 +24,7 @@
 		"lint:wpcs": "composer lint:wpcs",
 		"lint:wpcs-fix": "composer lint:wpcbf",
 		"makepot": "composer make-pot",
+		"packages-update": "wp-scripts packages-update",
 		"prepare": "husky install"
 	},
 	"lint-staged": {
@@ -32,7 +33,7 @@
 		]
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "18.0.0",
+		"@wordpress/scripts": "^18.1.0",
 		"husky": "^7.0.2",
 		"lint-staged": "11.1.2"
 	}

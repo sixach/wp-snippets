@@ -104,7 +104,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 						$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
 
 						$return .= call_user_func(
-							array( 'SixaSnippets\Dashboard\Options', sprintf( '%s_field', esc_attr( $field['type'] ) ) ),
+							array( 'Sixa_Snippets\Dashboard\Options', sprintf( '%s_field', esc_attr( $field['type'] ) ) ),
 							array_merge(
 								$field,
 								array(

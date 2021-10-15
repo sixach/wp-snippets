@@ -22,7 +22,7 @@ such that in `composer.json` you `require` the package
 ```JSON
 {
     "require": {
-        "sixach/wp-snippets": "^1.4.0"
+        "sixach/wp-snippets": "^1.4.1"
     }
 }
 ```

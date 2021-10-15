@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sixa Snippets 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sixa-wp-snippets\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-snippets\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-10-15T14:43:27+00:00\n"
+"POT-Creation-Date: 2021-10-15T16:22:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: sixa-snippets\n"
@@ -29,4 +29,511 @@ msgstr ""
 
 #. Author of the plugin
 msgid "sixa AG"
+msgstr ""
+
+#: src/dashboard/class-options.php:71
+msgctxt "post type"
+msgid "Plugin Options"
+msgstr ""
+
+#: src/dashboard/class-options.php:72
+msgctxt "post type"
+msgid "Sixa Options"
+msgstr ""
+
+#. translators: 1: Open option tag, 2: Close option tag.
+#: src/dashboard/class-options.php:337
+msgctxt "showing no pages"
+msgid "%1$s&mdash; Select &mdash;%2$s"
+msgstr ""
+
+#: src/dashboard/class-post-type.php:68
+msgctxt "post type"
+msgid "Post"
+msgstr ""
+
+#: src/dashboard/class-post-type.php:69
+msgctxt "post type"
+msgid "Posts"
+msgstr ""
+
+#: src/dashboard/class-post-type.php:141
+msgctxt "post type"
+msgid "Add new"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:143
+msgctxt "post type"
+msgid "All %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:145
+msgctxt "post type"
+msgid "Add new %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:147
+msgctxt "post type"
+msgid "Edit %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:149
+msgctxt "post type"
+msgid "New %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:151
+#: src/dashboard/class-post-type.php:153
+msgctxt "post type"
+msgid "View %1$s"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:155
+msgctxt "post type"
+msgid "Search %1$s"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:157
+msgctxt "post type"
+msgid "No %1$s found"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:159
+msgctxt "post type"
+msgid "No %1$s found in trash"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:161
+#: src/dashboard/class-post-type.php:195
+msgctxt "post type"
+msgid "Parent %1$s:"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:163
+msgctxt "post type"
+msgid "Featured image for this %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:165
+msgctxt "post type"
+msgid "Set featured image for this %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:167
+msgctxt "post type"
+msgid "Remove featured image for this %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:169
+msgctxt "post type"
+msgid "Use as featured image for this %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:171
+msgctxt "post type"
+msgid "%1$s archives"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:173
+msgctxt "post type"
+msgid "Insert into %1$s"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:175
+msgctxt "post type"
+msgid "Upload to this %1$s"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:177
+msgctxt "post type"
+msgid "Filter %1$s list"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:179
+msgctxt "post type"
+msgid "%1$s list navigation"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:181
+msgctxt "post type"
+msgid "%1$s list"
+msgstr ""
+
+#. translators: %1$s: General name for the post type, usually plural.
+#: src/dashboard/class-post-type.php:183
+msgctxt "post type"
+msgid "%1$s attributes"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:185
+msgctxt "post type"
+msgid "%1$s published"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:187
+msgctxt "post type"
+msgid "%1$s published privately."
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:189
+msgctxt "post type"
+msgid "%1$s reverted to draft."
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:191
+msgctxt "post type"
+msgid "%1$s scheduled"
+msgstr ""
+
+#. translators: %1$s: Name for one object of this post type.
+#: src/dashboard/class-post-type.php:193
+msgctxt "post type"
+msgid "%1$s updated."
+msgstr ""
+
+#: src/dashboard/class-reading.php:73
+msgctxt "reading"
+msgid "Additional Settings"
+msgstr ""
+
+#: src/dashboard/class-taxonomy.php:62
+msgctxt "taxonomy"
+msgid "Category"
+msgstr ""
+
+#: src/dashboard/class-taxonomy.php:63
+msgctxt "taxonomy"
+msgid "Categories"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:106
+msgctxt "taxonomy"
+msgid "All %s"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:108
+msgctxt "taxonomy"
+msgid "Edit %s"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:110
+msgctxt "taxonomy"
+msgid "View %s"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:112
+msgctxt "taxonomy"
+msgid "Update %s name"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:114
+msgctxt "taxonomy"
+msgid "Add new %s"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:116
+msgctxt "taxonomy"
+msgid "New %s name"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:118
+msgctxt "taxonomy"
+msgid "Parent %s"
+msgstr ""
+
+#. translators: %s: Name for one object of this taxonomy type.
+#: src/dashboard/class-taxonomy.php:120
+msgctxt "taxonomy"
+msgid "Parent %s:"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:122
+msgctxt "taxonomy"
+msgid "Search %s"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:124
+msgctxt "taxonomy"
+msgid "Popular %s"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:126
+msgctxt "taxonomy"
+msgid "Separate %s with commas"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:128
+msgctxt "taxonomy"
+msgid "Add or remove %s"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:130
+msgctxt "taxonomy"
+msgid "Choose from the most used %s"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:132
+msgctxt "taxonomy"
+msgid "No %s found"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:134
+msgctxt "taxonomy"
+msgid "No %s"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:136
+msgctxt "taxonomy"
+msgid "%s list navigation"
+msgstr ""
+
+#. translators: %s: General name for the taxonomy type, usually plural.
+#: src/dashboard/class-taxonomy.php:138
+msgctxt "taxonomy"
+msgid "%s list"
+msgstr ""
+
+#: src/dashboard/woocommerce/class-product-data.php:75
+msgctxt "product data"
+msgid "Sixa Options"
+msgstr ""
+
+#: src/dashboard/woocommerce/class-wc-settings.php:83
+msgctxt "wc settings"
+msgid "Sixa Options"
+msgstr ""
+
+#: src/frontend/class-breadcrumb.php:149
+msgctxt "breadcrumb"
+msgid "Error 404"
+msgstr ""
+
+#. translators: %s: product tag
+#: src/frontend/class-breadcrumb.php:280
+msgctxt "breadcrumb"
+msgid "Products tagged &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %s: tag name
+#: src/frontend/class-breadcrumb.php:344
+msgctxt "breadcrumb"
+msgid "Posts tagged &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %s: author name
+#: src/frontend/class-breadcrumb.php:396
+msgctxt "breadcrumb"
+msgid "Author: %s"
+msgstr ""
+
+#. translators: %s: search term
+#: src/frontend/class-breadcrumb.php:445
+msgctxt "breadcrumb"
+msgid "Search results for &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: %d: page number
+#: src/frontend/class-breadcrumb.php:463
+msgctxt "breadcrumb"
+msgid "Page %d"
+msgstr ""
+
+#: src/frontend/class-breadcrumb.php:482
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""
+
+#. translators: 1: Open `div` tag, 2: Close H3 tag.
+#: src/frontend/class-related-posts.php:49
+msgctxt "related posts"
+msgid "%1$sRelated Posts%2$s"
+msgstr ""
+
+#. translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag.
+#: src/frontend/class-related-posts.php:92
+msgctxt "related posts"
+msgid "%1$sby %2$s%3$s"
+msgstr ""
+
+#. translators: 1: Open anchor link, 2: Close anchor tag.
+#. translators: 1: Open anchor link, 2: Close anchor tag.
+#: src/frontend/class-related-posts.php:113
+#: src/frontend/shortcode/class-recent-posts.php:168
+msgid "%1$sRead more%2$s"
+msgstr ""
+
+#: src/frontend/shortcode/class-faq.php:94
+#: src/frontend/shortcode/class-recent-posts.php:129
+msgid "(no title)"
+msgstr ""
+
+#. translators: byline. %s: current author.
+#: src/frontend/shortcode/class-recent-posts.php:138
+msgid "by %s"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:37
+msgctxt "widget name"
+msgid "Contact Info"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:38
+msgctxt "widget description"
+msgid "Display a link to your location, and contact information."
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:148
+#: src/frontend/widget/class-recent-posts.php:175
+#: src/frontend/widget/class-reusable-post.php:128
+#: src/frontend/widget/class-social-network.php:171
+msgctxt "widget form"
+msgid "Title:"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:154
+msgctxt "widget form"
+msgid "Address:"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:161
+msgctxt "widget form"
+msgid "Show map?"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:166
+msgctxt "widget form"
+msgid "Phone:"
+msgstr ""
+
+#: src/frontend/widget/class-contact-info.php:172
+msgctxt "widget form"
+msgid "Email:"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:37
+msgctxt "widget name"
+msgid "Recent Posts"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:38
+msgctxt "widget description"
+msgid "Your site&#8217;s recent blog posts."
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:46
+msgid "Recent Posts"
+msgstr ""
+
+#. translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag.
+#: src/frontend/widget/class-recent-posts.php:121
+msgctxt "recent posts widget"
+msgid "%1$sby %2$s%3$s"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:181
+msgctxt "widget form"
+msgid "Number of posts to show:"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:188
+msgctxt "widget form"
+msgid "Display post author?"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:194
+msgctxt "widget form"
+msgid "Display post date?"
+msgstr ""
+
+#: src/frontend/widget/class-recent-posts.php:200
+msgctxt "widget form"
+msgid "Display post thumbnail?"
+msgstr ""
+
+#: src/frontend/widget/class-reusable-post.php:37
+msgctxt "widget name"
+msgid "Reusable Post"
+msgstr ""
+
+#: src/frontend/widget/class-reusable-post.php:38
+msgctxt "widget description"
+msgid "Your site&#8217;s reusable blocks post."
+msgstr ""
+
+#: src/frontend/widget/class-reusable-post.php:134
+msgctxt "widget form"
+msgid "Post:"
+msgstr ""
+
+#: src/frontend/widget/class-reusable-post.php:138
+msgctxt "placeholder"
+msgid "&mdash; Select &mdash;"
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:37
+msgctxt "widget name"
+msgid "Social Network"
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:38
+msgctxt "widget description"
+msgid "Display a list of social media link icons in your sidebar."
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:178
+msgctxt "widget form"
+msgid "Open linked address(es) in a new window?"
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:252
+msgctxt "button label"
+msgid "Remove"
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:366
+msgid "RSS Feed"
+msgstr ""
+
+#: src/frontend/widget/class-social-network.php:417
+msgid "Email"
 msgstr ""

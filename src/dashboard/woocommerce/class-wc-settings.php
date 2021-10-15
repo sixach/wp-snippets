@@ -80,7 +80,7 @@ if ( ! class_exists( 'WC_Settings' ) ) :
 		 */
 		public function __construct( $args = array() ) {
 			$this->id       = isset( $args['id'] ) ? $args['id'] : $this->id;
-			$this->label    = isset( $args['label'] ) ? $args['label'] : _x( 'Sixa Options', 'wc settings', '@@textdomain' );
+			$this->label    = isset( $args['label'] ) ? $args['label'] : _x( 'Sixa Options', 'wc settings', 'sixa-snippets' );
 			$this->sections = isset( $args['sections'] ) ? wp_list_pluck( $args['sections'], 'label', 'id' ) : array();
 			$this->fields   = ! empty( $this->sections ) ? wp_list_pluck( $args['sections'], 'fields', 'id' ) : array();
 

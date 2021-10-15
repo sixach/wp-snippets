@@ -59,8 +59,8 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 
 				$args          = isset( $taxonomy['args'] ) ? $taxonomy['args'] : array();
 				$post_type     = isset( $taxonomy['post_type'] ) ? $taxonomy['post_type'] : 'post';
-				$singular_name = isset( $taxonomy['singular_name'] ) ? $taxonomy['singular_name'] : _x( 'Category', 'taxonomy', '@@textdomain' );
-				$plural_name   = isset( $taxonomy['plural_name'] ) ? $taxonomy['plural_name'] : _x( 'Categories', 'taxonomy', '@@textdomain' );
+				$singular_name = isset( $taxonomy['singular_name'] ) ? $taxonomy['singular_name'] : _x( 'Category', 'taxonomy', 'sixa-snippets' );
+				$plural_name   = isset( $taxonomy['plural_name'] ) ? $taxonomy['plural_name'] : _x( 'Categories', 'taxonomy', 'sixa-snippets' );
 				$defaults      = apply_filters(
 					'sixa_register_taxonomy_args',
 					array(
@@ -103,39 +103,39 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 					'singular_name'              => $singular_name,
 					'menu_name'                  => $plural_name,
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'all_items'                  => sprintf( _x( 'All %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'all_items'                  => sprintf( _x( 'All %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'edit_item'                  => sprintf( _x( 'Edit %s', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'edit_item'                  => sprintf( _x( 'Edit %s', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'view_item'                  => sprintf( _x( 'View %s', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'view_item'                  => sprintf( _x( 'View %s', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'update_item'                => sprintf( _x( 'Update %s name', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'update_item'                => sprintf( _x( 'Update %s name', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'add_new_item'               => sprintf( _x( 'Add new %s', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'add_new_item'               => sprintf( _x( 'Add new %s', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'new_item_name'              => sprintf( _x( 'New %s name', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'new_item_name'              => sprintf( _x( 'New %s name', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'parent_item'                => sprintf( _x( 'Parent %s', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'parent_item'                => sprintf( _x( 'Parent %s', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: Name for one object of this taxonomy type. */
-					'parent_item_colon'          => sprintf( _x( 'Parent %s:', 'taxonomy', '@@textdomain' ), $singular_name ),
+					'parent_item_colon'          => sprintf( _x( 'Parent %s:', 'taxonomy', 'sixa-snippets' ), $singular_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'search_items'               => sprintf( _x( 'Search %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'search_items'               => sprintf( _x( 'Search %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'popular_items'              => sprintf( _x( 'Popular %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'popular_items'              => sprintf( _x( 'Popular %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'separate_items_with_commas' => sprintf( _x( 'Separate %s with commas', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'separate_items_with_commas' => sprintf( _x( 'Separate %s with commas', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'add_or_remove_items'        => sprintf( _x( 'Add or remove %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'add_or_remove_items'        => sprintf( _x( 'Add or remove %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'choose_from_most_used'      => sprintf( _x( 'Choose from the most used %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'choose_from_most_used'      => sprintf( _x( 'Choose from the most used %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'not_found'                  => sprintf( _x( 'No %s found', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'not_found'                  => sprintf( _x( 'No %s found', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'no_terms'                   => sprintf( _x( 'No %s', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'no_terms'                   => sprintf( _x( 'No %s', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'items_list_navigation'      => sprintf( _x( '%s list navigation', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'items_list_navigation'      => sprintf( _x( '%s list navigation', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 					/* translators: %s: General name for the taxonomy type, usually plural. */
-					'items_list'                 => sprintf( _x( '%s list', 'taxonomy', '@@textdomain' ), $plural_name ),
+					'items_list'                 => sprintf( _x( '%s list', 'taxonomy', 'sixa-snippets' ), $plural_name ),
 				)
 			);
 

@@ -68,8 +68,8 @@ if ( ! class_exists( 'Options' ) ) :
 		 */
 		protected function register( $labels, $parent_slug ) {
 			$method     = 'add_menu_page';
-			$page_title = isset( $labels['page_title'] ) ? $labels['page_title'] : _x( 'Plugin Options', 'post type', '@@textdomain' );
-			$menu_title = isset( $labels['menu_title'] ) ? $labels['menu_title'] : _x( 'Sixa Options', 'post type', '@@textdomain' );
+			$page_title = isset( $labels['page_title'] ) ? $labels['page_title'] : _x( 'Plugin Options', 'post type', 'sixa-snippets' );
+			$menu_title = isset( $labels['menu_title'] ) ? $labels['menu_title'] : _x( 'Sixa Options', 'post type', 'sixa-snippets' );
 			$args       = array( $page_title, $menu_title, 'manage_options', sanitize_key( self::$slug ), array( $this, 'render' ), '', 81 );
 
 			if ( ! empty( $parent_slug ) ) {
@@ -334,7 +334,7 @@ if ( ! class_exists( 'Options' ) ) :
 
 			if ( ! ! $field['show_option_none'] ) {
 				/* translators: 1: Open option tag, 2: Close option tag. */
-				$return .= sprintf( _x( '%1$s&mdash; Select &mdash;%2$s', 'showing no pages', '@@textdomain' ), '<option value="">', '</option>' );
+				$return .= sprintf( _x( '%1$s&mdash; Select &mdash;%2$s', 'showing no pages', 'sixa-snippets' ), '<option value="">', '</option>' );
 			}
 
 			foreach ( $field['options'] as $key => $value ) {

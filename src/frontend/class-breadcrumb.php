@@ -146,7 +146,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		 * @return    void
 		 */
 		protected function add_crumbs_404() {
-			$this->add_crumb( _x( 'Error 404', 'breadcrumb', '@@textdomain' ) );
+			$this->add_crumb( _x( 'Error 404', 'breadcrumb', 'sixa-snippets' ) );
 		}
 
 		/**
@@ -277,7 +277,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 			$this->prepend_shop_page();
 
 			/* translators: %s: product tag */
-			$this->add_crumb( sprintf( _x( 'Products tagged &ldquo;%s&rdquo;', 'breadcrumb', '@@textdomain' ), $current_term->name ), get_term_link( $current_term, 'product_tag' ) );
+			$this->add_crumb( sprintf( _x( 'Products tagged &ldquo;%s&rdquo;', 'breadcrumb', 'sixa-snippets' ), $current_term->name ), get_term_link( $current_term, 'product_tag' ) );
 		}
 
 		/**
@@ -341,7 +341,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 			$queried_object = $GLOBALS['wp_query']->get_queried_object();
 
 			/* translators: %s: tag name */
-			$this->add_crumb( sprintf( _x( 'Posts tagged &ldquo;%s&rdquo;', 'breadcrumb', '@@textdomain' ), single_tag_title( '', false ) ), get_tag_link( $queried_object->term_id ) );
+			$this->add_crumb( sprintf( _x( 'Posts tagged &ldquo;%s&rdquo;', 'breadcrumb', 'sixa-snippets' ), single_tag_title( '', false ) ), get_tag_link( $queried_object->term_id ) );
 		}
 
 		/**
@@ -393,7 +393,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 			$userdata = get_userdata( $author );
 
 			/* translators: %s: author name */
-			$this->add_crumb( sprintf( _x( 'Author: %s', 'breadcrumb', '@@textdomain' ), $userdata->display_name ) );
+			$this->add_crumb( sprintf( _x( 'Author: %s', 'breadcrumb', 'sixa-snippets' ), $userdata->display_name ) );
 		}
 
 		/**
@@ -442,7 +442,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		protected function search_trail() {
 			if ( is_search() ) {
 				/* translators: %s: search term */
-				$this->add_crumb( sprintf( _x( 'Search results for &ldquo;%s&rdquo;', 'breadcrumb', '@@textdomain' ), get_search_query() ), remove_query_arg( 'paged' ) );
+				$this->add_crumb( sprintf( _x( 'Search results for &ldquo;%s&rdquo;', 'breadcrumb', 'sixa-snippets' ), get_search_query() ), remove_query_arg( 'paged' ) );
 			}
 		}
 
@@ -460,7 +460,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 				}
 
 				/* translators: %d: page number */
-				$this->add_crumb( sprintf( _x( 'Page %d', 'breadcrumb', '@@textdomain' ), get_query_var( 'paged' ) ) );
+				$this->add_crumb( sprintf( _x( 'Page %d', 'breadcrumb', 'sixa-snippets' ), get_query_var( 'paged' ) ) );
 			}
 		}
 
@@ -479,7 +479,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 					'wrap_after'  => '</ol>',
 					'before'      => '<li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">',
 					'after'       => '</li>',
-					'home'        => _x( 'Home', 'breadcrumb', '@@textdomain' ),
+					'home'        => _x( 'Home', 'breadcrumb', 'sixa-snippets' ),
 				)
 			);
 

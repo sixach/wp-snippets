@@ -65,8 +65,8 @@ if ( ! class_exists( 'Post_Type' ) ) :
 				}
 
 				$args          = isset( $post_type['args'] ) ? $post_type['args'] : array();
-				$singular_name = isset( $post_type['singular_name'] ) ? $post_type['singular_name'] : _x( 'Post', 'post type', '@@textdomain' );
-				$plural_name   = isset( $post_type['plural_name'] ) ? $post_type['plural_name'] : _x( 'Posts', 'post type', '@@textdomain' );
+				$singular_name = isset( $post_type['singular_name'] ) ? $post_type['singular_name'] : _x( 'Post', 'post type', 'sixa-snippets' );
+				$plural_name   = isset( $post_type['plural_name'] ) ? $post_type['plural_name'] : _x( 'Posts', 'post type', 'sixa-snippets' );
 				$defaults      = apply_filters(
 					'sixa_register_post_type_args',
 					array(
@@ -138,61 +138,61 @@ if ( ! class_exists( 'Post_Type' ) ) :
 					'singular_name'            => $singular_name,
 					'menu_name'                => $plural_name,
 					'name_admin_bar'           => $singular_name,
-					'add_new'                  => _x( 'Add new', 'post type', '@@textdomain' ),
+					'add_new'                  => _x( 'Add new', 'post type', 'sixa-snippets' ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'all_items'                => sprintf( _x( 'All %1$s', 'post type', '@@textdomain' ), $plural_name ),
+					'all_items'                => sprintf( _x( 'All %1$s', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'add_new_item'             => sprintf( _x( 'Add new %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'add_new_item'             => sprintf( _x( 'Add new %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'edit_item'                => sprintf( _x( 'Edit %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'edit_item'                => sprintf( _x( 'Edit %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'new_item'                 => sprintf( _x( 'New %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'new_item'                 => sprintf( _x( 'New %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'view_item'                => sprintf( _x( 'View %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'view_item'                => sprintf( _x( 'View %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'view_items'               => sprintf( _x( 'View %1$s', 'post type', '@@textdomain' ), $plural_name ),
+					'view_items'               => sprintf( _x( 'View %1$s', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'search_items'             => sprintf( _x( 'Search %1$s', 'post type', '@@textdomain' ), $plural_name ),
+					'search_items'             => sprintf( _x( 'Search %1$s', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'not_found'                => sprintf( _x( 'No %1$s found', 'post type', '@@textdomain' ), $plural_name ),
+					'not_found'                => sprintf( _x( 'No %1$s found', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'not_found_in_trash'       => sprintf( _x( 'No %1$s found in trash', 'post type', '@@textdomain' ), $plural_name ),
+					'not_found_in_trash'       => sprintf( _x( 'No %1$s found in trash', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'parent'                   => sprintf( _x( 'Parent %1$s:', 'post type', '@@textdomain' ), $singular_name ),
+					'parent'                   => sprintf( _x( 'Parent %1$s:', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'featured_image'           => sprintf( _x( 'Featured image for this %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'featured_image'           => sprintf( _x( 'Featured image for this %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'set_featured_image'       => sprintf( _x( 'Set featured image for this %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'set_featured_image'       => sprintf( _x( 'Set featured image for this %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'remove_featured_image'    => sprintf( _x( 'Remove featured image for this %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'remove_featured_image'    => sprintf( _x( 'Remove featured image for this %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'use_featured_image'       => sprintf( _x( 'Use as featured image for this %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'use_featured_image'       => sprintf( _x( 'Use as featured image for this %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'archives'                 => sprintf( _x( '%1$s archives', 'post type', '@@textdomain' ), $singular_name ),
+					'archives'                 => sprintf( _x( '%1$s archives', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'insert_into_item'         => sprintf( _x( 'Insert into %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'insert_into_item'         => sprintf( _x( 'Insert into %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'uploaded_to_this_item'    => sprintf( _x( 'Upload to this %1$s', 'post type', '@@textdomain' ), $singular_name ),
+					'uploaded_to_this_item'    => sprintf( _x( 'Upload to this %1$s', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'filter_items_list'        => sprintf( _x( 'Filter %1$s list', 'post type', '@@textdomain' ), $plural_name ),
+					'filter_items_list'        => sprintf( _x( 'Filter %1$s list', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'items_list_navigation'    => sprintf( _x( '%1$s list navigation', 'post type', '@@textdomain' ), $plural_name ),
+					'items_list_navigation'    => sprintf( _x( '%1$s list navigation', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'items_list'               => sprintf( _x( '%1$s list', 'post type', '@@textdomain' ), $plural_name ),
+					'items_list'               => sprintf( _x( '%1$s list', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: General name for the post type, usually plural. */
-					'attributes'               => sprintf( _x( '%1$s attributes', 'post type', '@@textdomain' ), $plural_name ),
+					'attributes'               => sprintf( _x( '%1$s attributes', 'post type', 'sixa-snippets' ), $plural_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'item_published'           => sprintf( _x( '%1$s published', 'post type', '@@textdomain' ), $singular_name ),
+					'item_published'           => sprintf( _x( '%1$s published', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'item_published_privately' => sprintf( _x( '%1$s published privately.', 'post type', '@@textdomain' ), $singular_name ),
+					'item_published_privately' => sprintf( _x( '%1$s published privately.', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'item_reverted_to_draft'   => sprintf( _x( '%1$s reverted to draft.', 'post type', '@@textdomain' ), $singular_name ),
+					'item_reverted_to_draft'   => sprintf( _x( '%1$s reverted to draft.', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'item_scheduled'           => sprintf( _x( '%1$s scheduled', 'post type', '@@textdomain' ), $singular_name ),
+					'item_scheduled'           => sprintf( _x( '%1$s scheduled', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'item_updated'             => sprintf( _x( '%1$s updated.', 'post type', '@@textdomain' ), $singular_name ),
+					'item_updated'             => sprintf( _x( '%1$s updated.', 'post type', 'sixa-snippets' ), $singular_name ),
 					/* translators: %1$s: Name for one object of this post type. */
-					'parent_item_colon'        => sprintf( _x( 'Parent %1$s:', 'post type', '@@textdomain' ), $singular_name ),
+					'parent_item_colon'        => sprintf( _x( 'Parent %1$s:', 'post type', 'sixa-snippets' ), $singular_name ),
 				)
 			);
 

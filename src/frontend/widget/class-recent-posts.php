@@ -34,8 +34,8 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
-			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Recent Posts', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s recent blog posts.', 'widget description', '@@textdomain' );
+			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Recent Posts', 'widget name', 'sixa-snippets' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s recent blog posts.', 'widget description', 'sixa-snippets' );
 			$widget_key          = 'sixa-recent-posts';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),
@@ -43,7 +43,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 				'customize_selective_refresh' => true,
 			);
 			$widget_defaults     = array(
-				'title'       => __( 'Recent Posts', '@@textdomain' ),
+				'title'       => __( 'Recent Posts', 'sixa-snippets' ),
 				'number'      => 4,
 				'show_date'   => 0,
 				'show_author' => 0,
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 				// Author.
 				if ( ! ! $show_author ) {
 					/* translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag. */
-					$html[ sprintf( 'author_%d', $post_id ) ] = sprintf( _x( '%1$sby %2$s%3$s', 'recent posts widget', '@@textdomain' ), '<span class="post-author">', sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post['post_author'] ) ) ), get_the_author_meta( 'display_name', $post['post_author'] ) ), '</span>' );
+					$html[ sprintf( 'author_%d', $post_id ) ] = sprintf( _x( '%1$sby %2$s%3$s', 'recent posts widget', 'sixa-snippets' ), '<span class="post-author">', sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post['post_author'] ) ) ), get_the_author_meta( 'display_name', $post['post_author'] ) ), '</span>' );
 				}
 
 				// Date.
@@ -172,32 +172,32 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 			?>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-					<?php echo esc_html_x( 'Title:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Title:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>">
-					<?php echo esc_html_x( 'Number of posts to show:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Number of posts to show:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="number" step="1" min="1" value="<?php echo absint( $number ); ?>" size="3" />
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $show_author, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_author' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_author' ) ); ?>" value="1" />
 				<label for="<?php echo esc_attr( $this->get_field_id( 'show_author' ) ); ?>">
-					<?php echo esc_html_x( 'Display post author?', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Display post author?', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $show_date, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" value="1" />
 				<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>">
-					<?php echo esc_html_x( 'Display post date?', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Display post date?', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $show_thumb, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'show_thumb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_thumb' ) ); ?>" value="1" />
 				<label for="<?php echo esc_attr( $this->get_field_id( 'show_thumb' ) ); ?>">
-					<?php echo esc_html_x( 'Display post thumbnail?', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Display post thumbnail?', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 			</p>
 			<?php

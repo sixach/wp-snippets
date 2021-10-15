@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+.husky export-ignore
+docs export-ignore
+node_modules export-ignore
+.editorconfig export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+phpcs.xml.dist export-ignore
+renovate.json export-ignore

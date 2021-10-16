@@ -70,7 +70,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 */
 		public function register() {
 			register_setting( 'reading', self::$key, array( sprintf( '%s\Options', __NAMESPACE__ ), 'sanitize' ) );
-			add_settings_section( self::$key, _x( 'Additional Settings', 'reading', '@@textdomain' ), '', 'reading' );
+			add_settings_section( self::$key, _x( 'Additional Settings', 'reading', 'sixa-snippets' ), '', 'reading' );
 			$options = get_option( self::$key, array() );
 
 			foreach ( self::$dropdowns as $key => $name ) {

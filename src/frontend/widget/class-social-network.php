@@ -34,8 +34,8 @@ if ( ! class_exists( 'Social_Network' ) ) :
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
-			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Social Network', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a list of social media link icons in your sidebar.', 'widget description', '@@textdomain' );
+			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Social Network', 'widget name', 'sixa-snippets' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a list of social media link icons in your sidebar.', 'widget description', 'sixa-snippets' );
 			$widget_key          = 'sixa-social-network';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),
@@ -168,14 +168,14 @@ if ( ! class_exists( 'Social_Network' ) ) :
 			?>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-					<?php echo esc_html_x( 'Title:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Title:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $target, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'target' ) ); ?>" value="1" />
 				<label for="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>">
-					<?php echo esc_html_x( 'Open linked address(es) in a new window?', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Open linked address(es) in a new window?', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 			</p>
 			<div class="<?php echo esc_attr( $this->get_field_id( 'list' ) ); ?>">
@@ -249,7 +249,7 @@ if ( ! class_exists( 'Social_Network' ) ) :
 					</p>
 					<p style="margin-bottom:0;">
 						<a href="#" class="button-link-delete" onClick="(function(e){jQuery(e.target).closest('form').trigger('change').end().closest('.sixa-social-network-widget-item').remove();})(arguments[0]);return false;">
-							<?php echo esc_html_x( 'Remove', 'button label', '@@textdomain' ); ?>
+							<?php echo esc_html_x( 'Remove', 'button label', 'sixa-snippets' ); ?>
 						</a>
 					</p>
 				</div>
@@ -363,7 +363,7 @@ if ( ! class_exists( 'Social_Network' ) ) :
 							'/atom',
 							'index.rdf',
 						),
-						'label' => __( 'RSS Feed', '@@textdomain' ),
+						'label' => __( 'RSS Feed', 'sixa-snippets' ),
 						'icon'  => '<svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M2,8.667V12c5.515,0,10,4.485,10,10h3.333C15.333,14.637,9.363,8.667,2,8.667z M2,2v3.333 c9.19,0,16.667,7.477,16.667,16.667H22C22,10.955,13.045,2,2,2z M4.5,17C3.118,17,2,18.12,2,19.5S3.118,22,4.5,22S7,20.88,7,19.5 S5.882,17,4.5,17z"></path></svg>',
 					),
 					array(
@@ -414,7 +414,7 @@ if ( ! class_exists( 'Social_Network' ) ) :
 					),
 					array(
 						'url'   => array( 'mailto:' ),
-						'label' => __( 'Email', '@@textdomain' ),
+						'label' => __( 'Email', 'sixa-snippets' ),
 						'icon'  => '<svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20,4H4C2.895,4,2,4.895,2,6v12c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2V6C22,4.895,21.105,4,20,4z M20,8.236l-8,4.882 L4,8.236V6h16V8.236z"></path></svg>',
 					),
 					array(

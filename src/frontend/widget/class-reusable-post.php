@@ -34,8 +34,8 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
-			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Reusable Post', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s reusable blocks post.', 'widget description', '@@textdomain' );
+			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Reusable Post', 'widget name', 'sixa-snippets' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Your site&#8217;s reusable blocks post.', 'widget description', 'sixa-snippets' );
 			$widget_key          = 'sixa-reusable-post';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),
@@ -125,17 +125,17 @@ if ( ! class_exists( 'Reusable_Post' ) ) :
 			?>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-					<?php echo esc_html_x( 'Title:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Title:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'post_id' ) ); ?>">
-					<?php echo esc_html_x( 'Post:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Post:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_id' ) ); ?>">
 					<option value="<?php echo esc_attr( $this->defaults['post_id'] ); ?>">
-							<?php echo esc_html_x( '&mdash; Select &mdash;', 'placeholder', '@@textdomain' ); ?>
+							<?php echo esc_html_x( '&mdash; Select &mdash;', 'placeholder', 'sixa-snippets' ); ?>
 					</option>
 					<?php foreach ( $posts as $key => $value ) : ?>
 						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $post_id, true ); ?>>

@@ -126,7 +126,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 					// Title.
 					$title = get_the_title( $post );
 					if ( ! $title ) {
-						$title = __( '(no title)', '@@textdomain' );
+						$title = __( '(no title)', 'sixa-snippets' );
 					}
 					$return .= sprintf( '<a href="%s" class="%s" rel="bookmark">%s</a>', esc_url( get_permalink( $post ) ), sprintf( '%s__post-title', sanitize_html_class( $class ) ), wp_kses_post( $title ) );
 
@@ -135,7 +135,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 						$author_display_name = get_the_author_meta( 'display_name', $post->post_author );
 
 						/* translators: byline. %s: current author. */
-						$byline = sprintf( __( 'by %s', '@@textdomain' ), $author_display_name );
+						$byline = sprintf( __( 'by %s', 'sixa-snippets' ), $author_display_name );
 
 						if ( ! empty( $author_display_name ) ) {
 							$return .= sprintf(
@@ -165,7 +165,7 @@ if ( ! class_exists( 'Recent_Posts' ) ) :
 
 							if ( $atts['excerpt_length'] < count( explode( ' ', get_the_content( '', '', $post ) ) ) ) {
 								/* translators: 1: Open anchor link, 2: Close anchor tag.  */
-								$readmore = sprintf( esc_html__( '%1$sRead more%2$s', '@@textdomain' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
+								$readmore = sprintf( esc_html__( '%1$sRead more%2$s', 'sixa-snippets' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
 							}
 
 							$return .= sprintf(

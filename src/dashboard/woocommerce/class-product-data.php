@@ -72,7 +72,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		public function tabs( $tabs ) {
 			foreach ( self::$controls as $key => $args ) {
 				$tabs[ $key ] = array(
-					'label'    => isset( $args['label'] ) ? $args['label'] : _x( 'Sixa Options', 'product data', '@@textdomain' ),
+					'label'    => isset( $args['label'] ) ? $args['label'] : _x( 'Sixa Options', 'product data', 'sixa-snippets' ),
 					'class'    => isset( $args['class'] ) ? $args['class'] : '',
 					'target'   => strtolower( trim( $key ) ),
 					'priority' => 81,

@@ -91,7 +91,7 @@ if ( ! class_exists( 'FAQ' ) ) :
 					// Title.
 					$title = get_the_title( $post );
 					if ( ! $title ) {
-						$title = __( '(no title)', '@@textdomain' );
+						$title = __( '(no title)', 'sixa-snippets' );
 					}
 					$return .= sprintf( '<summary class="%s">%s</summary>', sprintf( '%s__title', sanitize_html_class( $class ) ), wp_kses_post( $title ) );
 

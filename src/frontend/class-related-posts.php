@@ -46,7 +46,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 		 */
 		public static function run( $args = array(), $echo = true ) {
 			/* translators: 1: Open `div` tag, 2: Close H3 tag. */
-			$return = sprintf( esc_html_x( '%1$sRelated Posts%2$s', 'related posts', '@@textdomain' ), sprintf( '<div class="%s"><h3>', sanitize_html_class( self::$class ) ), '</h3>' );
+			$return = sprintf( esc_html_x( '%1$sRelated Posts%2$s', 'related posts', 'sixa-snippets' ), sprintf( '<div class="%s"><h3>', sanitize_html_class( self::$class ) ), '</h3>' );
 
 			// Bail early, in case the query is NOT for an existing single post of any post type.
 			if ( is_singular() ) {
@@ -89,7 +89,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						// Author.
 						if ( $show_author ) {
 							/* translators: 1: Open span tag, 2: Author anchor tag, 3: Close span tag. */
-							$return .= sprintf( _x( '%1$sby %2$s%3$s', 'related posts', '@@textdomain' ), sprintf( '<span class="%s__author">', sanitize_html_class( self::$class ) ), sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ), get_the_author_meta( 'display_name', $post->post_author ) ), '</span>' );
+							$return .= sprintf( _x( '%1$sby %2$s%3$s', 'related posts', 'sixa-snippets' ), sprintf( '<span class="%s__author">', sanitize_html_class( self::$class ) ), sprintf( '<a href="%s" class="url fn" rel="author">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) ) ), get_the_author_meta( 'display_name', $post->post_author ) ), '</span>' );
 						}
 
 						// Date.
@@ -110,7 +110,7 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 						// Read more.
 						if ( $show_readmore ) {
 							/* translators: 1: Open anchor link, 2: Close anchor tag.  */
-							$return .= sprintf( esc_html__( '%1$sRead more%2$s', '@@textdomain' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
+							$return .= sprintf( esc_html__( '%1$sRead more%2$s', 'sixa-snippets' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
 						}
 
 						$return .= apply_filters( 'sixa_related_posts_after_post', __return_empty_string(), $post );

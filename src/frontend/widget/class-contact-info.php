@@ -34,8 +34,8 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 		 */
 		public function __construct( $args = array() ) {
 			$args['defaults']    = isset( $args['defaults'] ) ? $args['defaults'] : array();
-			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Contact Info', 'widget name', '@@textdomain' );
-			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a link to your location, and contact information.', 'widget description', '@@textdomain' );
+			$args['label']       = isset( $args['label'] ) ? $args['label'] : esc_html_x( 'Contact Info', 'widget name', 'sixa-snippets' );
+			$args['description'] = isset( $args['description'] ) ? $args['description'] : esc_html_x( 'Display a link to your location, and contact information.', 'widget description', 'sixa-snippets' );
 			$widget_key          = 'sixa-contact-info';
 			$widget_ops          = array(
 				'classname'                   => sprintf( '%s-widget', $widget_key ),
@@ -145,31 +145,31 @@ if ( ! class_exists( 'Contact_Info' ) ) :
 			?>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-					<?php echo esc_html_x( 'Title:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Title:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>">
-					<?php echo esc_html_x( 'Address:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Address:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<textarea rows="5" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'address' ) ); ?>"><?php echo esc_textarea( $address ); ?></textarea>
 			</p>
 			<p>
 				<input class="checkbox" type="checkbox"<?php checked( $showmap, 1 ); ?> id="<?php echo esc_attr( $this->get_field_id( 'showmap' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'showmap' ) ); ?>" value="1" />
 				<label for="<?php echo esc_attr( $this->get_field_id( 'showmap' ) ); ?>">
-					<?php echo esc_html_x( 'Show map?', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Show map?', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>">
-					<?php echo esc_html_x( 'Phone:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Phone:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'phone' ) ); ?>" type="tel" value="<?php echo esc_attr( $phone ); ?>" />
 			</p>
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>">
-					<?php echo esc_html_x( 'Email:', 'widget form', '@@textdomain' ); ?>
+					<?php echo esc_html_x( 'Email:', 'widget form', 'sixa-snippets' ); ?>
 				</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="email" value="<?php echo esc_attr( $email ); ?>" />
 			</p>

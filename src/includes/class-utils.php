@@ -50,7 +50,7 @@ if ( ! class_exists( Utils::class ) ) :
 		 * This function normalizes HTML entities.
 		 * Perform a regular expression to convert all HTML entities to their named counterparts.
 		 *
-		 * @since     1.4.0
+		 * @since     1.4.1
 		 * @param     string $input    Given input string, text or HTML markup.
 		 * @return    string
 		 */
@@ -79,7 +79,6 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&(pound|#0*163);/i',                                      // Pound sign.
 				'/&(euro|#0*8364);/i',                                      // Euro sign.
 				'/&(dollar|#0*36);/i',                                      // Dollar sign.
-				'/&[^&\s;]+;/i',                                            // Unknown/unhandled entities.
 				'/[ ]{2,}/',                                                // Runs of spaces, post-handling.
 			);
 			/**
@@ -101,9 +100,8 @@ if ( ! class_exists( Utils::class ) ) :
 				'-',       // ndash.
 				'*',       // Bullet.
 				'£',       // Pound sign.
-				'EUR',     // Euro sign. € ?.
+				'€',       // Euro sign. € ?.
 				'$',       // Dollar sign.
-				'',        // Unknown/unhandled entities.
 				' ',       // Runs of spaces, post-handling.
 			);
 

@@ -79,6 +79,7 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&(pound|#0*163);/i',                                      // Pound sign.
 				'/&(euro|#0*8364);/i',                                      // Euro sign.
 				'/&(dollar|#0*36);/i',                                      // Dollar sign.
+				'/&[^&\s;]+;/i',                                            // Unknown/unhandled entities.
 				'/[ ]{2,}/',                                                // Runs of spaces, post-handling.
 			);
 			/**
@@ -102,6 +103,7 @@ if ( ! class_exists( Utils::class ) ) :
 				'£',       // Pound sign.
 				'€',       // Euro sign. € ?.
 				'$',       // Dollar sign.
+				'',        // Unknown/unhandled entities.
 				' ',       // Runs of spaces, post-handling.
 			);
 

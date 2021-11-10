@@ -171,7 +171,7 @@ if ( ! class_exists( Utils::class ) ) :
 				"'",          // Single quotes.
 				'>',          // Greater-than.
 				'<',          // Less-than.
-				'&#MYAMP;',    // Ampersand.
+				'&#MYAMP;',   // Ampersand.
 				'&#169;',     // Copyright.
 				'&#8482;',    // Trademark.
 				'&#174;',     // Registered.

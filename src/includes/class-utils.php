@@ -110,6 +110,85 @@ if ( ! class_exists( Utils::class ) ) :
 			return preg_replace( $plain_search, $plain_replace, $input );
 		}
 
+		/**
+		 * This function normalizes HTML entities for use in XML.
+		 * Perform a regular expression to convert all HTML entities to their symbols
+		 * or hex encoding.
+		 *
+		 * Note that this function keeps `&amp;` as a named entity.
+		 * This is because `&amp;` is valid in XML and `&` is invalid.
+		 *
+		 * Since we are also cleaning up all unknown entities during clean up,
+		 * we have to store `&amp;` as a temporary value. For this we have
+		 * chosen `&#MYAMP;` but this could be any arbitrary value that passes the clean up.
+		 *
+		 * Further we are not replacing hex encoded entities. These are all valid in XML.
+		 *
+		 * Also note that the list of named entities is far from complete and could be
+		 * extended in the future.
+		 *
+		 * @since     1.4.2
+		 * @param     string $input    Given input string, text or HTML markup.
+		 * @return    string
+		 */
+		public static function normalize_xml_character_entities( string $input ): string {
+			/**
+			 * List of regular expressions to search for named HTML entities.
+			 * XML only knows quot, amp, apos, lt, and gt as named entities.
+			 * Every other named entity must be replaced by its symbol or hex
+			 * encoded counterpart (or removed from the content).
+			 *
+			 * @see    https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Predefined_entities_in_XML
+			 */
+			$plain_search = array(
+				"/\r/",                       // Non-legal carriage return.
+				'/&nbsp;/i',                  // Non-breaking space.
+				'/&(quot|rdquo|ldquo);/i',    // Double quotes.
+				'/&(apos|rsquo|lsquo);/i',    // Single quotes.
+				'/&gt;/i',                    // Greater-than.
+				'/&lt;/i',                    // Less-than.
+				'/&amp;/i',                   // Ampersand.
+				'/&copy;/i',                  // Copyright.
+				'/&trade;/i',                 // Trademark.
+				'/&reg;/i',                   // Registered.
+				'/&mdash;/i',                 // mdash.
+				'/&(ndash|minus);/i',         // ndash.
+				'/&bull;/i',                  // Bullet.
+				'/&pound;/i',                 // Pound sign.
+				'/&euro;/i',                  // Euro sign.
+				'/&dollar;/i',                // Dollar sign.
+				'/&[a-z]+;/i',                // Unknown/unhandled entities.
+				'/&#MYAMP;/i',                // Add ampersand back.
+				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
+			);
+			/**
+			 * List of pattern replacements corresponding to patterns searched.
+			 */
+			$plain_replace = array(
+				'',           // Non-legal carriage return.
+				' ',          // Non-breaking space.
+				'"',          // Double quotes.
+				"'",          // Single quotes.
+				'>',          // Greater-than.
+				'<',          // Less-than.
+				'&#MYAMP;',    // Ampersand.
+				'&#169;',     // Copyright.
+				'&#8482;',    // Trademark.
+				'&#174;',     // Registered.
+				'--',         // mdash.
+				'-',          // ndash.
+				'*',          // Bullet.
+				'£',          // Pound sign.
+				'€',          // Euro sign. € ?.
+				'$',          // Dollar sign.
+				'',           // Unknown/unhandled entities.
+				'&amp;',      // Add ampersand back.
+				' ',          // Runs of spaces, post-handling.
+			);
+
+			return preg_replace( $plain_search, $plain_replace, $input );
+		}
+
 	}
 
 endif;

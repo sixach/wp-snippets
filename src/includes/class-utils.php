@@ -157,6 +157,10 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&pound;/i',                 // Pound sign.
 				'/&euro;/i',                  // Euro sign.
 				'/&dollar;/i',                // Dollar sign.
+				'/&fnof;/i',                  // Function sign.
+				'/&yen;/i',                   // Yen sign.
+				'/&cent;/i',                  // Cent sign.
+				'/&curren;/i',                // Currency sign.
 				'/&[a-z]+;/i',                // Unknown/unhandled entities.
 				'/&#MYAMP;/i',                // Add ampersand back.
 				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
@@ -181,6 +185,10 @@ if ( ! class_exists( Utils::class ) ) :
 				'£',          // Pound sign.
 				'€',          // Euro sign. € ?.
 				'$',          // Dollar sign.
+				'&#x192;',    // Function sign.
+				'&#xa5;',     // Yen sign.
+				'&#xa2;',     // Cent sign.
+				'&#xa4;',     // Currency sign.
 				'',           // Unknown/unhandled entities.
 				'&amp;',      // Add ampersand back.
 				' ',          // Runs of spaces, post-handling.

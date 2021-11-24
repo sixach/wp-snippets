@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.4.3
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Frontend
@@ -165,6 +165,8 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Single post trail.
 		 *
+		 * @since     1.4.3
+		 *            Display the general name for the post type, usually plural.
 		 * @since     1.0.0
 		 * @param     int       $post_id      Post ID.
 		 * @param     string    $permalink    Post permalink.
@@ -202,7 +204,7 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 				$post_type = get_post_type_object( get_post_type( $post ) );
 
 				if ( ! empty( $post_type->has_archive ) ) {
-					$this->add_crumb( $post_type->labels->singular_name, get_post_type_archive_link( get_post_type( $post ) ) );
+					$this->add_crumbs_post_type_archive( $post );
 				}
 			} else {
 				$page_for_posts = get_option( 'page_for_posts', false );
@@ -304,14 +306,17 @@ if ( ! class_exists( 'Breadcrumb' ) ) :
 		/**
 		 * Post type archive trail.
 		 *
+		 * @since     1.4.3
+		 *            Optionally, provide a post-object as an argument.
 		 * @since     1.0.0
+		 * @param     null|object    $post    Post object.
 		 * @return    void
 		 */
-		protected function add_crumbs_post_type_archive() {
-			$post_type = get_post_type_object( get_post_type() );
+		protected function add_crumbs_post_type_archive( $post = null ) {
+			$post_type = get_post_type_object( get_post_type( $post ) );
 
 			if ( $post_type ) {
-				$this->add_crumb( $post_type->labels->name, get_post_type_archive_link( get_post_type() ) );
+				$this->add_crumb( $post_type->labels->name, get_post_type_archive_link( get_post_type( $post ) ) );
 			}
 		}
 

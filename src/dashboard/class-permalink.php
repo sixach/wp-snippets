@@ -5,7 +5,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.4.3
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Dashboard
@@ -47,6 +47,8 @@ if ( ! class_exists( 'Permalink' ) ) :
 		/**
 		 * Initialize the class and set its properties.
 		 *
+		 * @since     1.4.3
+		 *            Flush rewrite rules when custom permalink options created/updated.
 		 * @since     1.0.0
 		 * @param     array    $args    Permalink base list.
 		 * @return    void
@@ -60,6 +62,8 @@ if ( ! class_exists( 'Permalink' ) ) :
 			self::$bases = $args;
 			$this->register();
 			$this->save();
+			add_action( sprintf( 'add_option_%s', self::$key ), array( $this, 'flush_rules_on_save' ) );
+			add_action( sprintf( 'update_option_%s', self::$key ), array( $this, 'flush_rules_on_save' ) );
 		}
 
 		/**
@@ -107,6 +111,16 @@ if ( ! class_exists( 'Permalink' ) ) :
 			}
 
 			update_option( self::$key, filter_input( INPUT_POST, self::$key, FILTER_DEFAULT, FILTER_REQUIRE_ARRAY ), false );
+		}
+
+		/**
+		 * Flush permalinks when option is created or updated.
+		 *
+		 * @since     1.4.3
+		 * @return    void
+		 */
+		public function flush_rules_on_save() {
+			flush_rewrite_rules();
 		}
 
 	}

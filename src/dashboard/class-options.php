@@ -13,6 +13,8 @@
 
 namespace Sixa_Snippets\Dashboard;
 
+use Sixa_Snippets\Includes\Utils as Utils;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -51,8 +53,8 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @return    void
 		 */
 		public function __construct( $args = array() ) {
-			$labels      = isset( $args['labels'] ) ? $args['labels'] : array();
-			$parent_slug = isset( $args['parent_slug'] ) ? $args['parent_slug'] : '';
+			$labels      = $args['labels'] ?? array();
+			$parent_slug = $args['parent_slug'] ?? '';
 
 			$this->register( $labels, $parent_slug );
 			$this->fieldset();
@@ -68,8 +70,8 @@ if ( ! class_exists( 'Options' ) ) :
 		 */
 		protected function register( $labels, $parent_slug ) {
 			$method     = 'add_menu_page';
-			$page_title = isset( $labels['page_title'] ) ? $labels['page_title'] : _x( 'Plugin Options', 'post type', 'sixa-snippets' );
-			$menu_title = isset( $labels['menu_title'] ) ? $labels['menu_title'] : _x( 'Sixa Options', 'post type', 'sixa-snippets' );
+			$page_title = $labels['page_title'] ?? _x( 'Plugin Options', 'post type', 'sixa-snippets' );
+			$menu_title = $labels['menu_title'] ?? _x( 'Sixa Options', 'post type', 'sixa-snippets' );
 			$args       = array( $page_title, $menu_title, 'manage_options', sanitize_key( self::$slug ), array( $this, 'render' ), '', 81 );
 
 			if ( ! empty( $parent_slug ) ) {
@@ -187,20 +189,20 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function hidden_field( $field, $echo = true ) {
 			$return         = '';
-			$field['name']  = isset( $field['name'] ) ? $field['name'] : $field['id'];
-			$field['class'] = isset( $field['class'] ) ? $field['class'] : '';
-			$field['value'] = isset( $field['value'] ) ? $field['value'] : '';
+			$field['name']  = $field['name'] ?? $field['id'];
+			$field['class'] = $field['class'] ?? '';
+			$field['value'] = $field['value'] ?? '';
 			$return        .= sprintf( '<input type="hidden" class="%s" name="%s" id="%s" value="%s" />', esc_attr( $field['class'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $field['value'] ) );
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
 		}
 
 		/**
@@ -209,19 +211,19 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function text_field( $field, $echo = true ) {
 			$return                     = '';
-			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['placeholder']       = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'short';
-			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
-			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
-			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
-			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
-			$field['type']              = isset( $field['type'] ) ? $field['type'] : 'text';
-			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
+			$field['label']             = $field['label'] ?? '';
+			$field['placeholder']       = $field['placeholder'] ?? '';
+			$field['class']             = $field['class'] ?? 'short';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? '';
+			$field['name']              = $field['name'] ?? $field['id'];
+			$field['type']              = $field['type'] ?? 'text';
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
 			$return                    .= sprintf( '<p class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<label for="%s">%s</label>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
 			$return                    .= sprintf( '<input type="%s" class="%s" style="%s" name="%s" id="%s" value="%s" placeholder="%s" %s />', esc_attr( $field['type'] ), esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $field['value'] ), esc_attr( $field['placeholder'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
@@ -232,11 +234,11 @@ if ( ! class_exists( 'Options' ) ) :
 
 			$return .= '</p>';
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
 		}
 
 		/**
@@ -245,20 +247,20 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function textarea_field( $field, $echo = true ) {
 			$return                     = '';
-			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['placeholder']       = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'short';
-			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
-			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
-			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
-			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
-			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
-			$field['rows']              = isset( $field['rows'] ) ? $field['rows'] : 2;
-			$field['cols']              = isset( $field['cols'] ) ? $field['cols'] : 20;
+			$field['label']             = $field['label'] ?? '';
+			$field['placeholder']       = $field['placeholder'] ?? '';
+			$field['class']             = $field['class'] ?? 'short';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? '';
+			$field['name']              = $field['name'] ?? $field['id'];
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
+			$field['rows']              = $field['rows'] ?? 2;
+			$field['cols']              = $field['cols'] ?? 20;
 			$return                    .= sprintf( '<p class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<label for="%s">%s</label>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
 			$return                    .= sprintf( '<textarea class="%s" style="%s" name="%s" id="%s" placeholder="%s" rows="%d" cols="%d" %s>%s</textarea>', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $field['placeholder'] ), absint( $field['rows'] ), absint( $field['cols'] ), self::implode_html_attributes( $field['custom_attributes'] ), esc_attr( $field['value'] ) );
@@ -269,11 +271,11 @@ if ( ! class_exists( 'Options' ) ) :
 
 			$return .= '</p>';
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
 		}
 
 		/**
@@ -282,17 +284,17 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function checkbox_field( $field, $echo = true ) {
 			$return                     = '';
-			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'checkbox';
-			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
-			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
-			$field['value']             = isset( $field['value'] ) ? $field['value'] : 'no';
-			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
-			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
+			$field['label']             = $field['label'] ?? '';
+			$field['class']             = $field['class'] ?? 'checkbox';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? 'no';
+			$field['name']              = $field['name'] ?? $field['id'];
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
 			$return                    .= sprintf( '<p class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<label for="%s">%s</label>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
 			$return                    .= sprintf( '<input type="checkbox" class="%s" style="%s" name="%s" id="%s" value="yes" %s %s />', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), checked( 'yes', esc_attr( $field['value'] ), false ), self::implode_html_attributes( $field['custom_attributes'] ) );
@@ -303,11 +305,11 @@ if ( ! class_exists( 'Options' ) ) :
 
 			$return .= '</p>';
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
 		}
 
 		/**
@@ -316,18 +318,18 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function select_field( $field, $echo = true ) {
 			$return                     = '';
-			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'select short';
-			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
-			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
-			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
-			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
+			$field['label']             = $field['label'] ?? '';
+			$field['class']             = $field['class'] ?? 'select short';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? '';
+			$field['name']              = $field['name'] ?? $field['id'];
 			$field['show_option_none']  = isset( $field['show_option_none'] ) ? true : false;
-			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
 			$return                    .= sprintf( '<p class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<label for="%s">%s</label>', esc_attr( $field['id'] ), wp_kses_post( $field['label'] ) );
 			$return                    .= sprintf( '<select class="%s" style="%s" name="%s" id="%s" %s>', esc_attr( $field['class'] ), esc_attr( $field['style'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
@@ -349,11 +351,11 @@ if ( ! class_exists( 'Options' ) ) :
 
 			$return .= '</p>';
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
 		}
 
 		/**
@@ -362,17 +364,17 @@ if ( ! class_exists( 'Options' ) ) :
 		 * @since     1.0.0
 		 * @param     array      $field    Arguments.
 		 * @param     boolean    $echo     Optional. Echo the output or return it.
-		 * @return    mixed
+		 * @return    string
 		 */
 		public static function radio_field( $field, $echo = true ) {
 			$return                     = '';
-			$field['label']             = isset( $field['label'] ) ? $field['label'] : '';
-			$field['class']             = isset( $field['class'] ) ? $field['class'] : 'radio';
-			$field['style']             = isset( $field['style'] ) ? $field['style'] : '';
-			$field['wrapper_class']     = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
-			$field['value']             = isset( $field['value'] ) ? $field['value'] : '';
-			$field['name']              = isset( $field['name'] ) ? $field['name'] : $field['id'];
-			$field['custom_attributes'] = isset( $field['custom_attributes'] ) ? $field['custom_attributes'] : array();
+			$field['label']             = $field['label'] ?? '';
+			$field['class']             = $field['class'] ?? 'radio';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? '';
+			$field['name']              = $field['name'] ?? $field['id'];
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
 			$return                    .= sprintf( '<fieldset class="form-field %s_field %s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ) );
 			$return                    .= sprintf( '<legend>%s</legend><ul id="%s" %s>', wp_kses_post( $field['label'] ), esc_attr( $field['id'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
 
@@ -388,11 +390,91 @@ if ( ! class_exists( 'Options' ) ) :
 
 			$return .= '</fieldset>';
 
-			if ( ! $echo ) {
-				return $return;
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			return $return;
+		}
+
+		/**
+		 * Output media upload inputs.
+		 *
+		 * @since     1.0.0
+		 * @param     array      $field    Arguments.
+		 * @param     boolean    $echo     Optional. Echo the output or return it.
+		 * @return    string
+		 */
+		public static function media_field( $field, $echo = true ) {
+			if ( ! did_action( 'wp_enqueue_media' ) ) {
+				wp_enqueue_media();
+			}
+
+			$return                     = '';
+			$field['label']             = $field['label'] ?? esc_html__( 'Set thumbnail', 'sixa-snippets' );
+			$field['class']             = $field['class'] ?? 'media-upload';
+			$field['style']             = $field['style'] ?? '';
+			$field['wrapper_class']     = $field['wrapper_class'] ?? '';
+			$field['value']             = $field['value'] ?? '';
+			$field['name']              = $field['name'] ?? $field['id'];
+			$field['custom_attributes'] = $field['custom_attributes'] ?? array();
+			$field['unique_id']         = wp_unique_id( $field['id'] );
+			$return                    .= sprintf( '<p class="form-field %s_field %s" id="%s" style="%s">', esc_attr( $field['id'] ), esc_attr( $field['wrapper_class'] ), esc_attr( $field['unique_id'] ), esc_attr( $field['style'] ) );
+			$return                    .= '<img src="' . wp_get_attachment_image_url( $field['value'], 'thumbnail', false ) . '" class="attachment-thumbnail" alt="' . trim( wp_strip_all_tags( get_post_meta( $field['value'], '_wp_attachment_image_alt', true ) ) ) . '" width="100" height="100" />';
+			$return                    .= '<a href="#" class="button button-upload">' . wp_kses_post( $field['label'] ) . '</a>';
+			$return                    .= '<a href="#" class="button-link-delete" style="display:block">' . esc_html__( 'Remove thumbnail', 'sixa-snippets' ) . '</a>';
+			$return                    .= sprintf( '<input type="hidden" class="%s" name="%s" id="%s" value="%s" %s />', esc_attr( $field['class'] ), esc_attr( $field['name'] ), esc_attr( $field['id'] ), esc_attr( $field['value'] ), self::implode_html_attributes( $field['custom_attributes'] ) );
+
+			if ( ! empty( $field['description'] ) && false === $field['desc_tip'] ) {
+				$return .= sprintf( '<span class="description">%s</span>', wp_kses_post( $field['description'] ) );
+			}
+
+			$return .= '</p>';
+			$return .= Utils::output_inline_style(
+				'
+				#' . $field['unique_id'] . ' img:not([src^="http"]){display:none}
+				#' . $field['unique_id'] . ' img:not([src^="http"]) + .button + a{display:none!important}
+				#' . $field['unique_id'] . ' img[src^="http"] + .button{display:none}
+			'
+			);
+			$return .= Utils::output_inline_js(
+				'
+				var uploadButton = document.querySelector( "#' . $field['unique_id'] . ' .button" );
+				var removeButton = document.querySelector( "#' . $field['unique_id'] . ' .button-link-delete" );
+				uploadButton.addEventListener( "click", ( event ) => {
+					event.preventDefault();
+					const custom_uploader = wp.media( {
+						button: {
+							text: "' . __( 'Use this image', 'sixa-snippets' ) . '"
+						},
+						library : {
+							type : "image"
+						},
+						multiple: false,
+						title: "' . __( 'Insert image', 'sixa-snippets' ) . '"
+					} ).on( "select", function() {
+						var attachment = custom_uploader.state().get("selection").first().toJSON();
+						var image = document.querySelector( "#' . $field['unique_id'] . ' img" );
+						var input = document.querySelector( "#' . $field['unique_id'] . ' input" );
+						image.src = attachment.url;
+						input.value = attachment.id;
+					} ).open();
+				} );
+				removeButton.addEventListener( "click", ( event ) => {
+					event.preventDefault();
+					var image = document.querySelector( "#' . $field['unique_id'] . ' img" );
+					var input = document.querySelector( "#' . $field['unique_id'] . ' input" );
+					image.src = "";
+					input.value = "";
+				} );
+			'
+			);
+
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
+			return $return;
 		}
 
 	}

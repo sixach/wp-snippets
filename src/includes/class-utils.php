@@ -197,6 +197,91 @@ if ( ! class_exists( Utils::class ) ) :
 			return preg_replace( $plain_search, $plain_replace, $input );
 		}
 
+		/**
+		 * Output, and sanitize any queued inline JS.
+		 *
+		 * @since     1.5.0
+		 * @param     string  $inline_js    JavaScript code to be escaped and outputted.
+		 * @param     boolean $echo         Optional. Echo the output or return it.
+		 * @return    string
+		 */
+		public static function output_inline_js( string $inline_js, bool $echo = false ): string {
+			$return    = "\n<script type=\"text/javascript\">\n";
+			$inline_js = wp_check_invalid_utf8( $inline_js );
+			$inline_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $inline_js );
+			$inline_js = str_replace( "\r", '', $inline_js );
+			$return   .= $inline_js;
+			$return   .= "\n</script>\n";
+
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
+			return $return;
+		}
+
+		/**
+		 * Output, and sanitize any queued inline CSS styles.
+		 *
+		 * @since     1.5.0
+		 * @param     string  $inline_style    CSS style code to be escaped and outputted.
+		 * @param     boolean $echo            Optional. Echo the output or return it.
+		 * @return    string
+		 */
+		public static function output_inline_style( string $inline_style, bool $echo = false ): string {
+			$return       = "\n<style type=\"text/css\">\n";
+			$inline_style = preg_replace(
+				array(
+					// Normalize whitespace.
+					'/\s+/',
+					// Remove spaces before and after comment.
+					'/(\s+)(\/\*(.*?)\*\/)(\s+)/',
+					// Remove comment blocks, everything between /* and */, unless.
+					// preserved with /*! ... */ or /** ... */.
+					'~/\*(?![\!|\*])(.*?)\*/~',
+					// Remove ; before }.
+					'/;(?=\s*})/',
+					// Remove space after , : ; { } */ >.
+					'/(,|:|;|\{|}|\*\/|>) /',
+					// Remove space before , ; { } ( ) >.
+					'/ (,|;|\{|}|\)|>)/',
+					// Strips leading 0 on decimal values (converts 0.5px into .5px).
+					'/(:| )0\.([0-9]+)(%|em|ex|px|in|cm|mm|pt|pc)/i',
+					// Strips units if value is 0 (converts 0px to 0).
+					'/(:| )(\.?)0(%|em|ex|px|in|cm|mm|pt|pc)/i',
+					// Converts all zeros value into short-hand.
+					'/0 0 0 0/',
+					// Shortern 6-character hex color codes to 3-character where possible.
+					'/#([a-f0-9])\\1([a-f0-9])\\2([a-f0-9])\\3/i',
+					// Replace `(border|outline):none` with `(border|outline):0`.
+					'#(?<=[\{;])(border|outline):none(?=[;\}\!])#',
+					'#(background-position):0(?=[;\}])#si',
+				),
+				array(
+					' ',
+					'$2',
+					'',
+					'',
+					'$1',
+					'$1',
+					'${1}.${2}${3}',
+					'${1}0',
+					'0',
+					'#\1\2\3',
+					'$1:0',
+					'$1:0 0',
+				),
+				$inline_style
+			);
+			$return      .= $inline_style;
+			$return      .= "\n</style>\n";
+
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
+			return $return;
+		}
 	}
 
 endif;

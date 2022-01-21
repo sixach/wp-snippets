@@ -14,12 +14,11 @@
 
 namespace Sixa_Snippets\Dashboard;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Sixa_Snippets\Dashboard\Options as Options;
 
-if ( ! class_exists( 'Reading' ) ) :
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
+
+if ( ! class_exists( Reading::class ) ) :
 
 	/**
 	 * The file that defines the plugin option’s class.
@@ -31,7 +30,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    private
-		 * @var       array      $dropdowns    List of pages to register a dropdown option for it.
+		 * @var       array $dropdowns    List of pages to register a dropdown option for it.
 		 */
 		private static $dropdowns = array();
 
@@ -40,7 +39,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    public
-		 * @var       string    $key    Name of the option to retrieve.
+		 * @var       string $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_reading';
 
@@ -48,10 +47,10 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $args    Dropdown list.
+		 * @param     array $args    Dropdown list.
 		 * @return    void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, in case there no option provided to register.
 			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
@@ -68,7 +67,7 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * @since     1.0.0
 		 * @return    void
 		 */
-		public function register() {
+		public function register(): void {
 			register_setting( 'reading', self::$key, array( sprintf( '%s\Options', __NAMESPACE__ ), 'sanitize' ) );
 			add_settings_section( self::$key, _x( 'Additional Settings', 'reading', 'sixa-snippets' ), '', 'reading' );
 			$options = get_option( self::$key, array() );
@@ -84,7 +83,7 @@ if ( ! class_exists( 'Reading' ) ) :
 								'show_option_none' => true,
 								'id'               => sprintf( 'sixa_reading_%s', $key ),
 								'name'             => sprintf( '%s[%s]', self::$key, $key ),
-								'value'            => isset( $options[ $key ] ) ? $options[ $key ] : '',
+								'value'            => $options[ $key ] ?? '',
 								'options'          => wp_list_pluck( get_pages( array( 'child_of' => 0 ) ), 'post_title', 'ID' ),
 							)
 						);
@@ -99,22 +98,22 @@ if ( ! class_exists( 'Reading' ) ) :
 		 * Filters the default post display states used in the posts list table.
 		 *
 		 * @since     1.0.0
-		 * @param     array      $post_states    An array of post display states.
-		 * @param     WP_Post    $post           The current post object.
+		 * @param     array  $post_states    An array of post display states.
+		 * @param     object $post           The current post object.
 		 * @return    array
 		 */
-		public function post_states( $post_states, $post ) {
+		public function post_states( array $post_states, object $post ): array {
 			$options = get_option( self::$key, array() );
 
 			foreach ( $options as $key => $name ) {
 				$post_id = isset( $options[ $key ] ) ? intval( $options[ $key ] ) : 0;
 
 				if ( $post->ID === $post_id ) {
-					$post_states[] = isset( self::$dropdowns[ $key ] ) ? self::$dropdowns[ $key ] : '';
+					$post_states[] = self::$dropdowns[ $key ] ?? '';
 				}
 			}
 
-			return $post_states;
+			return (array) $post_states;
 		}
 
 	}

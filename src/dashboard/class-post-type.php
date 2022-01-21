@@ -13,12 +13,11 @@
 
 namespace Sixa_Snippets\Dashboard;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Sixa_Snippets\Dashboard\Taxonomy;
 
-if ( ! class_exists( 'Post_Type' ) ) :
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
+
+if ( ! class_exists( Post_Type::class ) ) :
 
 	/**
 	 * The file that defines the core post-type class.
@@ -29,10 +28,10 @@ if ( ! class_exists( 'Post_Type' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $args    List of post type post-types to register.
+		 * @param     array $args    List of post type post-types to register.
 		 * @return    void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, if there is no argument passed to register.
 			if ( empty( $args ) ) {
 				return;
@@ -45,12 +44,12 @@ if ( ! class_exists( 'Post_Type' ) ) :
 		 * Creates a post-types object.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $post_types    List of post type post-types to register.
+		 * @param     array $post_types    List of post type post-types to register.
 		 * @return    void
 		 */
-		public function run( $post_types ) {
+		public function run( array $post_types ): void {
 			foreach ( $post_types as $post_type ) {
-				$key = isset( $post_type['key'] ) ? strtolower( $post_type['key'] ) : '';
+				$key = strtolower( $post_type['key'] ?? '' );
 
 				// Return when the key is not populated or post type is already registered.
 				if ( empty( $key ) || post_type_exists( $key ) ) {
@@ -64,9 +63,9 @@ if ( ! class_exists( 'Post_Type' ) ) :
 					$taxonomies = array();
 				}
 
-				$args          = isset( $post_type['args'] ) ? $post_type['args'] : array();
-				$singular_name = isset( $post_type['singular_name'] ) ? $post_type['singular_name'] : _x( 'Post', 'post type', 'sixa-snippets' );
-				$plural_name   = isset( $post_type['plural_name'] ) ? $post_type['plural_name'] : _x( 'Posts', 'post type', 'sixa-snippets' );
+				$args          = $post_type['args'] ?? array();
+				$singular_name = $post_type['singular_name'] ?? _x( 'Post', 'post type', 'sixa-snippets' );
+				$plural_name   = $post_type['plural_name'] ?? _x( 'Posts', 'post type', 'sixa-snippets' );
 				$defaults      = apply_filters(
 					'sixa_register_post_type_args',
 					array(
@@ -109,11 +108,11 @@ if ( ! class_exists( 'Post_Type' ) ) :
 		 * Attaches post-type to the taxonomy list.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $post_type     Post type name.
-		 * @param     array    $taxonomies    List of post type taxonomies.
+		 * @param     string $post_type     Post type name.
+		 * @param     array  $taxonomies    List of post type taxonomies.
 		 * @return    array
 		 */
-		protected function attach_taxonomy( $post_type, $taxonomies ) {
+		protected function attach_taxonomy( string $post_type, array $taxonomies ): array {
 			$taxonomies_count = count( $taxonomies );
 			for ( $i = 0; $i < $taxonomies_count; ++$i ) {
 				$taxonomies[ $i ]['post_type'] = $post_type;
@@ -126,11 +125,11 @@ if ( ! class_exists( 'Post_Type' ) ) :
 		 * An array of labels for registering taxonomy.
 		 *
 		 * @since     1.0.0
-		 * @param     string    $singular_name    Singular name for the taxonomy.
-		 * @param     string    $plural_name      Plural name for the taxonomy.
+		 * @param     string $singular_name    Singular name for the taxonomy.
+		 * @param     string $plural_name      Plural name for the taxonomy.
 		 * @return    array
 		 */
-		protected function get_labels( $singular_name, $plural_name ) {
+		protected function get_labels( string $singular_name, string $plural_name ): array {
 			$labels = apply_filters(
 				'sixa_register_post_type_label_args',
 				array(

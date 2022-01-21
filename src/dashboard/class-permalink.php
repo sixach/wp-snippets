@@ -14,12 +14,11 @@
 
 namespace Sixa_Snippets\Dashboard;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+use Sixa_Snippets\Dashboard\Options as Options;
 
-if ( ! class_exists( 'Permalink' ) ) :
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
+
+if ( ! class_exists( Permalink::class ) ) :
 
 	/**
 	 * The file that defines the permalink option’s class.
@@ -31,7 +30,7 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    private
-		 * @var       array      $bases    List of URI bases to register a text-field control for it.
+		 * @var       array $bases    List of URI bases to register a text-field control for it.
 		 */
 		private static $bases = array();
 
@@ -40,7 +39,7 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    public
-		 * @var       string    $key    Name of the option to retrieve.
+		 * @var       string $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_permalink';
 
@@ -50,10 +49,10 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 * @since     1.4.3
 		 *            Flush rewrite rules when custom permalink options created/updated.
 		 * @since     1.0.0
-		 * @param     array    $args    Permalink base list.
+		 * @param     array $args    Permalink base list.
 		 * @return    void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, in case there no option provided to register.
 			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
@@ -72,7 +71,7 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 * @since     1.0.0
 		 * @return    void
 		 */
-		public function register() {
+		public function register(): void {
 			$options = get_option( self::$key, array() );
 
 			foreach ( self::$bases as $key => $name ) {
@@ -83,11 +82,11 @@ if ( ! class_exists( 'Permalink' ) ) :
 					function() use ( $options, $key, $name ) {
 						Options::text_field(
 							array(
-								'style'            => 'width:25em;',
-								'class'            => 'regular-text code',
-								'id'               => sprintf( 'sixa_permalink_%s', $key ),
-								'name'             => sprintf( '%s[%s]', self::$key, $key ),
-								'value'            => isset( $options[ $key ] ) ? $options[ $key ] : '',
+								'style' => 'width:25em;',
+								'class' => 'regular-text code',
+								'id'    => sprintf( 'sixa_permalink_%s', $key ),
+								'name'  => sprintf( '%s[%s]', self::$key, $key ),
+								'value' => $options[ $key ] ?? '',
 							)
 						);
 					},
@@ -104,7 +103,7 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 * @return    void
 		 * @phpcs:disable WordPress.Security.NonceVerification.Missing
 		 */
-		public function save() {
+		public function save(): void {
 			// Bail early, if the current request is for the administrative interface page.
 			if ( ! is_admin() || ! isset( $_POST['permalink_structure'] ) ) {
 				return;
@@ -119,7 +118,7 @@ if ( ! class_exists( 'Permalink' ) ) :
 		 * @since     1.4.3
 		 * @return    void
 		 */
-		public function flush_rules_on_save() {
+		public function flush_rules_on_save(): void {
 			flush_rewrite_rules();
 		}
 

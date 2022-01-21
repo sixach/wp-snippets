@@ -13,12 +13,9 @@
 
 namespace Sixa_Snippets\Dashboard;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-if ( ! class_exists( 'Taxonomy' ) ) :
+if ( ! class_exists( Taxonomy::class ) ) :
 
 	/**
 	 * The file that defines the core taxonomy class.
@@ -29,10 +26,10 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $args    List of post type taxonomies to register.
+		 * @param     array $args    List of post type taxonomies to register.
 		 * @return    void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, if there is no argument passed to register.
 			if ( empty( $args ) ) {
 				return;
@@ -45,22 +42,22 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		 * Creates a taxonomy object.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $taxonomies    List of post type taxonomies to register.
+		 * @param     array $taxonomies    List of post type taxonomies to register.
 		 * @return    void
 		 */
-		public function run( $taxonomies ) {
+		public function run( array $taxonomies ): void {
 			foreach ( $taxonomies as $taxonomy ) {
-				$key = isset( $taxonomy['key'] ) ? strtolower( $taxonomy['key'] ) : '';
+				$key = strtolower( $taxonomy['key'] ?? '' );
 
 				// Return when the key is not populated.
 				if ( empty( $key ) ) {
 					return;
 				}
 
-				$args          = isset( $taxonomy['args'] ) ? $taxonomy['args'] : array();
-				$post_type     = isset( $taxonomy['post_type'] ) ? $taxonomy['post_type'] : 'post';
-				$singular_name = isset( $taxonomy['singular_name'] ) ? $taxonomy['singular_name'] : _x( 'Category', 'taxonomy', 'sixa-snippets' );
-				$plural_name   = isset( $taxonomy['plural_name'] ) ? $taxonomy['plural_name'] : _x( 'Categories', 'taxonomy', 'sixa-snippets' );
+				$args          = $taxonomy['args'] ?? array();
+				$post_type     = $taxonomy['post_type'] ?? 'post';
+				$singular_name = $taxonomy['singular_name'] ?? _x( 'Category', 'taxonomy', 'sixa-snippets' );
+				$plural_name   = $taxonomy['plural_name'] ?? _x( 'Categories', 'taxonomy', 'sixa-snippets' );
 				$defaults      = apply_filters(
 					'sixa_register_taxonomy_args',
 					array(
@@ -91,11 +88,11 @@ if ( ! class_exists( 'Taxonomy' ) ) :
 		 * An array of labels for registering taxonomy.
 		 *
 		 * @since     1.0.0
-		 * @param     string    $singular_name    Singular name for the taxonomy.
-		 * @param     string    $plural_name      Plural name for the taxonomy.
+		 * @param     string $singular_name    Singular name for the taxonomy.
+		 * @param     string $plural_name      Plural name for the taxonomy.
 		 * @return    array
 		 */
-		protected function get_labels( $singular_name, $plural_name ) {
+		protected function get_labels( string $singular_name, string $plural_name ): array {
 			$labels = apply_filters(
 				'sixa_register_taxonomy_label_args',
 				array(

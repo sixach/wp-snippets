@@ -13,12 +13,9 @@
 
 namespace Sixa_Snippets\Dashboard;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-if ( ! class_exists( 'Menu_Options' ) ) :
+if ( ! class_exists( Menu_Options::class ) ) :
 
 	/**
 	 * The file that defines the additional menu option’s class.
@@ -30,7 +27,7 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    public
-		 * @var       string    $key    Name of the option to retrieve.
+		 * @var       string $key    Name of the option to retrieve.
 		 */
 		public static $key = 'sixa_menu';
 
@@ -39,7 +36,7 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    protected
-		 * @var       array    $fields    Settings fieldset to register.
+		 * @var       array $fields    Settings fieldset to register.
 		 */
 		protected static $fields = array();
 
@@ -47,10 +44,10 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $args    Fieldset.
+		 * @param     array $args    Fieldset.
 		 * @return    void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, in case there no option provided to register.
 			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
@@ -65,25 +62,25 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 * Register additional input controls for the menu-items.
 		 *
 		 * @since     1.0.0
-		 * @param     int      $item_id    Menu item ID.
+		 * @param     int $item_id    Menu item ID.
 		 * @return    void
 		 */
-		public function register( $item_id ) {
+		public function register( int $item_id ): void {
 			$meta = (array) get_post_meta( $item_id, self::$key, true );
 
 			foreach ( self::$fields as $field ) {
-				$field['name'] = isset( $field['name'] ) ? $field['name'] : $field['id'];
-				$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
+				$field['name'] = $field['name'] ?? $field['id'];
+				$field['type'] = $field['type'] ?? 'text';
 
 				call_user_func(
 					array( sprintf( '%s\Options', __NAMESPACE__ ), sprintf( '%s_field', esc_attr( $field['type'] ) ) ),
 					array_merge(
 						$field,
 						array(
-							'wrapper_class'     => sprintf( 'field-%s description description-wide', esc_attr( $field['type'] ) ),
-							'value'             => isset( $meta[ $field['name'] ] ) ? esc_attr( $meta[ $field['name'] ] ) : '',
-							'id'                => sprintf( 'edit-menu-item-%d-%s', intval( $item_id ), esc_attr( $field['name'] ) ),
-							'name'              => sprintf( '%s[%d][%s]', esc_attr( self::$key ), intval( $item_id ), esc_attr( $field['name'] ) ),
+							'wrapper_class' => sprintf( 'field-%s description description-wide', esc_attr( $field['type'] ) ),
+							'value'         => isset( $meta[ $field['name'] ] ) ? esc_attr( $meta[ $field['name'] ] ) : '',
+							'id'            => sprintf( 'edit-menu-item-%d-%s', intval( $item_id ), esc_attr( $field['name'] ) ),
+							'name'          => sprintf( '%s[%d][%s]', esc_attr( self::$key ), intval( $item_id ), esc_attr( $field['name'] ) ),
 						)
 					)
 				);
@@ -94,10 +91,10 @@ if ( ! class_exists( 'Menu_Options' ) ) :
 		 * Save menu (post) meta-data.
 		 *
 		 * @since     1.0.0
-		 * @param     int       $item_id    Menu item ID.
+		 * @param     int $item_id    Menu item ID.
 		 * @return    void
 		 */
-		public function save( $item_id ) {
+		public function save( int $item_id ): void {
 			$data = filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
 
 			if ( isset( $data[ $item_id ] ) ) {

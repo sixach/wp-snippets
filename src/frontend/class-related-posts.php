@@ -76,7 +76,6 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 
 					foreach ( $get_posts as $post ) {
 						$return .= sprintf( '<li class="%s">', implode( ' ', get_post_class( '', $post ) ) );
-						// Enable content to be added before the post.
 						$return .= apply_filters( 'sixa_related_posts_before_post', __return_empty_string(), $post );
 
 						// Thumbnail.
@@ -114,7 +113,6 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 							$return .= sprintf( esc_html__( '%1$sRead more%2$s', 'sixa-snippets' ), sprintf( '<a href="%s">', esc_url( get_permalink( $post ) ) ), '</a>' );
 						}
 
-						// Enable content to be added after the post.
 						$return .= apply_filters( 'sixa_related_posts_after_post', __return_empty_string(), $post );
 						$return .= '</li>';
 					}
@@ -145,7 +143,6 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 
 			$args = wp_parse_args(
 				$args,
-				// Enable Related Posts query arguments to be modified.
 				apply_filters(
 					'sixa_related_posts_query_args',
 					array(
@@ -171,7 +168,6 @@ if ( ! class_exists( 'Related_Posts' ) ) :
 			}
 
 			return get_posts(
-				// Enable Related Posts query arguments to be modified.
 				apply_filters(
 					'sixa_related_posts_query_args',
 					array(

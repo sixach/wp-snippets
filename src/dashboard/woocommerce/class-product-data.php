@@ -13,12 +13,9 @@
 
 namespace Sixa_Snippets\Dashboard\WooCommerce;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-if ( ! class_exists( 'Product_Data' ) ) :
+if ( ! class_exists( Product_Data::class ) ) :
 
 	/**
 	 * The file that adds additional controls to the `product-data` table.
@@ -30,7 +27,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    private
-		 * @var       array      $controls    List of controls to register as part of the product-data table.
+		 * @var       array $controls    List of controls to register as part of the product-data table.
 		 */
 		private static $controls = array();
 
@@ -39,7 +36,7 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 *
 		 * @since     1.0.0
 		 * @access    public
-		 * @var       string    $key    Name of the meta-data to retrieve.
+		 * @var       string $key    Name of the meta-data to retrieve.
 		 */
 		public static $key = 'sixa_product_data';
 
@@ -47,10 +44,10 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * Initialize the class and set its properties.
 		 *
 		 * @since    1.0.0
-		 * @param    array    $args    Product data setting arguments.
+		 * @param    array $args    Product data setting arguments.
 		 * @return   void
 		 */
-		public function __construct( $args = array() ) {
+		public function __construct( array $args = array() ) {
 			// Bail early, in case there no option provided to register.
 			if ( ! is_array( $args ) || empty( $args ) ) {
 				return;
@@ -66,14 +63,14 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * Create/append custom tab(s) to the product data table.
 		 *
 		 * @since     1.0.0
-		 * @param     array    $tabs    Existing product data meta-box tabs.
+		 * @param     array $tabs    Existing product data meta-box tabs.
 		 * @return    array
 		 */
-		public function tabs( $tabs ) {
+		public function tabs( array $tabs ): array {
 			foreach ( self::$controls as $key => $args ) {
 				$tabs[ $key ] = array(
-					'label'    => isset( $args['label'] ) ? $args['label'] : _x( 'Sixa Options', 'product data', 'sixa-snippets' ),
-					'class'    => isset( $args['class'] ) ? $args['class'] : '',
+					'label'    => $args['label'] ?? _x( 'Sixa Options', 'product data', 'sixa-snippets' ),
+					'class'    => $args['class'] ?? '',
 					'target'   => strtolower( trim( $key ) ),
 					'priority' => 81,
 				);
@@ -88,29 +85,29 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * @since     1.0.0
 		 * @return    void
 		 */
-		public function panels() {
+		public function panels(): void {
 			global $post;
 
 			$return  = '';
 			$options = (array) get_post_meta( $post->ID, self::$key, true );
 
 			foreach ( self::$controls as $key => $args ) {
-				$fields  = isset( $args['fields'] ) ? $args['fields'] : array();
+				$fields  = $args['fields'] ?? array();
 				$return .= sprintf( '<div id="%s" class="panel woocommerce_options_panel hidden"><div class="options_group">', strtolower( trim( $key ) ) );
 
 				if ( ! empty( $fields ) ) {
 					foreach ( $fields as $field ) {
-						$field['name'] = isset( $field['name'] ) ? $field['name'] : $field['id'];
-						$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
+						$field['name'] = $field['name'] ?? $field['id'];
+						$field['type'] = $field['type'] ?? 'text';
 
 						$return .= call_user_func(
 							array( 'Sixa_Snippets\Dashboard\Options', sprintf( '%s_field', esc_attr( $field['type'] ) ) ),
 							array_merge(
 								$field,
 								array(
-									'value'             => isset( $options[ $field['name'] ] ) ? esc_attr( $options[ $field['name'] ] ) : '',
-									'id'                => sprintf( 'product-data-item-%d-%s', intval( $post->ID ), esc_attr( $field['name'] ) ),
-									'name'              => sprintf( '%s[%s]', esc_attr( self::$key ), esc_attr( $field['name'] ) ),
+									'value' => wc_clean( $options[ $field['name'] ] ?? '' ),
+									'id'    => sprintf( 'product-data-item-%d-%s', intval( $post->ID ), esc_attr( $field['name'] ) ),
+									'name'  => sprintf( '%s[%s]', esc_attr( self::$key ), esc_attr( $field['name'] ) ),
 								)
 							),
 							false
@@ -128,10 +125,10 @@ if ( ! class_exists( 'Product_Data' ) ) :
 		 * Fires after a product has been updated or published.
 		 *
 		 * @since     1.0.0
-		 * @param     WC_Product    $product    Product object.
+		 * @param     object $product    Product object.
 		 * @return    void
 		 */
-		public function save( $product ) {
+		public function save( object $product ): void {
 			$product->update_meta_data( self::$key, filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY ) );
 		}
 

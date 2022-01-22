@@ -34,6 +34,11 @@
 		"make-pot": "wp i18n make-pot . languages/sixa-snippets.pot --exclude=build"
 	},
 	"autoload": {
-		"classmap": ["src"]
+		"classmap": [ "src" ]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

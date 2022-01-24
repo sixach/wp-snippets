@@ -45,7 +45,9 @@
         <exclude name="Core.Commenting.CommentTags.AuthorTag" />
         <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
     </rule>
-    <rule ref="WooCommerce-Core" />
+    <rule ref="WooCommerce-Core">
+        <exclude name="WooCommerce.Commenting.CommentHooks.MissingHooksComment" />
+    </rule>
     <!-- Let's also check that everything is properly documented. -->
     <rule ref="WordPress-Docs" />
     <!--
@@ -90,7 +92,7 @@
     USE THE PHPCompatibility RULESET
     #############################################################################
     -->
-    <config name="testVersion" value="7.3-" />
+    <config name="testVersion" value="7.4-" />
     <!-- Include sniffs for PHP cross-version compatibility. -->
     <rule ref="PHPCompatibilityWP" />
 </ruleset>

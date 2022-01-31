@@ -11,9 +11,9 @@
  * Plugin Name:          Sixa Snippets
  * Plugin URI:           https://sixa.ch
  * Description:          A plugin containing factory classes or methods for the Sixa projects.
- * Version:              1.0.0
+ * Version:              1.6.0
  * Requires at least:    5.3
- * Requires PHP:         7.2
+ * Requires PHP:         7.4
  * Author:               sixa AG
  * Author URI:           https://sixa.ch
  * License:              GPL-3.0+

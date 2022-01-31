@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sixa Snippets 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-snippets\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sixa-wp-snippets\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-18T22:40:45+00:00\n"
+"POT-Creation-Date: 2022-01-31T11:26:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: sixa-snippets\n"
@@ -63,297 +63,297 @@ msgstr ""
 msgid "Insert image"
 msgstr ""
 
-#: src/dashboard/class-post-type.php:68
+#: src/dashboard/class-post-type.php:67
 msgctxt "post type"
 msgid "Post"
 msgstr ""
 
-#: src/dashboard/class-post-type.php:69
+#: src/dashboard/class-post-type.php:68
 msgctxt "post type"
 msgid "Posts"
 msgstr ""
 
-#: src/dashboard/class-post-type.php:141
+#: src/dashboard/class-post-type.php:140
 msgctxt "post type"
 msgid "Add new"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:143
+#: src/dashboard/class-post-type.php:142
 msgctxt "post type"
 msgid "All %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:145
+#: src/dashboard/class-post-type.php:144
 msgctxt "post type"
 msgid "Add new %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:147
+#: src/dashboard/class-post-type.php:146
 msgctxt "post type"
 msgid "Edit %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:149
+#: src/dashboard/class-post-type.php:148
 msgctxt "post type"
 msgid "New %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:151
-#: src/dashboard/class-post-type.php:153
+#: src/dashboard/class-post-type.php:150
+#: src/dashboard/class-post-type.php:152
 msgctxt "post type"
 msgid "View %1$s"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:155
+#: src/dashboard/class-post-type.php:154
 msgctxt "post type"
 msgid "Search %1$s"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:157
+#: src/dashboard/class-post-type.php:156
 msgctxt "post type"
 msgid "No %1$s found"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:159
+#: src/dashboard/class-post-type.php:158
 msgctxt "post type"
 msgid "No %1$s found in trash"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:161
-#: src/dashboard/class-post-type.php:195
+#: src/dashboard/class-post-type.php:160
+#: src/dashboard/class-post-type.php:194
 msgctxt "post type"
 msgid "Parent %1$s:"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:163
+#: src/dashboard/class-post-type.php:162
 msgctxt "post type"
 msgid "Featured image for this %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:165
+#: src/dashboard/class-post-type.php:164
 msgctxt "post type"
 msgid "Set featured image for this %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:167
+#: src/dashboard/class-post-type.php:166
 msgctxt "post type"
 msgid "Remove featured image for this %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:169
+#: src/dashboard/class-post-type.php:168
 msgctxt "post type"
 msgid "Use as featured image for this %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:171
+#: src/dashboard/class-post-type.php:170
 msgctxt "post type"
 msgid "%1$s archives"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:173
+#: src/dashboard/class-post-type.php:172
 msgctxt "post type"
 msgid "Insert into %1$s"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:175
+#: src/dashboard/class-post-type.php:174
 msgctxt "post type"
 msgid "Upload to this %1$s"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:177
+#: src/dashboard/class-post-type.php:176
 msgctxt "post type"
 msgid "Filter %1$s list"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:179
+#: src/dashboard/class-post-type.php:178
 msgctxt "post type"
 msgid "%1$s list navigation"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:181
+#: src/dashboard/class-post-type.php:180
 msgctxt "post type"
 msgid "%1$s list"
 msgstr ""
 
 #. translators: %1$s: General name for the post type, usually plural.
-#: src/dashboard/class-post-type.php:183
+#: src/dashboard/class-post-type.php:182
 msgctxt "post type"
 msgid "%1$s attributes"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:185
+#: src/dashboard/class-post-type.php:184
 msgctxt "post type"
 msgid "%1$s published"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:187
+#: src/dashboard/class-post-type.php:186
 msgctxt "post type"
 msgid "%1$s published privately."
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:189
+#: src/dashboard/class-post-type.php:188
 msgctxt "post type"
 msgid "%1$s reverted to draft."
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:191
+#: src/dashboard/class-post-type.php:190
 msgctxt "post type"
 msgid "%1$s scheduled"
 msgstr ""
 
 #. translators: %1$s: Name for one object of this post type.
-#: src/dashboard/class-post-type.php:193
+#: src/dashboard/class-post-type.php:192
 msgctxt "post type"
 msgid "%1$s updated."
 msgstr ""
 
-#: src/dashboard/class-reading.php:73
+#: src/dashboard/class-reading.php:72
 msgctxt "reading"
 msgid "Additional Settings"
 msgstr ""
 
-#: src/dashboard/class-taxonomy.php:62
+#: src/dashboard/class-taxonomy.php:59
 msgctxt "taxonomy"
 msgid "Category"
 msgstr ""
 
-#: src/dashboard/class-taxonomy.php:63
+#: src/dashboard/class-taxonomy.php:60
 msgctxt "taxonomy"
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:106
+#: src/dashboard/class-taxonomy.php:103
 msgctxt "taxonomy"
 msgid "All %s"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:108
+#: src/dashboard/class-taxonomy.php:105
 msgctxt "taxonomy"
 msgid "Edit %s"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:110
+#: src/dashboard/class-taxonomy.php:107
 msgctxt "taxonomy"
 msgid "View %s"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:112
+#: src/dashboard/class-taxonomy.php:109
 msgctxt "taxonomy"
 msgid "Update %s name"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:114
+#: src/dashboard/class-taxonomy.php:111
 msgctxt "taxonomy"
 msgid "Add new %s"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:116
+#: src/dashboard/class-taxonomy.php:113
 msgctxt "taxonomy"
 msgid "New %s name"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:118
+#: src/dashboard/class-taxonomy.php:115
 msgctxt "taxonomy"
 msgid "Parent %s"
 msgstr ""
 
 #. translators: %s: Name for one object of this taxonomy type.
-#: src/dashboard/class-taxonomy.php:120
+#: src/dashboard/class-taxonomy.php:117
 msgctxt "taxonomy"
 msgid "Parent %s:"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:122
+#: src/dashboard/class-taxonomy.php:119
 msgctxt "taxonomy"
 msgid "Search %s"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:124
+#: src/dashboard/class-taxonomy.php:121
 msgctxt "taxonomy"
 msgid "Popular %s"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:126
+#: src/dashboard/class-taxonomy.php:123
 msgctxt "taxonomy"
 msgid "Separate %s with commas"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:128
+#: src/dashboard/class-taxonomy.php:125
 msgctxt "taxonomy"
 msgid "Add or remove %s"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:130
+#: src/dashboard/class-taxonomy.php:127
 msgctxt "taxonomy"
 msgid "Choose from the most used %s"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:132
+#: src/dashboard/class-taxonomy.php:129
 msgctxt "taxonomy"
 msgid "No %s found"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:134
+#: src/dashboard/class-taxonomy.php:131
 msgctxt "taxonomy"
 msgid "No %s"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:136
+#: src/dashboard/class-taxonomy.php:133
 msgctxt "taxonomy"
 msgid "%s list navigation"
 msgstr ""
 
 #. translators: %s: General name for the taxonomy type, usually plural.
-#: src/dashboard/class-taxonomy.php:138
+#: src/dashboard/class-taxonomy.php:135
 msgctxt "taxonomy"
 msgid "%s list"
 msgstr ""
 
-#: src/dashboard/woocommerce/class-product-data.php:75
+#: src/dashboard/woocommerce/class-product-data.php:72
 msgctxt "product data"
 msgid "Sixa Options"
 msgstr ""
 
-#: src/dashboard/woocommerce/class-wc-settings.php:83
+#: src/dashboard/woocommerce/class-wc-settings.php:80
 msgctxt "wc settings"
 msgid "Sixa Options"
 msgstr ""

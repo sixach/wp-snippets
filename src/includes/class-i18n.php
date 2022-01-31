@@ -29,10 +29,10 @@ if ( ! class_exists( I18n::class ) ) :
 		 * Note that the file with given locale may not exist.
 		 *
 		 * @since     1.6.0
-		 * @param     string    $locale    A locale string, e.g. `de_CH`.
+		 * @param     string $locale    A locale string, e.g. `de_CH`.
 		 * @return    string               The full path to a translation file with the given locale.
 		 */
-		public static function get_package_language_file( $locale ): string {
+		public static function get_package_language_file( string $locale ): string {
 			return sprintf( '%s/languages/%s.mo', untrailingslashit( dirname( __FILE__, 3 ) ), $locale );
 		}
 
@@ -42,10 +42,10 @@ if ( ! class_exists( I18n::class ) ) :
 		 * from WP Snippets.
 		 *
 		 * @since     1.6.0
-		 * @param     string    $locale    A locale string, e.g. `de_CH`. Defaults to the current locale.
+		 * @param     null|string $locale    A locale string, e.g. `de_CH`. Defaults to the current locale.
 		 * @return    void
 		 */
-		public static function load_package_textdomain( $locale = null ): void {
+		public static function load_package_textdomain( ?string $locale = null ): void {
 			$locale = $locale ?? determine_locale();
 			load_textdomain( 'sixa-snippets', self::get_package_language_file( $locale ) );
 		}

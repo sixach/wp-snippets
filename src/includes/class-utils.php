@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.4.0
+ * @since         1.7.0
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Includes
@@ -13,10 +13,7 @@
 
 namespace Sixa_Snippets\Includes;
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 if ( ! class_exists( Utils::class ) ) :
 
@@ -26,24 +23,104 @@ if ( ! class_exists( Utils::class ) ) :
 	final class Utils {
 
 		/**
-		 * Return `true` if WooCommerce is installed and `false` otherwise.
+		 * Query a third-party plugin activation.
+		 * This statement prevents from producing fatal errors,
+		 * in case the the plugin is not activated on the site.
 		 *
-		 * @since     1.3.0
+		 * @since     1.7.0
+		 * @param     string $slug        Plugin slug to check for the activation state.
+		 * @param     string $filename    Optional. Plugin’s main file name.
 		 * @return    bool
+		 * @phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		 */
-		public static function is_woocommerce_activated(): bool {
-			// This statement prevents from producing fatal errors,
-			// in case the WooCommerce plugin is not activated on the site.
-			$woocommerce_plugin     = apply_filters( 'sixa_woocommerce_path', 'woocommerce/woocommerce.php' );
+		public static function is_plugin_activated( string $slug, string $filename = '' ): bool {
+			$filename               = empty( $filename ) ? $slug : $filename;
+			$plugin_path            = apply_filters( 'sixa_third_party_plugin_path', sprintf( '%s/%s.php', esc_html( $slug ), esc_html( $filename ) ) );
 			$subsite_active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
 			$network_active_plugins = apply_filters( 'active_plugins', get_site_option( 'active_sitewide_plugins' ) );
 
 			// Bail early in case the plugin is not activated on the website.
-			if ( ( empty( $subsite_active_plugins ) || ! in_array( $woocommerce_plugin, $subsite_active_plugins, true ) ) && ( empty( $network_active_plugins ) || ! array_key_exists( $woocommerce_plugin, $network_active_plugins ) ) ) {
+			// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+			if ( ( empty( $subsite_active_plugins ) || ! in_array( $plugin_path, $subsite_active_plugins ) ) && ( empty( $network_active_plugins ) || ! array_key_exists( $plugin_path, $network_active_plugins ) ) ) {
 				return false;
 			}
 
 			return true;
+		}
+
+		/**
+		 * Return `true` if "WooCommerce" is installed/activated and `false` otherwise.
+		 *
+		 * @since     1.7.0
+		 * @return    bool
+		 */
+		public static function is_woocommerce_activated(): bool {
+			return self::is_plugin_activated( 'woocommerce' );
+		}
+
+		/**
+		 * Return `true` if "Polylang" is installed/activated and `false` otherwise.
+		 *
+		 * @since     1.7.0
+		 * @return    bool
+		 */
+		public static function is_polylang_activated(): bool {
+			return self::is_plugin_activated( 'polylang' );
+		}
+
+		/**
+		 * Determines if a post, identified by the specified ID,
+		 * exist within the WordPress database.
+		 *
+		 * @since     1.7.0
+		 * @param     null|string $post_id    Post ID.
+		 * @return    bool
+		 */
+		public static function is_post_exists( ?string $post_id = '' ): bool {
+			return ! empty( $post_id ) && is_string( get_post_type( $post_id ) );
+		}
+
+		/**
+		 * Retrieves post id of given post-object or currently queried object id.
+		 *
+		 * @since     1.7.0
+		 * @param     int|WP_Post|null $post    Post ID or post object.
+		 * @return    int
+		 */
+		public static function get_post_id( $post = null ): ?int {
+			$post_id  = null;
+			$get_post = get_post( $post, 'OBJECT' );
+
+			if ( is_null( $get_post ) ) {
+				$post_id = (int) get_queried_object_id();
+			} elseif ( property_exists( $get_post, 'ID' ) ) {
+				$post_id = (int) $get_post->ID;
+			}
+
+			return $post_id;
+		}
+
+		/**
+		 * Post id of the translation if exists, null otherwise.
+		 *
+		 * @since     1.7.0
+		 * @param     string $post_id    The return format, 'input', 'string', or 'array'.
+		 * @return    null|string
+		 */
+		public static function get_localized_post_id( ?string $post_id = '' ): ?string {
+			$return = null;
+
+			if ( self::is_post_exists( $post_id ) ) {
+				$return = $post_id;
+				if ( self::is_polylang_activated() ) {
+					$pll_post_id = pll_get_post( $post_id );
+					if ( $pll_page_id && ! is_null( $pll_page_id ) ) {
+						$return = $pll_post_id;
+					}
+				}
+			}
+
+			return $return;
 		}
 
 		/**
@@ -281,6 +358,181 @@ if ( ! class_exists( Utils::class ) ) :
 			}
 
 			return $return;
+		}
+
+		/**
+		 * Call a shortcode function by tag name.
+		 *
+		 * @since     1.7.0
+		 * @param     string $tag        The shortcode whose function to call.
+		 * @param     array  $atts       Optional. The attributes to pass to the shortcode function. Optional.
+		 * @param     string $content    Optional. The shortcode's content. Default is null (none).
+		 * @return    string|null
+		 */
+		public static function do_shortcode( string $tag, array $atts = array(), ?string $content = null ): ?string {
+			global $shortcode_tags;
+
+			if ( ! isset( $shortcode_tags[ $tag ] ) ) {
+				return null;
+			}
+
+			return call_user_func( $shortcode_tags[ $tag ], $atts, $content, $tag );
+		}
+
+		/**
+		 * Titlifies every slug given to a human-friendly title string.
+		 *
+		 * @since     1.7.0
+		 * @param     string $input        The value to titlify.
+		 * @param     string $delimiter    Optional. The delimiter to be replaced with.
+		 * @return    string
+		 */
+		public static function titlify( string $input, string $delimiter = ' ' ): string {
+			$input = preg_replace( '/[\']/', '', iconv( 'UTF-8', 'ASCII//TRANSLIT', $input ) );
+			$input = preg_replace( '/[&]/', 'and', $input );
+			$input = preg_replace( '/[^A-Za-z0-9-]+/', $delimiter, $input );
+			$input = preg_replace( '/[\s-]+/', $delimiter, $input );
+			$input = trim( $input, $delimiter );
+			$input = ucwords( $input );
+
+			return $input;
+		}
+
+		/**
+		 * Slugifies every string, even when it contains unicode!
+		 *
+		 * @since     1.7.0
+		 * @param     string $input    The value to slugify.
+		 * @return    string
+		 */
+		public static function slugify( string $input ): string {
+			$input = preg_replace( '~[^\pL\d]+~u', '-', $input );
+			$input = iconv( 'utf-8', 'us-ascii//TRANSLIT', $input );
+			$input = preg_replace( '~[^-\w]+~', '', $input );
+			$input = trim( $input, '-' );
+			$input = preg_replace( '~-+~', '-', $input );
+			$input = strtolower( $input );
+
+			if ( empty( $input ) ) {
+				return 'n-a';
+			}
+
+			return $input;
+		}
+
+		/**
+		 * Underlinifies every string given.
+		 *
+		 * @since     1.7.0
+		 * @param     string $input    Given string or filename.
+		 * @return    string
+		 */
+		public static function underlinify( string $input ): string {
+			return preg_replace( '/-/', '_', self::slugify( $input ) );
+		}
+
+		/**
+		 * Implode and escape HTML attributes for output.
+		 *
+		 * @since     1.7.0
+		 * @param     array $raw_attributes    Attribute name value pairs.
+		 * @return    string
+		 */
+		public static function implode_html_attributes( array $raw_attributes ): string {
+			$attributes = array();
+			foreach ( $raw_attributes as $name => $value ) {
+				$attributes[] = esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
+			}
+			return implode( ' ', $attributes );
+		}
+
+		/**
+		 * Converts a string (e.g. 'yes' or 'no') to a bool.
+		 *
+		 * @since     1.7.0
+		 * @param     string|bool $string    String to convert. If a bool is passed it will be returned as-is.
+		 * @return    bool
+		 */
+		public static function string_to_bool( $string ): bool {
+			return is_bool( $string ) ? $string : ( 'yes' === strtolower( $string ) || 1 === $string || 'true' === strtolower( $string ) || '1' === $string );
+		}
+
+		/**
+		 * Converts a bool to a 'yes' or 'no'.
+		 *
+		 * @since     1.7.0
+		 * @param     bool|string $bool    Bool to convert. If a string is passed it will first be converted to a bool.
+		 * @return    string
+		 */
+		public static function bool_to_string( $bool ): string {
+			if ( ! is_bool( $bool ) ) {
+				$bool = self::string_to_bool( $bool );
+			}
+			return true === $bool ? 'yes' : 'no';
+		}
+
+		/**
+		 * Clean variables using sanitize_text_field. Arrays are cleaned recursively.
+		 * Non-scalar values are ignored.
+		 *
+		 * @since     1.7.0
+		 * @param     string|array $input    Data to sanitize.
+		 * @return    string|array
+		 */
+		public static function clean( $input ) {
+			if ( is_array( $input ) ) {
+				return array_map( 'self::clean', $input );
+			} else {
+				return is_scalar( $input ) ? sanitize_text_field( $input ) : $input;
+			}
+		}
+
+		/**
+		 * Recursive sanitation for an array.
+		 * Returns the sanitized values of an array.
+		 *
+		 * @since     1.7.0
+		 * @param     array $input    Array of values.
+		 * @return    array
+		 */
+		public static function clean_array( array $input ): array {
+			// Bail early, in case the input value is missing or not an array.
+			if ( empty( $input ) || ! is_array( $input ) ) {
+				return array();
+			}
+			// Loop through the array to sanitize each key/values recursively.
+			foreach ( $input as $key => &$value ) {
+				if ( is_array( $value ) ) {
+					$value = self::clean_array( $value );
+				} else {
+					$value = self::clean( $value );
+				}
+			}
+
+			return $input;
+		}
+
+		/**
+		 * Sanitize multiple HTML classes in one pass.
+		 *
+		 * @since     1.7.0
+		 * @param     array  $classes          Classes to be sanitized.
+		 * @param     string $return_format    The return format, 'input', 'string', or 'array'.
+		 * @return    array|string
+		 */
+		public static function sanitize_html_classes( array $classes, string $return_format = 'input' ) {
+			if ( 'input' === $return_format ) {
+				$return_format = is_array( $classes ) ? 'array' : 'string';
+			}
+
+			$classes           = is_array( $classes ) ? $classes : explode( ' ', $classes );
+			$sanitized_classes = array_map( 'sanitize_html_class', $classes );
+
+			if ( 'array' === $return_format ) {
+				return $sanitized_classes;
+			} else {
+				return implode( ' ', $sanitized_classes );
+			}
 		}
 	}
 

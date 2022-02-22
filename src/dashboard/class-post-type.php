@@ -245,6 +245,34 @@ if ( ! class_exists( Post_Type::class ) ) :
 		}
 
 		/**
+		 * Generate a list of taxonomy attached viewable post-types (names).
+		 *
+		 * @since     1.7.0
+		 * @param     bool $names_only    Whether to only return post-type names/keys.
+		 * @return    null|array
+		 */
+		public static function list_viewables_with_taxonomy( $names_only = false ): ?array {
+			$return = array_filter(
+				self::list_viewables(),
+				function( $post_type ) {
+					return isset( $post_type['taxonomies'] ) && ! empty( $post_type['taxonomies'] );
+				}
+			);
+
+			if ( $names_only ) {
+				$return = array_map(
+					function( $post_type ) {
+						$post_type_name_and_rest_base = self::split_name_from_rest_base( $post_type['value'] );
+						return $post_type_name_and_rest_base['name'];
+					},
+					$return
+				);
+			}
+
+			return $return;
+		}
+
+		/**
 		 * Retrieve REST base name/key for a given post-type.
 		 *
 		 * @since     1.7.0

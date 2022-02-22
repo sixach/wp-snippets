@@ -1,6 +1,6 @@
 {
 	"name": "@sixach/wp-snippets",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"description": "A plugin containing factory classes and methods for sixa projects.",
 	"keywords": [
 		"factory",
@@ -33,7 +33,7 @@
 		]
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "20.0.2",
+		"@wordpress/scripts": "21.0.2",
 		"husky": "7.0.4",
 		"lint-staged": "12.3.4"
 	}

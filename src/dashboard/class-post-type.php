@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.7.0
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Dashboard
@@ -85,6 +85,7 @@ if ( ! class_exists( Post_Type::class ) ) :
 						'rewrite'               => true,
 						'query_var'             => true,
 						'can_export'            => true,
+						'show_in_graphql'       => true,
 						'menu_position'         => 50,
 						'taxonomies'            => wp_list_pluck( $taxonomies, 'key' ),
 						'capability_type'       => 'post',
@@ -196,6 +197,107 @@ if ( ! class_exists( Post_Type::class ) ) :
 			);
 
 			return $labels;
+		}
+
+		/**
+		 * Generate a list of publicly viewable registered post-types.
+		 *
+		 * @since     1.7.0
+		 * @param     bool $attach_taxonomies    Whether to include list of viewable taxonomies as well.
+		 * @return    array
+		 */
+		public static function list_viewables( $attach_taxonomies = true ): array {
+			$return     = array();
+			$post_types =
+				get_post_types(
+					apply_filters(
+						'sixa_list_viewable_post_types_args',
+						array(
+							'public'       => true,
+							'show_in_rest' => true,
+						)
+					),
+					'objects'
+				);
+
+			if ( is_array( $post_types ) && ! empty( $post_types ) ) {
+				foreach ( $post_types as $post_type ) {
+					$post_type_name = (string) $post_type->name;
+					$rest_base      = ! empty( $post_type->rest_base ) ? (string) $post_type->rest_base : $post_type_name;
+					$taxonomies     = array();
+
+					if ( $attach_taxonomies ) {
+						$taxonomies = array( 'taxonomies' => Taxonomy::list_viewables_by_post_type( $post_type_name ) );
+					}
+
+					$return[] = array_merge(
+						array(
+							'label'      => (string) $post_type->labels->singular_name,
+							'value'      => $post_type_name . '|' . $rest_base,
+						),
+						$taxonomies
+					);
+
+				}
+			}
+
+			return $return;
+		}
+
+		/**
+		 * Retrieve REST base name/key for a given post-type.
+		 *
+		 * @since     1.7.0
+		 * @param     string $post_type    Name of post-type object.
+		 * @return    string
+		 */
+		public static function get_rest_base( string $post_type = 'post' ): ?string {
+			$return = null;
+
+			// Bail early, in case the post-type is not registered.
+			if ( ! post_type_exists( $post_type ) || ! is_post_type_viewable( $post_type ) ) {
+				return $return;
+			}
+
+			$post_type = get_post_type_object( $post_type );
+			$return    = isset( $post_type->rest_base ) && ! empty( $post_type->rest_base ) ? $post_type->rest_base : $post_type->name;
+
+			return $return;
+		}
+
+		/**
+		 * Separates post-type name from its REST-API base key.
+		 *
+		 * @since     1.7.0
+		 * @param     string $post_type    Post type name and rest-base key.
+		 * @return    array
+		 */
+		public static function split_name_from_rest_base( string $post_type = 'post|posts' ): array {
+			$post_type = (array) explode( '|', $post_type );
+
+			return array(
+				'name'      => (string) $post_type[0],
+				'rest_base' => (string) $post_type[1],
+			);
+		}
+
+		/**
+		 * Joins given object name and rest-base key into a string separated by a pipe separator.
+		 *
+		 * @since     1.7.0
+		 * @param     array      $name_and_rest_base    Post type name and rest-base key.
+		 * @return    null|string
+		 */
+		public static function glue_name_and_rest_base( array $name_and_rest_base ): ?string {
+			$return = null;
+
+			if ( ! is_array( $name_and_rest_base ) || ! isset( $name_and_rest_base['name'], $name_and_rest_base['rest_base'] ) ) {
+				return $return;
+			}
+
+			$return = implode( '|', array_map( 'esc_html', $name_and_rest_base ) );
+
+			return $return;
 		}
 	}
 endif;

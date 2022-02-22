@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.7.0
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Dashboard
@@ -12,6 +12,8 @@
  */
 
 namespace Sixa_Snippets\Dashboard;
+
+use Sixa_Snippets\Dashboard\Post_Type;
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
@@ -72,9 +74,11 @@ if ( ! class_exists( Taxonomy::class ) ) :
 						'query_var'             => true,
 						'rewrite'               => false,
 						'show_admin_column'     => true,
+						'show_tagcloud'         => false,
 						'show_in_rest'          => true,
 						'rest_controller_class' => 'WP_REST_Terms_Controller',
 						'show_in_quick_edit'    => true,
+						'show_in_graphql'       => true,
 					)
 				);
 
@@ -137,6 +141,102 @@ if ( ! class_exists( Taxonomy::class ) ) :
 			);
 
 			return $labels;
+		}
+
+		/**
+		 * Generate a list of publicly viewable taxonomies based on given post-type name.
+		 *
+		 * @since     1.7.0
+		 * @param     string $post_type    Given post-type name/key.
+		 * @return    array
+		 */
+		public static function list_viewables_by_post_type( string $post_type = 'post' ): array {
+			$return = array();
+
+			// Bail early, in case the post-type is not registered.
+			if ( ! post_type_exists( $post_type ) || ! is_post_type_viewable( $post_type ) ) {
+				return $return;
+			}
+
+			$post_type  = get_post_type_object( $post_type );
+			$taxonomies = get_taxonomies(
+				apply_filters(
+					'sixa_list_viewable_post_type_taxonomies_args',
+					array(
+						'object_type'  => array( (string) $post_type->name ),
+						'public'       => true,
+						'show_in_rest' => true,
+					)
+				),
+				'objects'
+			);
+			$return     = apply_filters(
+				'sixa_list_viewable_post_type_taxonomies_options',
+				array_map(
+					function( $taxonomy ) {
+						$taxonomy_name      = (string) $taxonomy->name;
+						$taxonomy_rest_base = ! empty( $taxonomy->rest_base ) ? (string) $taxonomy->rest_base : $taxonomy_name;
+						return array(
+							'label' => (string) $taxonomy->labels->singular_name,
+							'value' => $taxonomy_name . '|' . $taxonomy_rest_base,
+						);
+					},
+					array_values( $taxonomies )
+				)
+			);
+
+			return $return;
+		}
+
+		/**
+		 * Retrieve REST base name/key for a given post-type.
+		 *
+		 * @since     1.7.0
+		 * @param     string $taxonomy    Name of taxonomy object.
+		 * @return    string
+		 */
+		public static function get_rest_base( string $taxonomy = 'category' ): ?string {
+			$return = null;
+
+			// Bail early, in case the post-type is not registered.
+			if ( ! taxonomy_exists( $taxonomy ) || ! is_taxonomy_viewable( $taxonomy ) ) {
+				return $return;
+			}
+
+			$taxonomy = get_taxonomy( $taxonomy );
+			$return   = isset( $taxonomy->rest_base ) && ! empty( $taxonomy->rest_base ) ? $taxonomy->rest_base : $taxonomy->name;
+
+			return $return;
+		}
+
+		/**
+		 * Retrieves taxonomies associated with the given/selected post-type to query.
+		 *
+		 * @since     1.7.0
+		 * @param     string $post_type    Post type name and rest-base key.
+		 * @param     string $rest_base    Taxonomy REST-base key name.
+		 * @return    null|array
+		 */
+		public static function get_by_post_type_name_tax_rest_base( string $post_type = 'post|posts', string $rest_base ): ?array {
+			$post_types = Post_Type::list_viewables();
+			$find_index = array_search( $post_type, array_column( $post_types, 'value' ), true );
+			$taxonomies = false === $find_index ? null : $post_types[ $find_index ]['taxonomies'];
+
+			if ( ! is_array( $taxonomies ) || empty( $taxonomies ) ) {
+				return null;
+			}
+
+			return array_reduce(
+				$taxonomies,
+				function( $accumulator, $tax ) use ( $rest_base ) {
+					$taxonomy                = $tax['value'] ?? '';
+					$taxonomy_name_rest_base = Post_Type::split_name_from_rest_base( $taxonomy );
+					if ( $rest_base === $taxonomy_name_rest_base['rest_base'] ?? '' ) {
+						return $taxonomy_name_rest_base;
+					}
+					return $accumulator;
+				}
+			);
 		}
 
 	}

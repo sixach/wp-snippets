@@ -25,7 +25,7 @@ if ( ! class_exists( Utils::class ) ) :
 		/**
 		 * "Templates" folder name.
 		 *
-		 * @since    1.0.0
+		 * @since    1.7.0
 		 * @var      string
 		 */
 		public const TEMPLATES_FOLDER = 'templates';

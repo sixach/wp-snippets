@@ -200,6 +200,25 @@ if ( ! class_exists( Post_Type::class ) ) :
 		}
 
 		/**
+		 * Retrieves a string of CSS class names for the post container element.
+		 *
+		 * @since     1.7.0
+		 * @param     object $post       The post object.
+		 * @param     bool   $echo       Optional. Echo the string.
+		 * @param     array  $classes    Optional. An array of class names to add to the class list.
+		 * @return    string
+		 */
+		public static function post_class_names( object $post, bool $echo = true, $classes = array() ) {
+			$return = implode( ' ', array_values( get_post_class( $classes, $post ) ) );
+
+			if ( $echo ) {
+				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
+			return $return;
+		}
+
+		/**
 		 * Generate a list of publicly viewable registered post-types.
 		 *
 		 * @since     1.7.0

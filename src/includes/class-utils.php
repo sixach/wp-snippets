@@ -23,6 +23,14 @@ if ( ! class_exists( Utils::class ) ) :
 	final class Utils {
 
 		/**
+		 * "Templates" folder name.
+		 *
+		 * @since    1.7.0
+		 * @var      string
+		 */
+		public const TEMPLATES_FOLDER = 'templates';
+
+		/**
 		 * Query a third-party plugin activation.
 		 * This statement prevents from producing fatal errors,
 		 * in case the the plugin is not activated on the site.
@@ -533,6 +541,105 @@ if ( ! class_exists( Utils::class ) ) :
 			} else {
 				return implode( ' ', $sanitized_classes );
 			}
+		}
+
+		/**
+		 * Returns the template file name without extension being added to it.
+		 *
+		 * @since     1.7.0
+		 * @param     string $file    Template file name (filename).
+		 * @return    string
+		 */
+		public static function get_template_filename( string $file ): string {
+			return preg_replace( '/\\.[^.\\s]{3,4}$/', '', $file );
+		}
+
+		/**
+		 * Returns the template file directory and relative file path.
+		 *
+		 * @since     1.7.0
+		 * @param     string $directory    Parent directory's path.
+		 * @param     string $file         File path.
+		 * @return    string
+		 */
+		public static function get_template_path( string $directory, string $file ): string {
+			return sprintf( untrailingslashit( $directory ) . '/' . self::TEMPLATES_FOLDER . '/' . self::get_template_filename( $file ) . '.php' );
+		}
+
+		/**
+		 * Returns the HTML template instead of outputting.
+		 *
+		 * @since     1.7.0
+		 * @param     string $directory        Parent directory's path.
+		 * @param     string $template_name    Template name.
+		 * @param     array  $args             Arguments. (default: array).
+		 * @return    string
+		 */
+		public static function get_template_html( string $directory, string $template_name, array $args = array() ): string {
+			ob_start();
+			load_template( untrailingslashit( $directory ) . '/' . self::TEMPLATES_FOLDER . '/' . $template_name . '.php', false, $args );
+			return ob_get_clean();
+		}
+
+		/**
+		 * Like `get_template_part()` put lets you pass args to the template file.
+		 * Args are available in the template as `$template_args` array.
+		 *
+		 * @since     1.7.0
+		 * @param     string $directory        Parent directory's path.
+		 * @param     string $file             File path.
+		 * @param     array  $template_args    Args which are to be passed to the template file.
+		 * @param     array  $cache_args       The args to store in the cache.
+		 * @return    string|null
+		 * @phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+		 */
+		public static function get_template_part( string $directory, string $file, array $template_args = array(), array $cache_args = array() ): ?string {
+			$template_args = wp_parse_args( $template_args );
+			$cache_args    = wp_parse_args( $cache_args );
+
+			if ( $cache_args ) {
+				foreach ( $template_args as $key => $value ) {
+					if ( is_scalar( $value ) || is_array( $value ) ) {
+						$cache_args[ $key ] = $value;
+					} elseif ( is_object( $value ) && method_exists( $value, 'get_id' ) ) {
+						$cache_args[ $key ] = call_user_func( 'get_id', $value );
+					}
+				}
+
+				// Retrieves the cache contents from the cache by key and group.
+				$cache = wp_cache_get( $file, maybe_serialize( $cache_args ) ); // Serialize data, if needed.
+
+				if ( false !== $cache ) {
+					if ( ! empty( $template_args['return'] ) ) {
+						return $cache;
+					}
+
+					echo $cache;
+					return null;
+				}
+			}
+
+			$file = self::get_template_path( $directory, $file );
+
+			ob_start();
+			$return = require $file;
+			$data   = ob_get_clean();
+
+			if ( $cache_args ) {
+				// Saves the data to the cache.
+				wp_cache_set( $file, $data, maybe_serialize( $cache_args ), 3600 ); // Serialize data, if needed.
+			}
+
+			if ( ! empty( $template_args['return'] ) ) {
+				if ( false === $return ) {
+					return null;
+				} else {
+					return $data;
+				}
+			}
+
+			echo $data;
+			return null;
 		}
 	}
 

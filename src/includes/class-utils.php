@@ -542,7 +542,7 @@ if ( ! class_exists( Utils::class ) ) :
 		 * Returns a list of Columns (breakpoint) CSS class names along with
 		 * the inline CSS style for the gap range defined viewport-wide.
 		 *
-		 * @since     1.0.0
+		 * @since     1.7.0
 		 * @param     array $attributes    Available block attributes and their corresponding values.
 		 * @return    array
 		 */

@@ -314,52 +314,47 @@ if ( ! class_exists( Utils::class ) ) :
 		 * @return    string
 		 */
 		public static function output_inline_style( string $inline_style, bool $echo = false ): string {
-			$return       = "\n<style type=\"text/css\">\n";
-			$inline_style = preg_replace(
-				array(
-					// Normalize whitespace.
-					'/\s+/',
-					// Remove spaces before and after comment.
-					'/(\s+)(\/\*(.*?)\*\/)(\s+)/',
-					// Remove comment blocks, everything between /* and */, unless.
-					// preserved with /*! ... */ or /** ... */.
-					'~/\*(?![\!|\*])(.*?)\*/~',
-					// Remove ; before }.
-					'/;(?=\s*})/',
-					// Remove space after , : ; { } */ >.
-					'/(,|:|;|\{|}|\*\/|>) /',
-					// Remove space before , ; { } ( ) >.
-					'/ (,|;|\{|}|\)|>)/',
-					// Strips leading 0 on decimal values (converts 0.5px into .5px).
-					'/(:| )0\.([0-9]+)(%|em|ex|px|in|cm|mm|pt|pc)/i',
-					// Strips units if value is 0 (converts 0px to 0).
-					'/(:| )(\.?)0(%|em|ex|px|in|cm|mm|pt|pc)/i',
-					// Converts all zeros value into short-hand.
-					'/0 0 0 0/',
-					// Shortern 6-character hex color codes to 3-character where possible.
-					'/#([a-f0-9])\\1([a-f0-9])\\2([a-f0-9])\\3/i',
-					// Replace `(border|outline):none` with `(border|outline):0`.
-					'#(?<=[\{;])(border|outline):none(?=[;\}\!])#',
-					'#(background-position):0(?=[;\}])#si',
-				),
-				array(
-					' ',
-					'$2',
-					'',
-					'',
-					'$1',
-					'$1',
-					'${1}.${2}${3}',
-					'${1}0',
-					'0',
-					'#\1\2\3',
-					'$1:0',
-					'$1:0 0',
-				),
-				$inline_style
+			$return = "\n<style type=\"text/css\">\n";
+			/**
+			 * List of preg* regular expression patterns to search for,
+			 * used in conjunction with $plain_replace.
+			 *
+			 * @see    https://raw.github.com/ushahidi/wp-silcc/master/class.html2text.inc
+			 */
+			$plain_search = array(
+				'/\s+/',                                            // Normalize whitespace.
+				'/(\s+)(\/\*(.*?)\*\/)(\s+)/',                      // Remove spaces before and after comment.
+				'~/\*(?![\!|\*])(.*?)\*/~',                         // Remove comment blocks, everything between /* and */, unless preserved with /*! ... */ or /** ... */.
+				'/;(?=\s*})/',                                      // Remove ; before }.
+				'/(,|:|;|\{|}|\*\/|>) /',                           // Remove space after , : ; { } */ >.
+				'/ (,|;|\{|}|\)|>)/',                               // Remove space before , ; { } ( ) >.
+				'/(:| )0\.([0-9]+)(%|em|ex|px|in|cm|mm|pt|pc)/i',   // Strips leading 0 on decimal values (converts 0.5px into .5px).
+				'/(:| )(\.?)0(%|em|ex|px|in|cm|mm|pt|pc)/i',        // Strips units if value is 0 (converts 0px to 0).
+				'/0 0 0 0/',                                        // Converts all zeros value into short-hand.
+				'/#([a-f0-9])\\1([a-f0-9])\\2([a-f0-9])\\3/i',      // Shorten 6-character hex color codes to 3-character where possible.
+				'#(?<=[\{;])(border|outline):none(?=[;\}\!])#',      // Replace `(border|outline):none` with `(border|outline):0`.
+				'#(background-position):0(?=[;\}])#si',
 			);
-			$return      .= $inline_style;
-			$return      .= "\n</style>\n";
+			/**
+			 * List of pattern replacements corresponding to patterns searched.
+			 */
+			$plain_replace = array(
+				' ',
+				'$2',
+				'',
+				'',
+				'$1',
+				'$1',
+				'${1}.${2}${3}',
+				'${1}0',
+				'0',
+				'#\1\2\3',
+				'$1:0',
+				'$1:0 0',
+			);
+			$return       .= preg_replace( $plain_search, $plain_replace, $inline_style );
+			$return       .= $inline_style;
+			$return       .= "\n</style>\n";
 
 			if ( $echo ) {
 				echo $return; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -541,6 +536,37 @@ if ( ! class_exists( Utils::class ) ) :
 			} else {
 				return implode( ' ', $sanitized_classes );
 			}
+		}
+
+		/**
+		 * Returns a list of Columns (breakpoint) CSS class names along with
+		 * the inline CSS style for the gap range defined viewport-wide.
+		 *
+		 * @since     1.0.0
+		 * @param     array $attributes    Available block attributes and their corresponding values.
+		 * @return    array
+		 */
+		public static function get_block_wrapper_columns_attributes( array $attributes ) {
+			$classnames = array( 'sixa-columns' );
+			$columns    = $attributes['columns'] ?? '';
+			$gap        = $attributes['gap'] ?? '0px';
+
+			if ( $gap ) {
+				$styles[] = sprintf( '--columns-gap: %s', $gap );
+			}
+
+			if ( is_array( $columns ) ) {
+				foreach ( $columns as $device => $column ) {
+					$classnames[] = sprintf( 'sixa-columns-%s-%s', $column, $device );
+				}
+			}
+
+			$wrapper_attributes = array(
+				'class' => implode( ' ', array_map( 'sanitize_html_class', $classnames ) ),
+				'style' => implode( ';', array_map( 'esc_attr', $styles ) ),
+			);
+
+			return apply_filters( 'sixa_block_wrapper_columns_attributes', $wrapper_attributes );
 		}
 
 		/**

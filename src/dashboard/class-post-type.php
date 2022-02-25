@@ -279,12 +279,14 @@ if ( ! class_exists( Post_Type::class ) ) :
 			);
 
 			if ( $names_only ) {
-				$return = array_map(
-					function( $post_type ) {
-						$post_type_name_and_rest_base = self::split_name_from_rest_base( $post_type['value'] );
-						return $post_type_name_and_rest_base['name'];
-					},
-					$return
+				$return = array_values(
+					array_map(
+						function( $post_type ) {
+							$post_type_name_and_rest_base = self::split_name_from_rest_base( $post_type['value'] );
+							return $post_type_name_and_rest_base['name'];
+						},
+						$return
+					)
 				);
 			}
 

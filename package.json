@@ -35,6 +35,6 @@
 	"devDependencies": {
 		"@wordpress/scripts": "21.0.2",
 		"husky": "7.0.4",
-		"lint-staged": "12.3.4"
+		"lint-staged": "12.3.5"
 	}
 }

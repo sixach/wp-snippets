@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.7.0
+ * @since         1.7.1
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Includes
@@ -69,11 +69,11 @@ if ( ! class_exists( Utils::class ) ) :
 		/**
 		 * Return `true` if "Polylang" is installed/activated and `false` otherwise.
 		 *
-		 * @since     1.7.0
+		 * @since     1.7.1
 		 * @return    bool
 		 */
 		public static function is_polylang_activated(): bool {
-			return self::is_plugin_activated( 'polylang' );
+			return self::is_plugin_activated( 'polylang-pro' ) || self::is_plugin_activated( 'polylang-pro', 'polylang' );
 		}
 
 		/**

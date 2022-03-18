@@ -73,7 +73,7 @@ if ( ! class_exists( Utils::class ) ) :
 		 * @return    bool
 		 */
 		public static function is_polylang_activated(): bool {
-			return self::is_plugin_activated( 'polylang-pro' ) || self::is_plugin_activated( 'polylang-pro', 'polylang' );
+			return self::is_plugin_activated( 'polylang' ) || self::is_plugin_activated( 'polylang-pro', 'polylang' );
 		}
 
 		/**

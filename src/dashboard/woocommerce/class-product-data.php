@@ -4,7 +4,7 @@
  *
  * @link          https://sixa.ch
  * @author        sixa AG
- * @since         1.0.0
+ * @since         1.7.2
  *
  * @package       Sixa_Snippets
  * @subpackage    Sixa_Snippets/Dashboard/WooCommerce
@@ -124,12 +124,12 @@ if ( ! class_exists( Product_Data::class ) ) :
 		/**
 		 * Fires after a product has been updated or published.
 		 *
-		 * @since     1.0.0
+		 * @since     1.7.2
 		 * @param     object $product    Product object.
 		 * @return    void
 		 */
 		public function save( object $product ): void {
-			$product->update_meta_data( self::$key, filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY ) );
+			$product->update_meta_data( self::$key, filter_input( INPUT_POST, self::$key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY ) );
 		}
 
 	}

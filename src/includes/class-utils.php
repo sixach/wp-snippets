@@ -212,6 +212,8 @@ if ( ! class_exists( Utils::class ) ) :
 		 * Also note that the list of named entities is far from complete and could be
 		 * extended in the future.
 		 *
+		 * @since     1.7.3
+		 *            Changed search & replace to keep all HTML entities that are valid in XML.
 		 * @since     1.4.2
 		 * @param     string $input    Given input string, text or HTML markup.
 		 * @return    string

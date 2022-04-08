@@ -263,7 +263,6 @@ if ( ! class_exists( Utils::class ) ) :
 				' ',             // Non-breaking space.
 				'"',             // Double quotes.
 				"'",             // Single quotes.
-				'>',             // Greater-than.
 				'&#169;',        // Copyright.
 				'&#8482;',       // Trademark.
 				'&#174;',        // Registered.

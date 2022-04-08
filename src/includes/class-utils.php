@@ -254,29 +254,29 @@ if ( ! class_exists( Utils::class ) ) :
 			 * List of pattern replacements corresponding to patterns searched.
 			 */
 			$plain_replace = array(
-				'&#KEEPAMP;',   // Ampersand.
-				'&#KEEPLT;',          // Less-than.
-				'',           // Non-legal carriage return.
-				' ',          // Non-breaking space.
-				'"',          // Double quotes.
-				"'",          // Single quotes.
-				'>',          // Greater-than.
-				'&#169;',     // Copyright.
-				'&#8482;',    // Trademark.
-				'&#174;',     // Registered.
-				'--',         // mdash.
-				'-',          // ndash.
-				'*',          // Bullet.
-				'£',          // Pound sign.
-				'€',          // Euro sign. € ?.
-				'$',          // Dollar sign.
-				'&#x192;',    // Function sign.
-				'&#xa5;',     // Yen sign.
-				'&#xa2;',     // Cent sign.
-				'&#xa4;',     // Currency sign.
-				'',           // Unknown/unhandled entities.
-				'&amp;',      // Add ampersand back.
-				' ',          // Runs of spaces, post-handling.
+				'&#KEEPAMP;',    // Ampersand.
+				'&#KEEPLT;',     // Less-than.
+				'',              // Non-legal carriage return.
+				' ',             // Non-breaking space.
+				'"',             // Double quotes.
+				"'",             // Single quotes.
+				'>',             // Greater-than.
+				'&#169;',        // Copyright.
+				'&#8482;',       // Trademark.
+				'&#174;',        // Registered.
+				'--',            // mdash.
+				'-',             // ndash.
+				'*',             // Bullet.
+				'£',             // Pound sign.
+				'€',             // Euro sign. € ?.
+				'$',             // Dollar sign.
+				'&#x192;',       // Function sign.
+				'&#xa5;',        // Yen sign.
+				'&#xa2;',        // Cent sign.
+				'&#xa4;',        // Currency sign.
+				'',              // Unknown/unhandled entities.
+				'&amp;',         // Add ampersand back.
+				' ',             // Runs of spaces, post-handling.
 			);
 
 			return preg_replace( $plain_search, $plain_replace, $input );

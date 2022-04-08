@@ -228,11 +228,11 @@ if ( ! class_exists( Utils::class ) ) :
 			$plain_search = array(
 				'/&amp;/i',                   // Ampersand.
 				'/&lt;/i',                    // Less-than.
+				'/&gt;/i',                    // Greater-than.
 				"/\r/",                       // Non-legal carriage return.
 				'/&nbsp;/i',                  // Non-breaking space.
 				'/&(quot|rdquo|ldquo);/i',    // Double quotes.
 				'/&(apos|rsquo|lsquo);/i',    // Single quotes.
-				'/&gt;/i',                    // Greater-than.
 				'/&copy;/i',                  // Copyright.
 				'/&trade;/i',                 // Trademark.
 				'/&reg;/i',                   // Registered.
@@ -249,6 +249,7 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&[a-z]+;/i',                // Unknown/unhandled entities.
 				'/&#KEEPAMP;/i',              // Add ampersand back.
 				'/&#KEEPLT;/i',               // Add less-than back.
+				'/&#KEEPGT;/i',               // Add less-than back.
 				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
 			);
 			/**
@@ -257,6 +258,7 @@ if ( ! class_exists( Utils::class ) ) :
 			$plain_replace = array(
 				'&#KEEPAMP;',    // Ampersand.
 				'&#KEEPLT;',     // Less-than.
+				'&#KEEPGT;',     // Greater-than.
 				'',              // Non-legal carriage return.
 				' ',             // Non-breaking space.
 				'"',             // Double quotes.
@@ -277,7 +279,8 @@ if ( ! class_exists( Utils::class ) ) :
 				'&#xa4;',        // Currency sign.
 				'',              // Unknown/unhandled entities.
 				'&amp;',         // Add ampersand back.
-				'&lt;',         // Add ampersand back.
+				'&lt;',          // Add less-than back.
+				'&gt;',          // Add greater-than back.
 				' ',             // Runs of spaces, post-handling.
 			);
 

@@ -247,14 +247,14 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&cent;/i',                  // Cent sign.
 				'/&curren;/i',                // Currency sign.
 				'/&[a-z]+;/i',                // Unknown/unhandled entities.
-				'/&#MYAMP;/i',                // Add ampersand back.
+				'/&#KEEPAMP;/i',              // Add ampersand back.
 				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
 			);
 			/**
 			 * List of pattern replacements corresponding to patterns searched.
 			 */
 			$plain_replace = array(
-				'&#MYAMP;',   // Ampersand.
+				'&#KEEPAMP;',   // Ampersand.
 				'',           // Non-legal carriage return.
 				' ',          // Non-breaking space.
 				'"',          // Double quotes.

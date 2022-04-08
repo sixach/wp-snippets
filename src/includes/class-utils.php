@@ -227,12 +227,12 @@ if ( ! class_exists( Utils::class ) ) :
 			 */
 			$plain_search = array(
 				'/&amp;/i',                   // Ampersand.
+				'/&lt;/i',                    // Less-than.
 				"/\r/",                       // Non-legal carriage return.
 				'/&nbsp;/i',                  // Non-breaking space.
 				'/&(quot|rdquo|ldquo);/i',    // Double quotes.
 				'/&(apos|rsquo|lsquo);/i',    // Single quotes.
 				'/&gt;/i',                    // Greater-than.
-				'/&lt;/i',                    // Less-than.
 				'/&copy;/i',                  // Copyright.
 				'/&trade;/i',                 // Trademark.
 				'/&reg;/i',                   // Registered.
@@ -255,12 +255,12 @@ if ( ! class_exists( Utils::class ) ) :
 			 */
 			$plain_replace = array(
 				'&#KEEPAMP;',   // Ampersand.
+				'&#KEEPLT;',          // Less-than.
 				'',           // Non-legal carriage return.
 				' ',          // Non-breaking space.
 				'"',          // Double quotes.
 				"'",          // Single quotes.
 				'>',          // Greater-than.
-				'<',          // Less-than.
 				'&#169;',     // Copyright.
 				'&#8482;',    // Trademark.
 				'&#174;',     // Registered.

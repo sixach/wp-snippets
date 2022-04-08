@@ -248,6 +248,7 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&curren;/i',                // Currency sign.
 				'/&[a-z]+;/i',                // Unknown/unhandled entities.
 				'/&#KEEPAMP;/i',              // Add ampersand back.
+				'/&#KEEPLT;/i',               // Add less-than back.
 				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
 			);
 			/**
@@ -276,6 +277,7 @@ if ( ! class_exists( Utils::class ) ) :
 				'&#xa4;',        // Currency sign.
 				'',              // Unknown/unhandled entities.
 				'&amp;',         // Add ampersand back.
+				'&lt;',         // Add ampersand back.
 				' ',             // Runs of spaces, post-handling.
 			);
 

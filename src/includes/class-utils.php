@@ -226,13 +226,13 @@ if ( ! class_exists( Utils::class ) ) :
 			 * @see    https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Predefined_entities_in_XML
 			 */
 			$plain_search = array(
+				'/&amp;/i',                   // Ampersand.
 				"/\r/",                       // Non-legal carriage return.
 				'/&nbsp;/i',                  // Non-breaking space.
 				'/&(quot|rdquo|ldquo);/i',    // Double quotes.
 				'/&(apos|rsquo|lsquo);/i',    // Single quotes.
 				'/&gt;/i',                    // Greater-than.
 				'/&lt;/i',                    // Less-than.
-				'/&amp;/i',                   // Ampersand.
 				'/&copy;/i',                  // Copyright.
 				'/&trade;/i',                 // Trademark.
 				'/&reg;/i',                   // Registered.
@@ -254,13 +254,13 @@ if ( ! class_exists( Utils::class ) ) :
 			 * List of pattern replacements corresponding to patterns searched.
 			 */
 			$plain_replace = array(
+				'&#MYAMP;',   // Ampersand.
 				'',           // Non-legal carriage return.
 				' ',          // Non-breaking space.
 				'"',          // Double quotes.
 				"'",          // Single quotes.
 				'>',          // Greater-than.
 				'<',          // Less-than.
-				'&#MYAMP;',   // Ampersand.
 				'&#169;',     // Copyright.
 				'&#8482;',    // Trademark.
 				'&#174;',     // Registered.

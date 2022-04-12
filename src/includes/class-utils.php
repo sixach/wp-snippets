@@ -212,6 +212,8 @@ if ( ! class_exists( Utils::class ) ) :
 		 * Also note that the list of named entities is far from complete and could be
 		 * extended in the future.
 		 *
+		 * @since     1.7.3
+		 *            Changed search & replace to keep all HTML entities that are valid in XML.
 		 * @since     1.4.2
 		 * @param     string $input    Given input string, text or HTML markup.
 		 * @return    string
@@ -226,13 +228,13 @@ if ( ! class_exists( Utils::class ) ) :
 			 * @see    https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Predefined_entities_in_XML
 			 */
 			$plain_search = array(
+				'/&amp;/i',                   // Ampersand.
+				'/&lt;/i',                    // Less-than.
+				'/&gt;/i',                    // Greater-than.
 				"/\r/",                       // Non-legal carriage return.
 				'/&nbsp;/i',                  // Non-breaking space.
 				'/&(quot|rdquo|ldquo);/i',    // Double quotes.
 				'/&(apos|rsquo|lsquo);/i',    // Single quotes.
-				'/&gt;/i',                    // Greater-than.
-				'/&lt;/i',                    // Less-than.
-				'/&amp;/i',                   // Ampersand.
 				'/&copy;/i',                  // Copyright.
 				'/&trade;/i',                 // Trademark.
 				'/&reg;/i',                   // Registered.
@@ -247,36 +249,40 @@ if ( ! class_exists( Utils::class ) ) :
 				'/&cent;/i',                  // Cent sign.
 				'/&curren;/i',                // Currency sign.
 				'/&[a-z]+;/i',                // Unknown/unhandled entities.
-				'/&#MYAMP;/i',                // Add ampersand back.
+				'/&#KEEPAMP;/i',              // Add ampersand back.
+				'/&#KEEPLT;/i',               // Add less-than back.
+				'/&#KEEPGT;/i',               // Add less-than back.
 				'/[ ]{2,}/',                  // Runs of spaces, post-handling.
 			);
 			/**
 			 * List of pattern replacements corresponding to patterns searched.
 			 */
 			$plain_replace = array(
-				'',           // Non-legal carriage return.
-				' ',          // Non-breaking space.
-				'"',          // Double quotes.
-				"'",          // Single quotes.
-				'>',          // Greater-than.
-				'<',          // Less-than.
-				'&#MYAMP;',   // Ampersand.
-				'&#169;',     // Copyright.
-				'&#8482;',    // Trademark.
-				'&#174;',     // Registered.
-				'--',         // mdash.
-				'-',          // ndash.
-				'*',          // Bullet.
-				'£',          // Pound sign.
-				'€',          // Euro sign. € ?.
-				'$',          // Dollar sign.
-				'&#x192;',    // Function sign.
-				'&#xa5;',     // Yen sign.
-				'&#xa2;',     // Cent sign.
-				'&#xa4;',     // Currency sign.
-				'',           // Unknown/unhandled entities.
-				'&amp;',      // Add ampersand back.
-				' ',          // Runs of spaces, post-handling.
+				'&#KEEPAMP;',    // Ampersand.
+				'&#KEEPLT;',     // Less-than.
+				'&#KEEPGT;',     // Greater-than.
+				'',              // Non-legal carriage return.
+				' ',             // Non-breaking space.
+				'"',             // Double quotes.
+				"'",             // Single quotes.
+				'&#169;',        // Copyright.
+				'&#8482;',       // Trademark.
+				'&#174;',        // Registered.
+				'--',            // mdash.
+				'-',             // ndash.
+				'*',             // Bullet.
+				'£',             // Pound sign.
+				'€',             // Euro sign. € ?.
+				'$',             // Dollar sign.
+				'&#x192;',       // Function sign.
+				'&#xa5;',        // Yen sign.
+				'&#xa2;',        // Cent sign.
+				'&#xa4;',        // Currency sign.
+				'',              // Unknown/unhandled entities.
+				'&amp;',         // Add ampersand back.
+				'&lt;',          // Add less-than back.
+				'&gt;',          // Add greater-than back.
+				' ',             // Runs of spaces, post-handling.
 			);
 
 			return preg_replace( $plain_search, $plain_replace, $input );
